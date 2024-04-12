@@ -1,0 +1,12 @@
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+@layer ui {
+	.title1 {
+		@include mixins.adaptive-value('font-size', 80, 28);
+
+		line-height: 120%;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+}

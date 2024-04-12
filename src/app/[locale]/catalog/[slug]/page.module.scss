@@ -1,0 +1,9 @@
+@use "@/global/scss/gridest";
+@use "@/global/scss/mixins";
+
+.grid {
+	@include gridest.gridest(4, 2);
+
+	@include mixins.adaptive-value('gap', 50, 12);
+	margin-top: 80px;
+}

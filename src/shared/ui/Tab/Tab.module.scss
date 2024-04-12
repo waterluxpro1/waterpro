@@ -1,0 +1,33 @@
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+.tab {
+	font-weight: 600;
+	line-height: 120%;
+	padding-block: 16px;
+	text-transform: uppercase;
+	cursor: pointer;
+	user-select: none;
+
+	@include mixins.adaptive-value('font-size', 24, 16);
+
+	&:hover {
+		@media(hover: hover) {
+			opacity: .8;
+		}
+	}
+
+	&:active {
+		@media(hover: hover) {
+			opacity: .6;
+		}
+
+		@media(hover: none) {
+			opacity: .8;
+		}
+	}
+
+	&.active {
+		color: vars.$dark-blue;
+	}
+}

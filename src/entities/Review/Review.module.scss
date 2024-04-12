@@ -1,0 +1,70 @@
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+@layer styles {
+	.card {
+		display: flex;
+		overflow: hidden;
+		gap: 32px;
+
+		@media (max-width: 1200px) {
+			flex-direction: column;
+		}
+
+		@media (max-width: (vars.$tablet - 2px)) {
+			flex-direction: row;
+		}
+	}
+
+
+	.imageContainer {
+		@include mixins.adaptive-value('flex-basis', 280, 140);
+
+		flex-shrink: 0;
+		// min-height: 100%;
+		height: 100%;
+
+		margin: -16px;
+		margin-right: 0;
+
+		@media (max-width: 1200px) {
+			margin-right: -16px;
+			margin-bottom: 0;
+		}
+
+		@media (max-width: (vars.$tablet - 2px)) {
+			margin-bottom: -16px;
+		}
+	}
+
+	.image {
+
+		margin-right: 0;
+		object-fit: cover;
+		aspect-ratio: 1/1;
+		min-height: 240px;
+		height: 100%;
+
+		@media (max-width: 1200px) {
+			aspect-ratio: 2/1;
+			width: 100%;
+		}
+
+		@media (max-width: (vars.$tablet - 2px)) {
+			aspect-ratio: 1/1;
+			width: 100%;
+		}
+	}
+
+	.username {
+		@include mixins.adaptive-value('font-size', 24, 14);
+		font-weight: 600;
+		line-height: 120%;
+		color: vars.$light-blue;
+	}
+
+	.body {
+		@include mixins.adaptive-value('font-size', 18, 12);
+		@include mixins.adaptive-value('margin-top', 20, 10);
+	}
+}

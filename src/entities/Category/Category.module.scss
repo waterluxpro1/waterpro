@@ -1,0 +1,38 @@
+@use "@/global/scss/vars";
+
+.card {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	padding: 16px;
+	justify-content: space-between;
+	border-radius: 12px;
+
+	img {
+		text-align: center;
+
+	}
+}
+
+.title {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 16px;
+	line-height: 115%;
+	margin-top: 32px;
+	font-weight: 500;
+
+	@media (max-width: vars.$medium) {
+		font-size: 12px;
+	}
+
+	@media (max-width: vars.$mobile-l) {
+		font-size: 16px;
+	}
+}
+
+.button {
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
+}

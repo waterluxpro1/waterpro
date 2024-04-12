@@ -1,0 +1,16 @@
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+.icon {
+	@include mixins.adaptive-value('width', 80, 40);
+	@include mixins.adaptive-value('height', 80, 40);
+}
+
+.title {
+	margin-top: 12px;
+	color: vars.$dark-blue;
+}
+
+.description {
+	@include mixins.adaptive-value('margin-top', 20, 8);
+}

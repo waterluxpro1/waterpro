@@ -1,0 +1,15 @@
+.contacts {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.contact {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-weight: 500;
+	font-size: 22px;
+}

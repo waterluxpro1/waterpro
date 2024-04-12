@@ -1,0 +1,110 @@
+@use "@/global/scss/vars";
+
+.header {
+	position: relative;
+	z-index: 10;
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 32px;
+	padding-block: 32px;
+	position: relative;
+	z-index: 20;
+	background-color: #EFEFEF;
+
+	box-shadow: rgba(#000, 5%) 0 1px 8px;
+}
+
+.mainPart {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+
+	flex-grow: 1;
+	justify-content: flex-end;
+}
+
+.navigation {
+	background-color: #335577;
+	padding-block: 36px;
+	color: #fff;
+
+	@media (max-width: vars.$tablet-l) {
+		padding: 0;
+	}
+}
+
+.contacts {
+	@media (max-width: vars.$tablet-l) {
+		display: none;
+	}
+}
+
+@layer styles {
+
+	.button {
+		@media (max-width: vars.$tablet-l) {
+			display: none;
+		}
+	}
+
+}
+
+.menuButton {
+	flex-basis: 40px;
+	flex-shrink: 0;
+	height: 40px;
+	background-color: vars.$dark-blue;
+
+	display: none;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 9999px;
+
+	&:hover {
+		@media (hover: hover) {
+			opacity: .9;
+		}
+	}
+
+	@media (max-width: vars.$tablet-l) {
+		display: flex;
+	}
+
+	&:active {
+		opacity: .8;
+	}
+
+	span {
+		position: relative;
+
+		&,
+		&::before,
+		&::after {
+			display: inline-block;
+			width: 18px;
+			height: 2px;
+			background-color: #fff;
+		}
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+		}
+
+		&::before {
+			top: -5px;
+		}
+
+		&::after {
+			top: 5px;
+		}
+	}
+}
+
+.container {}

@@ -1,0 +1,34 @@
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+@layer styles {
+	.good {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
+
+		@include mixins.adaptive-value('padding', 16, 12);
+	}
+
+	.title {
+		@include mixins.adaptive-value('font-size', 18, 10);
+	}
+
+	.price {
+		@include mixins.adaptive-value('font-size', 24, 16);
+		font-weight: 600;
+		color: vars.$dark-blue;
+	}
+
+	.button {
+		width: 100%;
+	}
+
+	.image {
+		aspect-ratio: 9/10;
+		object-fit: cover;
+		max-width: 100%;
+	}
+}

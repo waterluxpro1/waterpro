@@ -1,0 +1,10 @@
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+.tabslist {
+	display: flex;
+	flex-wrap: wrap;
+	@include mixins.adaptive-value('gap', 90, 40);
+	border-bottom: vars.$dark-blue 1px solid;
+	margin-bottom: 20px;
+}

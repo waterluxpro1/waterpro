@@ -1,0 +1,12 @@
+@use "@/global/scss/mixins";
+
+@layer ui {
+	.textarea {
+		@include mixins.adaptive-value('padding-block', 20, 12);
+		@include mixins.adaptive-value('padding-inline', 24, 12);
+		background-color: #fff;
+		border-radius: 16px;
+		@include mixins.adaptive-value('font-size', 18, 14);
+		resize: none;
+	}
+}

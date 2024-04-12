@@ -1,0 +1,11 @@
+@use "@/global/scss/mixins";
+
+@layer ui {
+	.title {
+		text-align: center;
+	}
+
+	.slider {
+		@include mixins.adaptive-value('margin-top', 72, 32);
+	}
+}

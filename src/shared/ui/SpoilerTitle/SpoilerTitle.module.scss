@@ -1,0 +1,40 @@
+@use "@/global/scss/mixins";
+
+@layer ui {
+	.spoilerTitle {
+		width: 100%;
+		@include mixins.adaptive-value('font-size', 24, 14);
+		font-weight: 600;
+		cursor: pointer;
+		@include mixins.adaptive-value('padding-block', 30, 20);
+		user-select: none;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&::marker {
+			content: '';
+		}
+
+		&::after {
+			content: '';
+			transform: rotateZ(180deg);
+
+			background-image: url('/spoiler-arrow.svg');
+			background-size: 100% 100%;
+			display: block;
+
+			@include mixins.adaptive-value('flex-basis', 28, 14);
+			flex-shrink: 0;
+			@include mixins.adaptive-value('height', 12, 6);
+		}
+
+		[open] & {
+
+			&::after {
+				transform: rotateZ(0);
+			}
+		}
+	}
+}

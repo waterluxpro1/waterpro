@@ -1,0 +1,66 @@
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+@layer ui {
+	.button {
+		transition: background-color .3s, color .3s;
+		border-radius: 9999px;
+		text-transform: uppercase;
+		font-weight: 600;
+		cursor: pointer;
+		display: inline-block;
+		user-select: none;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		max-width: 100%;
+		text-align: center;
+
+		&.light {
+			background-color: #fff;
+			color: vars.$dark-blue;
+		}
+
+		&.normal {
+			@include mixins.adaptive-value('font-size', 18, 14);
+			padding: 16px 24px;
+			@include mixins.adaptive-value('padding-block', 16, 8);
+			@include mixins.adaptive-value('padding-inline', 24, 16);
+		}
+
+		&.large {
+			text-transform: uppercase;
+			@include mixins.adaptive-value('font-size', 22, 18);
+			@include mixins.adaptive-value('padding-block', 28, 16);
+			@include mixins.adaptive-value('padding-inline', 60, 22);
+
+		}
+
+		&.primary {
+			background-color: vars.$light-blue;
+			color: #fff;
+
+			&:hover {
+				@media (hover: hover) {
+					background-color: vars.$dark-blue;
+				}
+			}
+
+			&:active {
+				@media (hover: none) {
+					background-color: vars.$dark-blue;
+				}
+			}
+		}
+
+		&.secondary {
+			border: #335577 2px solid;
+			color: #335577;
+
+			&:hover {
+				background-color: #335577;
+				color: #fff;
+			}
+		}
+	}
+}

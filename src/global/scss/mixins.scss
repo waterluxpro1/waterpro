@@ -1,0 +1,13 @@
+@use "@/global/scss/vars";
+
+@mixin adaptive-value($property, $max, $min) {
+	#{$property}: calc(#{$min}px + (($max - $min) * (100vw - 375px) / (vars.$container - 375)));
+
+	@media(min-width: #{vars.$container}px) {
+		#{$property}: #{$max}px;
+	}
+
+	@media(max-width: vars.$mobile-m) {
+		#{$property}: #{$min}px;
+	}
+}

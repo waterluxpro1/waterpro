@@ -1,0 +1,9 @@
+@use "@/global/scss/mixins";
+
+@layer ui {
+	.title3 {
+		font-weight: 600;
+
+		@include mixins.adaptive-value('font-size', 36, 16);
+	}
+}

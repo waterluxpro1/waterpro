@@ -1,0 +1,27 @@
+@use "@/global/scss/vars";
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+
+	@media (max-width: vars.$laptop) {
+		gap: 24px;
+	}
+
+	@media (max-width: vars.$tablet-l) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: vars.$tablet) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: vars.$medium) {
+		gap: 12px;
+	}
+
+	@media (max-width: vars.$mobile-l) {
+		grid-template-columns: 1fr;
+	}
+}

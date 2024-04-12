@@ -1,0 +1,7 @@
+@use "@/global/scss/mixins";
+
+@layer ui {
+	.body1 {
+		@include mixins.adaptive-value('font-size', 24, 18);
+	}
+}
