@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, createContext, useState } from 'react'
+import { type ReactNode, createContext, useState } from 'react'
 import styles from './Select.module.scss'
 import clsx from 'clsx'
 

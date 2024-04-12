@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import type { HTMLAttributes } from 'react'
 import styles from './Title5.module.scss'
 import clsx from 'clsx'
 

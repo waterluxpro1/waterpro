@@ -1,8 +1,7 @@
 import type { ICategory } from '../interfaces/Category.interface'
 import type { IGood } from '../interfaces/Good.interface'
 
-
-const request = async<T>(path: URL | string, init?: RequestInit): Promise<T> => {
+const request = async<T>(path: URL | string, init?: RequestInit | undefined): Promise<T> => {
 	const response = await fetch(path, init)
 	const json: T = await response.json()
 

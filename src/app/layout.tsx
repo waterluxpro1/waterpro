@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { Header } from '@/widgets/Header'
 
 import './globals.css'

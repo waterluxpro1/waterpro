@@ -17,5 +17,8 @@
     "@stylistic/js/jsx-quotes": ["error", "prefer-double"],
     "@stylistic/js/semi": ["error", "never"],
     "@typescript-eslint/consistent-type-imports": "error"
+  },
+  "globals": {
+    "RequestInit": true
   }
 }

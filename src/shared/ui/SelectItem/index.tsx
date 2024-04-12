@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext } from 'react'
-import { SelectItemProps } from './SelectItem.props'
+import type { SelectItemProps } from './SelectItem.props'
 import { SelectContext } from '../Select'
 
 export const SelectItem = ({ children }: SelectItemProps) => {

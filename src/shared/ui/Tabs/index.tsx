@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, createContext } from 'react'
-import { TabsProps } from './Tabs.props'
+import type { TabsProps } from './Tabs.props'
 
 export const TabsContext = createContext({
 	activeTabIndex: 0,
-	setActiveTabIndex: (arg: number) => { }
+	setActiveTabIndex: (arg: number) => { arg }
 })
 
 export const Tabs = ({ defaultActive, ...props }: TabsProps) => {
