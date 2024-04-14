@@ -30,7 +30,7 @@ export const GoodsSlider = ({ className, goods }: { className?: string, goods: I
 					image={good.images[0].src}
 					title={good.name}
 					price={good.price_html}
-					url={'/'}
+					url={`/ru/good/${good.slug}`}
 				/>
 			</SwiperSlide>)}
 		</Swiper>

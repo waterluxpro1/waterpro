@@ -1,14 +1,18 @@
 import { Container } from '@/shared/ui/Container'
 import styles from './Categories.module.scss'
 import { Category } from '@/entities/Category'
+import { wordpress } from '@/shared/api/wordpress.service'
 
-export const Categories = () => {
+export const Categories = async ({ categories }: {
+	categories: {
+		name: string, url: string, image: number
+	}[]
+}) => {
 	return (
 		<Container className={styles.container}>
-			<Category href="#" image="/img/categories/water-treatment-systems.png" title="Водоочистительные системы" />
-			<Category href="#" image="/img/categories/shower-filter.png" title="ФИЛЬТР ДЛЯ ДУША" />
-			<Category href="#" image="/img/categories/replacement-filters.png" title="СМЕННЫЕ фильтры" />
-			<Category href="#" image="/img/categories/additional-spare-parts.png" title="Дополнительные запчасти" />
+			{await Promise.all(categories.map(async category =>
+				<Category key={category.url} href="#" image={(await wordpress.getMediaById(category.image)).source_url} title={category.name} />
+			))}
 		</Container>
 	)
 }

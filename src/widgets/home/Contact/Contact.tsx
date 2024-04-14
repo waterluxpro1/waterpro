@@ -9,7 +9,7 @@ import { Button } from '@/shared/ui/Button'
 
 export const Contact = () => {
 	return (
-		<article className={styles.wrapper}>
+		<article className={styles.wrapper} id="contact">
 			<Container>
 				<Title2 className={styles.title}>
 					Заполните форму и мы свяжемся с вами при первой возможности!

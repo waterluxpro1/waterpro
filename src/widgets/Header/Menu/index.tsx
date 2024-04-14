@@ -41,8 +41,8 @@ export const Menu = ({ isOpened }: { isOpened: boolean }) => {
 						</li>
 					</ul>
 				</li>
-				<li className={styles.menuItem}><a href="#">Связаться с нами</a></li>
-				<li className={styles.menuItem}><a href="#">Рассрочка</a></li>
+				<li className={styles.menuItem}><Link href={`/${pathname.split('/')[1]}#contact`}>Связаться с нами</Link></li>
+				<li className={styles.menuItem}><Link href={`/${pathname.split('/')[1]}/installments`}>Рассрочка</Link></li>
 				<li className={styles.menuItem}><a href="#">Контакты</a></li>
 			</ul>
 			<Contacts className={styles.contacts} />

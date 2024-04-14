@@ -9,6 +9,45 @@ import Image from 'next/image'
 import { woocomerence } from '@/shared/api/wordpress.service'
 import { Title3 } from '@/shared/ui/Title3/Title3'
 import { GoodsSlider } from '@/features/GoodsSlider/GoodsSlider'
+import { Button } from '@/shared/ui/Button'
+import { cookies } from 'next/headers'
+import { revalidatePath } from 'next/cache'
+
+const addToCard = async (formData: FormData) => {
+	'use server'
+
+	const id = +formData.get('id')!
+
+	if (!cookies().has('cart')) {
+		cookies().set('cart', '[]')
+	}
+
+	const cart = cookies().get('cart')
+
+	const idInCart = !!JSON.parse(cart?.value!).find((item: any) => item.id === id)
+
+	if (!idInCart) {
+		cookies().set('cart',
+			JSON.stringify([...JSON.parse(cart?.value!), { id, count: 1 }])
+		)
+	}
+	else {
+		cookies().set('cart',
+			JSON.stringify(
+				JSON.parse(cart?.value!)
+					.splice(
+						JSON.parse(cart?.value!).
+							findIndex((item: any) => item.id === id) + 1,
+						1
+					)
+			)
+		)
+	}
+
+	revalidatePath('.')
+
+	console.log(cookies().get('cart'))
+}
 
 const GoodPage = async ({ params }: { params: { slug: string } }) => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)
@@ -29,6 +68,17 @@ const GoodPage = async ({ params }: { params: { slug: string } }) => {
 					<div className={styles.info}>
 						<Title3 className={styles.title}>{good.name}</Title3>
 						<span className={styles.price} dangerouslySetInnerHTML={{ __html: good.price_html }}></span>
+						{!JSON.parse(cookies().get('cart')?.value!).find((item: any) => item.id === good.id) ?
+							<form className={styles.addToCart} method="POST" action={addToCard}>
+								<input type="text" name="id" readOnly value={good.id} style={{ display: 'none' }} />
+								<button type="submit"><Button>В корзину</Button></button>
+							</form>
+							:
+							<form className={styles.addToCart} method="POST" action={addToCard}>
+								<input type="text" name="id" readOnly value={good.id} style={{ display: 'none' }} />
+								<button type="submit"><Button>Удалить из корзины</Button></button>
+							</form>
+						}
 					</div>
 				</div>
 				<Tabs defaultActive={1}>

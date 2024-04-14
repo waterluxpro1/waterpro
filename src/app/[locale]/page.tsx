@@ -6,12 +6,23 @@ import { PopularGoods } from '@/widgets/home/PopularGoods/PopularGoods'
 import { Reviews } from '@/widgets/home/Reviews/Reviews'
 import { Welcome } from '@/widgets/home/Welcome'
 import styles from './page.module.scss'
+import { wordpress } from '@/shared/api/wordpress.service'
 
-export default function Home() {
+export default async function Home({ params }: { params: { locale: string } }) {
+  const [page] = await wordpress.getPage<{
+    acf: {
+      categories: {
+        name: string
+        url: string
+        image: number
+      }[]
+    }
+  }[]>('home', params.locale)
+
   return (
     <div className={styles.page}>
       <Welcome />
-      <Categories />
+      <Categories categories={page.acf.categories} />
       <Advantages />
       <PopularGoods />
       <Contact />

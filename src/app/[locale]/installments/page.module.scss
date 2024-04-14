@@ -1,0 +1,66 @@
+@use "@/global/scss/mixins";
+@use "@/global/scss/vars";
+@use "@/global/scss/gridest";
+
+.logos {
+	display: flex;
+	@include mixins.adaptive-value('gap', 72, 24);
+	@include mixins.adaptive-value('margin-top', 55, 8);
+
+	li {
+		svg {
+			@include mixins.adaptive-value('height', 50, 26);
+			width: auto;
+		}
+	}
+}
+
+.content {
+	@include mixins.adaptive-value('margin-block', 120, 36);
+}
+
+.description {
+	margin-top: 24px;
+}
+
+.title {
+	width: 100%;
+
+	@media (max-width: vars.$tablet) {
+		text-align: center;
+	}
+}
+
+.subtitle {
+	display: block;
+	margin-top: 45px;
+}
+
+.variants {
+	@include gridest.gridest(3);
+	@include mixins.adaptive-value('gap', 50, 16);
+	margin-top: 36px;
+}
+
+.body {
+	@include mixins.adaptive-value('padding-block', 90, 40);
+	padding-inline: 8px;
+}
+
+.card {
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+}
+
+.button {
+	width: 100%;
+	text-transform: none;
+	padding-block: 12px;
+	max-width: 250px;
+}
+
+.contact {
+	margin: 100px 0;
+}
