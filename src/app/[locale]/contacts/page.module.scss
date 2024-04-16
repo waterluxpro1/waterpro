@@ -1,0 +1,41 @@
+@use "@/global/scss/gridest";
+@use "@/global/scss/vars";
+@use "@/global/scss/mixins";
+
+.head {
+	padding-block: 140px;
+
+	@media (max-width: vars.$tablet) {
+		padding: 0;
+	}
+}
+
+.container {
+	@include gridest.gridest(2);
+	align-items: center;
+	gap: 0 50px;
+}
+
+.info {
+	align-self: center;
+	padding-block: 35px;
+	line-height: 140%;
+	color: vars.$dark-blue;
+	font-weight: 600;
+	@include mixins.adaptive-value('font-size', 28, 12);
+}
+
+.map {
+	filter: brightness(100%) grayscale(60%) hue-rotate(120deg);
+	border: none;
+	height: 600px;
+
+	iframe {
+		border: 0;
+		outline: 0;
+	}
+
+	@media (max-width: vars.$tablet) {
+		height: 200px;
+	}
+}

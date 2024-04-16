@@ -1,10 +1,10 @@
 'use client'
 
 import { Good } from '@/entities/Good/Good'
-import type { IGood } from '@/shared/interfaces/Good.interface'
+import type { IGood } from '@/shared/interfaces/models/Good.interface'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-export const GoodsSlider = ({ className, goods }: { className?: string, goods: IGood[] }) => {
+export const GoodsSlider = ({ className, goods, lang }: { className?: string, goods: IGood[], lang: string }) => {
 	return (
 		<Swiper className={className}
 			spaceBetween={10}
@@ -30,7 +30,7 @@ export const GoodsSlider = ({ className, goods }: { className?: string, goods: I
 					image={good.images[0].src}
 					title={good.name}
 					price={good.price_html}
-					url={`/ru/good/${good.slug}`}
+					url={`/${lang}/good/${good.slug}`}
 				/>
 			</SwiperSlide>)}
 		</Swiper>

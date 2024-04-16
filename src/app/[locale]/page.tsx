@@ -7,27 +7,23 @@ import { Reviews } from '@/widgets/home/Reviews/Reviews'
 import { Welcome } from '@/widgets/home/Welcome'
 import styles from './page.module.scss'
 import { wordpress } from '@/shared/api/wordpress.service'
+import type { HomePageModel } from '@/page/home/model/HomePage.model'
+import { HomePageProvider } from '@/page/home/ui/HomePageProvider'
 
 export default async function Home({ params }: { params: { locale: string } }) {
-  const [page] = await wordpress.getPage<{
-    acf: {
-      categories: {
-        name: string
-        url: string
-        image: number
-      }[]
-    }
-  }[]>('home', params.locale)
+  const [page] = await wordpress.getPage<HomePageModel[]>('home', params.locale)
 
   return (
-    <div className={styles.page}>
-      <Welcome />
-      <Categories categories={page.acf.categories} />
-      <Advantages />
-      <PopularGoods />
-      <Contact />
-      <Reviews />
-      <Faq />
-    </div>
+    <HomePageProvider value={page}>
+      <div className={styles.page}>
+        <Welcome />
+        <Categories categories={page?.acf?.categories} />
+        <Advantages />
+        <PopularGoods lang={params.locale} />
+        <Contact />
+        <Reviews />
+        <Faq />
+      </div>
+    </HomePageProvider>
   )
 }

@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
 import type { ReactNode } from 'react'
-import { Header } from '@/widgets/Header'
 
 import './globals.css'
 import 'swiper/css'
@@ -18,10 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={manrope.className}>
-        <Header />
-        <main>
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   )

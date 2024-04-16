@@ -1,5 +1,5 @@
-import type { ICategory } from '../interfaces/Category.interface'
-import type { IGood } from '../interfaces/Good.interface'
+import type { ICategory } from '../interfaces/models/Category.interface'
+import type { IGood } from '../interfaces/models/Good.interface'
 
 const request = async<T>(path: URL | string, init?: RequestInit | undefined): Promise<T> => {
 	const response = await fetch(path, init)
@@ -37,7 +37,7 @@ const wpRequest = async <T>(path: string): Promise<T> => {
 }
 
 export const woocomerence = {
-	getPopularGoods: async () => wcRequest<IGood[]>('products?orderby=popularity&per_page=5&lang=ru'),
+	getPopularGoods: async (lang: string = 'ru') => wcRequest<IGood[]>(`products?orderby=popularity&per_page=5&lang=${lang}`),
 	getGoodsByCategoryId: async (categodyId: number) => wcRequest<IGood[]>(`products?category=${categodyId}`),
 	getCategoryBySlug: async (categorySlug: string) => wcRequest<ICategory[]>(`products/categories?slug=${categorySlug}`),
 	getGoodBySlug: async (slug: string) => wcRequest<IGood[]>(`products?slug=${slug}`),
@@ -45,6 +45,6 @@ export const woocomerence = {
 }
 
 export const wordpress = {
-	getPage: async<T>(page: string, lang: string) => wpRequest<T>(`pages?slug=next-${page}-${lang}`),
+	getPage: async<T>(page: string, lang: string) => wpRequest<T>(`pages?slug=next-${page}-${lang}&acf_format=standard`),
 	getMediaById: async (id: number) => wpRequest<{ source_url: string }>(`media/${id}`),
 }

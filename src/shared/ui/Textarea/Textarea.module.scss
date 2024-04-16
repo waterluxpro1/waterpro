@@ -1,4 +1,5 @@
 @use "@/global/scss/mixins";
+@use "@/global/scss/vars";
 
 @layer ui {
 	.textarea {
@@ -8,5 +9,6 @@
 		border-radius: 16px;
 		@include mixins.adaptive-value('font-size', 18, 14);
 		resize: none;
+		border: rgba(vars.$dark-blue, 20%) 1px solid;
 	}
 }

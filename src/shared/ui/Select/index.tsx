@@ -5,13 +5,13 @@ import styles from './Select.module.scss'
 import clsx from 'clsx'
 
 export const SelectContext = createContext({
-	activeValue: '',
-	setActiveValue: (arg1: string) => { console.log(arg1) }
+	activeValue: ((): ReactNode => <></>)(),
+	setActiveValue: (arg1: ReactNode) => { console.log(arg1) }
 })
 
-export const Select = ({ defaultValue, children }: { defaultValue: string, children: ReactNode }) => {
+export const Select = ({ defaultValue, children }: { defaultValue: string | ReactNode, children: ReactNode }) => {
 	const [isOpened, setIsOpened] = useState(false)
-	const [activeValue, setActiveValue] = useState(defaultValue)
+	const [activeValue, setActiveValue] = useState<string | ReactNode>(defaultValue)
 
 	return (
 		<SelectContext.Provider value={{ activeValue, setActiveValue }}>

@@ -1,18 +1,17 @@
 import { Container } from '@/shared/ui/Container'
 import styles from './Categories.module.scss'
 import { Category } from '@/entities/Category'
-import { wordpress } from '@/shared/api/wordpress.service'
 
-export const Categories = async ({ categories }: {
+export const Categories = ({ categories }: {
 	categories: {
-		name: string, url: string, image: number
+		name: string, url: string, image: string
 	}[]
 }) => {
 	return (
 		<Container className={styles.container}>
-			{await Promise.all(categories.map(async category =>
-				<Category key={category.url} href="#" image={(await wordpress.getMediaById(category.image)).source_url} title={category.name} />
-			))}
+			{categories && categories.map(category =>
+				<Category key={category.url} href="#" image={category.image} title={category.name} />
+			)}
 		</Container>
 	)
 }

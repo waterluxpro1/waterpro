@@ -9,8 +9,10 @@ import { SelectItem } from '@/shared/ui/SelectItem'
 import { Button } from '@/shared/ui/Button'
 import { Menu } from './Menu'
 import { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
-export const Header = () => {
+export const Header = ({ lang }: { lang: string }) => {
 	const [isOpened, setIsOpened] = useState(false)
 
 	return (
@@ -19,11 +21,34 @@ export const Header = () => {
 				<Logo />
 				<div className={styles.mainPart}>
 					<Contacts className={styles.contacts} />
-					<Select defaultValue="Ru">
-						<SelectItem>Ru</SelectItem>
-						<SelectItem>Es</SelectItem>
+					<Select defaultValue={<>
+						{lang === 'ru' &&
+							<span className={styles.selectItem}>
+								<Image src="/img/ru-flag.svg" alt="" width={20} height={20} /> Ru
+							</span>
+						}
+						{lang === 'et' &&
+							<span className={styles.selectItem}>
+								<Image src="/img/et-flag.svg" alt="" width={20} height={20} /> Et
+							</span>
+						}
+					</>}>
+						{lang === 'et' &&
+							<SelectItem>
+								<Link href="/ru" className={styles.selectItem}>
+									<Image src="/img/ru-flag.svg" alt="" width={20} height={20} /> Ru
+								</Link>
+							</SelectItem>
+						}
+						{lang === 'ru' &&
+							<SelectItem><Link href="/et" className={styles.selectItem}>
+								<Image src="/img/et-flag.svg" alt="" width={20} height={20} /> Et
+							</Link></SelectItem>
+						}
 					</Select>
-					<Button appearance="secondary" size="normal" className={styles.button}>Связаться</Button>
+					<Link href="?modal=contact">
+						<Button appearance="secondary" size="normal" className={styles.button}>Связаться</Button>
+					</Link>
 					<div className={styles.menuButton} onClick={() => { setIsOpened(!isOpened) }}><span></span></div>
 				</div>
 			</Container>

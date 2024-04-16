@@ -49,7 +49,7 @@ const addToCard = async (formData: FormData) => {
 	console.log(cookies().get('cart'))
 }
 
-const GoodPage = async ({ params }: { params: { slug: string } }) => {
+const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)
 
 	const relatedGoods = await Promise.all(good.related_ids.map(async (id) => {
@@ -68,13 +68,13 @@ const GoodPage = async ({ params }: { params: { slug: string } }) => {
 					<div className={styles.info}>
 						<Title3 className={styles.title}>{good.name}</Title3>
 						<span className={styles.price} dangerouslySetInnerHTML={{ __html: good.price_html }}></span>
-						{!JSON.parse(cookies().get('cart')?.value!).find((item: any) => item.id === good.id) ?
-							<form className={styles.addToCart} method="POST" action={addToCard}>
+						{cookies().get('cart')?.value! && !JSON.parse(cookies().get('cart')?.value!).find((item: any) => item.id === good.id) ?
+							<form className={styles.addToCart} action={addToCard}>
 								<input type="text" name="id" readOnly value={good.id} style={{ display: 'none' }} />
 								<button type="submit"><Button>В корзину</Button></button>
 							</form>
 							:
-							<form className={styles.addToCart} method="POST" action={addToCard}>
+							<form className={styles.addToCart} action={addToCard}>
 								<input type="text" name="id" readOnly value={good.id} style={{ display: 'none' }} />
 								<button type="submit"><Button>Удалить из корзины</Button></button>
 							</form>
@@ -92,7 +92,7 @@ const GoodPage = async ({ params }: { params: { slug: string } }) => {
 					<TabPanel index={2}>2 tab</TabPanel>
 				</Tabs>
 
-				<GoodsSlider goods={relatedGoods} />
+				<GoodsSlider lang={params.locale} goods={relatedGoods} />
 			</Container>
 		</div>
 	)

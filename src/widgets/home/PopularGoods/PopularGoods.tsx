@@ -4,13 +4,13 @@ import { Title2 } from '@/shared/ui/Title2'
 import { GoodsSlider } from '@/features/GoodsSlider/GoodsSlider'
 import { woocomerence } from '@/shared/api/wordpress.service'
 
-export const PopularGoods = async () => {
-	const goods = await woocomerence.getPopularGoods()
+export const PopularGoods = async ({ lang = 'ru' }: { lang?: string }) => {
+	const goods = await woocomerence.getPopularGoods(lang)
 
 	return (
 		<Container>
 			<Title2 className={styles.title}>популярные товары</Title2>
-			<GoodsSlider className={styles.slider} goods={goods} />
+			<GoodsSlider lang={lang} className={styles.slider} goods={goods} />
 		</Container>
 	)
 }
