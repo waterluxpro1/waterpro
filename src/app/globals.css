@@ -11,7 +11,10 @@
 
   ul,
   ol,
-  menu {
+  menu,
+  ul li,
+  ol li,
+  menu li {
     list-style: none;
   }
 
@@ -40,6 +43,10 @@
   }
 
   a {
+    -webkit-text-fill-color: inherit;
+    -webkit-text-fill: inherit;
+    text-fill: inherit;
+    text-fill-color: inherit;
     color: inherit;
     text-decoration: none;
   }
