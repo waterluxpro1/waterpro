@@ -1,29 +1,27 @@
 @use "@/global/scss/mixins";
 @use "@/global/scss/vars";
 
-@layer styles {
-	.welcome {
-		background-color: #EFF4F7;
-	}
+.welcome {
+	background-color: #EFF4F7;
+}
 
-	.content {
-		@include mixins.adaptive-value('padding-block', 150, 36);
+.content {
+	@include mixins.adaptive-value('padding-block', 150, 36);
 
-		@media (max-width: vars.$tablet) {
-			text-align: center;
-		}
+	@media (max-width: vars.$tablet) {
+		text-align: center;
 	}
+}
 
-	.title {
-		max-width: 760px;
-	}
+.title {
+	max-width: 720px;
+}
 
-	.subtitle {
-		@include mixins.adaptive-value('font-size', 40, 18);
-		margin-top: 16px;
-	}
+.subtitle {
+	@include mixins.adaptive-value('font-size', 40, 18);
+	margin-top: 16px;
+}
 
-	.button {
-		@include mixins.adaptive-value('margin-top', 32, 12);
-	}
+.button {
+	@include mixins.adaptive-value('margin-top', 32, 12);
 }

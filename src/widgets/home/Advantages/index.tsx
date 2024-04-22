@@ -6,41 +6,38 @@ import { Title2 } from '@/shared/ui/Title2'
 import { Advantage } from './Advantage'
 import { Title4 } from '@/shared/ui/Title4'
 import { Body2 } from '@/shared/ui/Body2'
-import { useContext } from 'react'
-import { HomePageContext } from '@/page/home/ui/HomePageProvider'
 import { Body1 } from '@/shared/ui/Body1'
+import type { AdvantagesProps } from './Advantages.props'
 
-export const Advantages = () => {
-	const { acf } = useContext(HomePageContext)
-
+export const Advantages = ({ locale }: AdvantagesProps) => {
 	return (
 		<Container>
-			<Title2 className={styles.title}>{acf.advantages_title}</Title2>
+			<Title2 className={styles.title}>{locale?.title}</Title2>
 			<div className={styles.description}>
-				{acf.advantages_description.split('\n').map((item) => <Body1 key={item}>
+				{locale?.description.split('\n').map((item) => <Body1 key={item}>
 					{item}
 				</Body1>)}
 			</div>
 			<div className={styles.cards}>
-				{acf.advantage_cards.map((card) =>
+				{locale?.cards.map((card) =>
 					<Advantage
-						key={card.icon}
-						icon={card.icon}
+						key={card.icon_url}
+						icon={card.icon_url}
 						title={card.title}
 						description={card.description} />
 				)}
 			</div>
 
-			{acf.advantages_blocks &&
+			{/* {acf.advantages_blocks &&
 				<div className={styles.blocks}>
 					{acf.advantages_blocks.map((block) =>
 						<div className={styles.block} key={JSON.stringify(block)}>
 							<Title4 className={styles.subtitle}>{block.title}</Title4>
 							<Body2>{block.description}</Body2>
 						</div>
-					)}
-				</div>
-			}
-		</Container>
+					)} */}
+			{/* </div> */}
+
+		</Container >
 	)
 }

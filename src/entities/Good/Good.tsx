@@ -12,7 +12,7 @@ export const Good = (props: GoodProps) => {
 			<Image className={styles.image} src={props.image} alt={props.title} width={300} height={300} />
 			<Title5 className={styles.title}>{props.title}</Title5>
 			<span className={styles.price} dangerouslySetInnerHTML={{ __html: props.price }}></span>
-			<Link href={props.url}>
+			<Link prefetch={false} href={props.url}>
 				<Button className={styles.button} appearance="primary">Подробнее</Button>
 			</Link>
 		</Card>

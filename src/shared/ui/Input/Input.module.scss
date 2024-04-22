@@ -1,13 +1,12 @@
 @use "@/global/scss/mixins";
 @use "@/global/scss/vars";
 
-@layer ui {
-	.input {
-		@include mixins.adaptive-value('padding-block', 20, 12);
-		@include mixins.adaptive-value('padding-inline', 24, 12);
-		background-color: #fff;
-		border-radius: 16px;
-		@include mixins.adaptive-value('font-size', 18, 14);
-		border: rgba(vars.$dark-blue, 20%) 1px solid;
-	}
+
+.input {
+	@include mixins.adaptive-value('padding-block', 12, 12);
+	@include mixins.adaptive-value('padding-inline', 16, 12);
+	background-color: #fff;
+	border-radius: 12px;
+	@include mixins.adaptive-value('font-size', 16, 14);
+	border: rgba(vars.$dark-blue, 20%) 1px solid;
 }

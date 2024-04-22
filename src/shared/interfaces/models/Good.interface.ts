@@ -5,6 +5,7 @@ export interface IGood {
 	short_description: string
 	price_html: string
 	related_ids: number[]
+	price: number
 
 	categories: {
 		id: number

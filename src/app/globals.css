@@ -1,64 +1,60 @@
-@layer null, ui, styles;
+* {
+  padding: 0;
+  margin: 0;
+  line-height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
 
-@layer null {
-  * {
-    padding: 0;
-    margin: 0;
-    line-height: 100%;
-    -webkit-tap-highlight-color: transparent;
-    box-sizing: border-box;
-  }
+ul,
+ol,
+menu,
+ul li,
+ol li,
+menu li {
+  list-style: none;
+}
 
-  ul,
-  ol,
-  menu,
-  ul li,
-  ol li,
-  menu li {
-    list-style: none;
-  }
+html {
+  font-size: 16px;
+  color: #262323;
+  scroll-behavior: smooth;
+}
 
-  html {
-    font-size: 16px;
-    color: #262323;
-    scroll-behavior: smooth;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 400;
-  }
+img {
+  width: 100%;
+  height: auto;
+}
 
-  img {
-    width: 100%;
-    height: auto;
-  }
+body {
+  background-color: #efefef;
+}
 
-  body {
-    background-color: #efefef;
-  }
+a {
+  -webkit-text-fill-color: inherit;
+  -webkit-text-fill: inherit;
+  text-fill: inherit;
+  text-fill-color: inherit;
+  color: inherit;
+  text-decoration: none;
+}
 
-  a {
-    -webkit-text-fill-color: inherit;
-    -webkit-text-fill: inherit;
-    text-fill: inherit;
-    text-fill-color: inherit;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  input,
-  button,
-  textarea {
-    outline: 0;
-    border: 0;
-    background-color: transparent;
-    font-family: inherit;
-  }
+input,
+button,
+textarea {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  font-family: inherit;
 }
 
 :root {

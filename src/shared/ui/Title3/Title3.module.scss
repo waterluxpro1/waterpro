@@ -1,15 +1,13 @@
 @use "@/global/scss/mixins";
 @use "@/global/scss/vars";
 
-@layer ui {
-	.title3 {
-		font-weight: 600;
+.title3 {
+	font-weight: 600;
 
-		@include mixins.adaptive-value('font-size', 36, 16);
+	@include mixins.adaptive-value('font-size', 36, 16);
 
-		&.highlighted {
-			text-transform: uppercase;
-			color: vars.$dark-blue;
-		}
+	&.highlighted {
+		text-transform: uppercase;
+		color: vars.$dark-blue;
 	}
 }

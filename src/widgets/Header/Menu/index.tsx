@@ -15,7 +15,7 @@ export const Menu = ({ isOpened }: { isOpened: boolean }) => {
 		<div className={clsx(styles.menu, isOpened && styles.opened)}>
 			<ul className={styles.menuList}>
 				<li className={styles.menuItem}>
-					<Link href={`/${pathname?.split('/')[1]}`}>Главная</Link>
+					<Link prefetch={false} href={`/${pathname?.split('/')[1]}`}>Главная</Link>
 				</li>
 				<li className={styles.menuItem}>
 					<span className={styles.menuTitle}>
@@ -23,28 +23,28 @@ export const Menu = ({ isOpened }: { isOpened: boolean }) => {
 					</span>
 					<ul className={styles.submenu}>
 						<li className={styles.submenuItem}>
-							<Link href={`/${pathname?.split('/')[1]}`}>Водоочистительные системы</Link>
+							<Link prefetch={false} href={`/${pathname?.split('/')[1]}`}>Водоочистительные системы</Link>
 						</li>
 						<li className={styles.submenuItem}>
-							<Link href="#">ФИЛЬТР ДЛЯ ДУША</Link>
+							<Link prefetch={false} href="#">Фильтр для душа</Link>
 						</li>
 						<li className={styles.submenuItem}>
-							<Link href="#">СМЕННЫЕ ФИЛЬТРЫ</Link>
+							<Link prefetch={false} href="#">Сменные фильтры</Link>
 						</li>
 						<li className={styles.submenuItem}>
-							<Link href="#">Дополнительные запчасти</Link>
+							<Link prefetch={false} href="#">Дополнительные запчасти</Link>
 						</li>
 						<li className={styles.submenuItem}>
-							<Link href="">ПОДАРОЧНАЯ КАРТА</Link>
+							<Link prefetch={false} href="">Подарочная карта</Link>
 						</li>
 					</ul>
 				</li>
-				<li className={styles.menuItem}><Link href={`/${pathname?.split('/')[1]}#contact`}>Связаться с нами</Link></li>
-				<li className={styles.menuItem}><Link href={`/${pathname?.split('/')[1]}/installments`}>Рассрочка</Link></li>
-				<li className={styles.menuItem}><Link href={`/${pathname?.split('/')[1]}/contacts`}>Контакты</Link></li>
+				<li className={styles.menuItem}><Link prefetch={false} href={`/${pathname?.split('/')[1]}#contact`}>Связаться с нами</Link></li>
+				<li className={styles.menuItem}><Link prefetch={false} href={`/${pathname?.split('/')[1]}/installments`}>Рассрочка</Link></li>
+				<li className={styles.menuItem}><Link prefetch={false} href={`/${pathname?.split('/')[1]}/contacts`}>Контакты</Link></li>
 			</ul>
 			<Contacts className={styles.contacts} />
-			<Link href="?modal=contact">
+			<Link prefetch={false} href="?modal=contact">
 				<Button appearance="light" size="normal" className={styles.button}>Связаться</Button>
 			</Link>
 		</div >

@@ -5,7 +5,7 @@ import { ContactForm } from '@/features/ContactForm/ContactForm'
 export const Contact = () => {
 	return (
 		<article className={styles.wrapper} id="contact">
-			<Container>
+			<Container className={styles.container}>
 				<ContactForm />
 			</Container>
 		</article>

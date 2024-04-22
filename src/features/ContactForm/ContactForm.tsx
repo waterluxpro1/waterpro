@@ -26,7 +26,7 @@ export const ContactForm = () => {
 				</div>
 				<div className={styles.checkboxWrapper}>
 					<Checkbox id="form-agree"
-						label={<>Даю согласие на <Link className={styles.link} href="#">обработку личных данных</Link></>} />
+						label={<>Даю согласие на <Link prefetch={false} className={styles.link} href="#">обработку личных данных</Link></>} />
 				</div>
 				<Button className={styles.button} appearance="primary" size="large">Отправить</Button>
 			</form>

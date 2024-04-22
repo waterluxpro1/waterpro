@@ -9,7 +9,12 @@
 .contact {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: 8px;
 	font-weight: 500;
-	font-size: 22px;
+	font-size: 18px;
+
+	&.contact svg {
+		width: 20px;
+		height: 20px;
+	}
 }

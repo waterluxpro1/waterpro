@@ -1,7 +1,6 @@
 @use "@/global/scss/mixins";
 
-@layer ui {
-	.body1 {
-		@include mixins.adaptive-value('font-size', 24, 18);
-	}
+.body1 {
+	@include mixins.adaptive-value('font-size', 20, 16);
+	line-height: 130%;
 }

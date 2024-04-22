@@ -1,42 +1,40 @@
 @use "@/global/scss/mixins";
 
-@layer ui {
-	.checkbox {
-		display: none;
+.checkbox {
+	display: none;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	position: relative;
+
+	cursor: pointer;
+
+	@include mixins.adaptive-value('font-size', 16, 12);
+
+	&::before {
+		content: '';
+		display: inline-block;
+		background-color: #fff;
+		width: 26px;
+		height: 26px;
+		border-radius: 5px;
 	}
 
-	.label {
-		display: flex;
-		align-items: center;
-		gap: 16px;
-		position: relative;
-
-		cursor: pointer;
-
-		@include mixins.adaptive-value('font-size', 16, 12);
-
-		&::before {
-			content: '';
-			display: inline-block;
-			background-color: #fff;
-			width: 26px;
-			height: 26px;
-			border-radius: 5px;
-		}
-
-		&::after {
-			content: url('/img/icons/checkmark.svg');
-			position: absolute;
-			left: 0;
-			top: 0;
-			transform: translate(50%, 50%);
-			opacity: 0;
-		}
+	&::after {
+		content: url('/img/icons/checkmark.svg');
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform: translate(50%, 50%);
+		opacity: 0;
 	}
+}
 
-	.checkbox:checked+label {
-		&::after {
-			opacity: 1;
-		}
+.checkbox:checked+label {
+	&::after {
+		opacity: 1;
 	}
 }

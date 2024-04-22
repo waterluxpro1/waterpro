@@ -11,19 +11,21 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1em;
+	margin-inline: auto;
 	margin-top: 50px;
+	max-width: 900px;
 }
 
 .cards {
 	@include gridest.gridest(3, 2);
-	gap: 16px;
+	gap: 32px;
 
 	@include mixins.adaptive-value('margin-top', 64, 32);
 }
 
 .blocks {
 	@include gridest.gridest(2);
-	gap: 32px 64px;
+	gap: 64px;
 
 	@include mixins.adaptive-value('padding', 56, 24);
 	border-radius: 15px;

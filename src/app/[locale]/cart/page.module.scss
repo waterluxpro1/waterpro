@@ -1,0 +1,91 @@
+@use "@/global/scss/vars";
+
+
+.goods {
+	border: vars.$light-blue 1px solid;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+.good {
+	display: flex;
+	justify-content: space-between;
+	background-color: #fff;
+	padding-block: 84px;
+	padding-inline: 32px;
+	align-items: center;
+	gap: 16px;
+
+	@media (max-width: vars.$tablet) {
+		flex-direction: column;
+		align-items: flex-start;
+		padding-block: 32px;
+	}
+
+	&:not(:last-child) {
+		border-bottom: vars.$light-blue 1px solid;
+	}
+}
+
+.link {
+	display: contents;
+}
+
+.goodPreview {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+
+.image {
+	width: 160px;
+	height: 160px;
+	margin-block: -64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@media (max-width: vars.$tablet) {
+		margin-block: 0;
+	}
+}
+
+.title {
+	width: 350px;
+	font-size: 24px;
+	line-height: 120%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	@media (max-width: vars.$tablet) {
+		width: auto;
+	}
+}
+
+.price {
+	width: 120px;
+	font-size: 24px;
+
+	@media (max-width: vars.$tablet) {
+		width: auto;
+	}
+}
+
+.count {
+	width: 120px;
+	font-size: 28px;
+
+	@media (max-width: vars.$tablet) {
+		width: auto;
+	}
+}
+
+.preTotal {
+	width: 120px;
+	font-size: 24px;
+
+	@media (max-width: vars.$tablet) {
+		width: auto;
+	}
+}

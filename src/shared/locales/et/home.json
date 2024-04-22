@@ -1,0 +1,56 @@
+{
+	"welcome": {
+		"title": "Ideaalselt puhas ja pehme joogivesi teie kodus!",
+		"subtitle": "Usaldusväärne, kvaliteetne ja ökonoomne",
+		"button": "Osta kinkekaart"
+	},
+	"popular_goods": {
+		"title": "Populaarsed tooted"
+	},
+	"advantages": {
+		"title": "Meie eelised",
+		"description": "Oleme PurePro Water Corporation kõrgekvaliteediliste veepuhastussüsteemide müügile spetsialiseerunud juhtiv ettevõte. Üle 20-aastase kogemusega oleme uhked, et pakume teie kodule uuenduslikke lahendusi.\nMeie eesmärk on pakkuda teile puhast ja ohutut vett, et toetada teie tervist ja heaolu.\nTeie usaldus on meie peamine väärtus.",
+		"cards": [
+			{
+				"icon_url": "https://waterpro.ee/wp-content/uploads/2024/04/correspondence.png",
+				"title": "Õigeaegne hooldus",
+				"description": "pakume teie süsteemile regulaarseid hoolduse meeldetuletusi. See tagab teile selle katkematu töö ja kvaliteetse puhastatud vee"
+			},
+			{
+				"icon_url": "https://waterpro.ee/wp-content/uploads/2024/04/checked-hand.png",
+				"title": "Keskkonna eest hoolitsemine",
+				"description": "Iga paigaldatud süsteem aitab vähendada jäätmeid ja kaitseb keskkonda plasttoodete negatiivsete mõjude eest"
+			},
+			{
+				"icon_url": "https://waterpro.ee/wp-content/uploads/2024/04/water-quality.png",
+				"title": "Vee kvaliteet",
+				"description": "Meie süsteem pakub puhast ja ohutut vett, mida võite usaldada"
+			},
+			{
+				"icon_url": "https://waterpro.ee/wp-content/uploads/2024/04/affordability.png",
+				"title": "Taskukohane",
+				"description": "Vaatamata meie toodete ja teenuste kõrgele kvaliteedile pakume konkurentsivõimelisi hindu, muutes meie tooted kättesaadavaks paljudele tarbijatele"
+			},
+			{
+				"icon_url": "https://waterpro.ee/wp-content/uploads/2024/04/individuality.png",
+				"title": "Individuaalsus",
+				"description": "Pakume teile võimalust valida veepuhastussüsteemi tervikkomplekt vastavalt teie eelistustele"
+			},
+			{
+				"icon_url": "https://waterpro.ee/wp-content/uploads/2024/04/calendar-coin.png",
+				"title": "Kasutamise vastupidavus",
+				"description": "Filtrid on valmistatud kvaliteetsetest materjalidest, mis tagab usaldusväärse pikaajalise töö; juhtiva tootja padrunid, asenduselemendid ja filtrimaterjalid, mis tagab tõhusa veepuhastuse"
+			}
+		],
+		"blocks": [
+			{
+				"title": "",
+				"description": ""
+			},
+			{
+				"title": "",
+				"description": ""
+			}
+		]
+	}
+}

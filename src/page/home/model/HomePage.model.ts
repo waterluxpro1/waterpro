@@ -22,4 +22,7 @@ export interface HomePageModel {
 			description: string
 		}[]
 	}
+
+	popular_goods_title: string
+	popular_goods_button: string
 }

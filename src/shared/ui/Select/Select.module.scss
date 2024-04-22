@@ -1,6 +1,7 @@
+@use "@/global/scss/mixins";
+
 .list {
 	display: none;
-	// border: #aaa 1px solid;
 	border-radius: 0 0 15px 15px;
 	padding-block: 6px;
 	overflow: hidden;
@@ -30,13 +31,19 @@
 	cursor: pointer;
 	user-select: none;
 	display: flex;
-	gap: 10px;
 	align-items: center;
+	@include mixins.adaptive-value('font-size', 20, 16);
+	@include mixins.adaptive-value('gap', 10, 5);
 
 
 	&::after {
-		content: url('/img/dropdown.svg');
+		content: '';
 		display: inline-block;
+		background-image: url('/img/dropdown.svg');
+		background-size: 100% 100%;
+
+		@include mixins.adaptive-value('width', 20, 10);
+		@include mixins.adaptive-value('height', 10, 5);
 
 		.select:has(.opened) & {
 			rotate: 180deg 0;

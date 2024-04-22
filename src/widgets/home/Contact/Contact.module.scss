@@ -1,12 +1,14 @@
 @use "@/global/scss/vars";
 @use "@/global/scss/mixins";
 
-@layer styles {
-	.wrapper {
-		background-image: url('/img/contact-form-background.png');
-		background-size: cover;
-		color: #fff;
+.wrapper {
+	background-image: url('/img/contact-form-background.webp');
+	background-size: cover;
+	color: #fff;
 
-		@include mixins.adaptive-value('padding-block', 100, 50);
-	}
+	@include mixins.adaptive-value('padding-block', 64, 40);
+}
+
+.container {
+	max-width: 992px;
 }

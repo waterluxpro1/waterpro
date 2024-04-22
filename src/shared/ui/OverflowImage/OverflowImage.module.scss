@@ -1,92 +1,90 @@
 @use "@/global/scss/vars";
 
-@layer styles {
-	.wrapper {
-		display: flex;
-		background-color: #EFF4F7;
-		align-items: center;
+.wrapper {
+	display: flex;
+	background-color: #EFF4F7;
+	align-items: center;
 
-		@media (max-width: vars.$tablet) {
-			flex-direction: column;
-		}
+	@media (max-width: vars.$tablet) {
+		flex-direction: column;
+	}
+}
+
+.content {
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 100%;
+
+	@media (max-width: vars.$tablet) {
+		margin-bottom: -10px;
+	}
+}
+
+.image {
+	flex-grow: 0;
+	flex-shrink: 0;
+	max-width: 50%;
+	flex-basis: 1000px;
+	transform: translateX(-100%);
+	position: relative;
+	// max-height: 100%;
+	align-self: stretch;
+
+	overflow: hidden;
+
+	@media (max-width: #{vars.$container}px) {
+		max-width: 60%;
 	}
 
-	.content {
-		flex-grow: 0;
-		flex-shrink: 0;
-		flex-basis: 100%;
-
-		@media (max-width: vars.$tablet) {
-			margin-bottom: -10px;
-		}
+	@media (max-width: vars.$tablet) {
+		flex: auto;
+		max-width: 100%;
+		width: 100%;
+		transform: none;
+		max-height: 300px;
 	}
 
-	.image {
-		flex-grow: 0;
-		flex-shrink: 0;
-		max-width: 50%;
-		flex-basis: 1000px;
-		transform: translateX(-100%);
-		position: relative;
-		// max-height: 100%;
-		align-self: stretch;
-
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 100%;
 		overflow: hidden;
-
-		@media (max-width: #{vars.$container}px) {
-			max-width: 60%;
-		}
-
-		@media (max-width: vars.$tablet) {
-			flex: auto;
-			max-width: 100%;
-			width: 100%;
-			transform: none;
-			max-height: 300px;
-		}
-
-		img {
-			display: block;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: 100%;
-			overflow: hidden;
-		}
-
-		&::before {
-			content: '';
-
-			position: absolute;
-			max-width: 580px;
-			width: 100%;
-			height: 100%;
-
-			background: linear-gradient(to right, #eef3f6 10%, #eef3f600 100%);
-
-			@media (max-width: vars.$tablet) {
-				background: linear-gradient(to bottom, #f6f6f6 10%, #eef3f600 96.15%);
-
-				max-width: 100%;
-				max-height: 60px;
-
-				top: 0;
-				left: 0;
-			}
-		}
 	}
 
-	.body {
-		max-width: 58%;
-		position: relative;
-		z-index: 1;
+	&::before {
+		content: '';
 
-		@media (max-width: #{vars.$container}px) {
-			max-width: 70%;
-		}
+		position: absolute;
+		max-width: 580px;
+		width: 100%;
+		height: 100%;
+
+		background: linear-gradient(to right, #eef3f6 10%, #eef3f600 100%);
 
 		@media (max-width: vars.$tablet) {
+			background: linear-gradient(to bottom, #f6f6f6 10%, #eef3f600 96.15%);
+
 			max-width: 100%;
+			max-height: 60px;
+
+			top: 0;
+			left: 0;
 		}
+	}
+}
+
+.body {
+	max-width: 58%;
+	position: relative;
+	z-index: 1;
+
+	@media (max-width: #{vars.$container}px) {
+		max-width: 70%;
+	}
+
+	@media (max-width: vars.$tablet) {
+		max-width: 100%;
 	}
 }

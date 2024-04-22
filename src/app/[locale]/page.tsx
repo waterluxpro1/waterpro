@@ -8,22 +8,20 @@ import { Welcome } from '@/widgets/home/Welcome'
 import styles from './page.module.scss'
 import { wordpress } from '@/shared/api/wordpress.service'
 import type { HomePageModel } from '@/page/home/model/HomePage.model'
-import { HomePageProvider } from '@/page/home/ui/HomePageProvider'
 
 export default async function Home({ params }: { params: { locale: string } }) {
   const [page] = await wordpress.getPage<HomePageModel[]>('home', params.locale)
+  const lang = await import(`@/shared/locales/${params.locale}/home.json`)
 
   return (
-    <HomePageProvider value={page}>
-      <div className={styles.page}>
-        <Welcome />
-        <Categories categories={page?.acf?.categories} />
-        <Advantages />
-        <PopularGoods lang={params.locale} />
-        <Contact />
-        <Reviews />
-        <Faq />
-      </div>
-    </HomePageProvider>
+    <div className={styles.page}>
+      <Welcome locale={lang.welcome} />
+      <Categories categories={page?.acf?.categories} />
+      <Advantages locale={lang.advantages} />
+      <PopularGoods locale={lang.popular_goods} lang={params.locale} />
+      <Contact />
+      <Reviews />
+      <Faq />
+    </div>
   )
 }

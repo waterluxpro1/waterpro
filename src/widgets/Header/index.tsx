@@ -35,19 +35,19 @@ export const Header = ({ lang }: { lang: string }) => {
 					</>}>
 						{lang === 'et' &&
 							<SelectItem>
-								<Link href="/ru" className={styles.selectItem}>
+								<Link prefetch={false} href="/ru" className={styles.selectItem}>
 									<Image src="/img/ru-flag.svg" alt="" width={20} height={20} /> Ru
 								</Link>
 							</SelectItem>
 						}
 						{lang === 'ru' &&
-							<SelectItem><Link href="/et" className={styles.selectItem}>
+							<SelectItem><Link prefetch={false} href="/et" className={styles.selectItem}>
 								<Image src="/img/et-flag.svg" alt="" width={20} height={20} /> Et
 							</Link></SelectItem>
 						}
 					</Select>
-					<Link href="?modal=contact">
-						<Button appearance="secondary" size="normal" className={styles.button}>Связаться</Button>
+					<Link prefetch={false} href="?modal=contact" className={styles.button}>
+						<Button appearance="secondary" size="normal">Связаться</Button>
 					</Link>
 					<div className={styles.menuButton} onClick={() => { setIsOpened(!isOpened) }}><span></span></div>
 				</div>
