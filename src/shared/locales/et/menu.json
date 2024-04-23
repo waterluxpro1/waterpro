@@ -1,0 +1,45 @@
+{
+	"menu": [
+		{
+			"name": "Avaleht",
+			"href": ""
+		},
+		{
+			"name": "Tooted",
+			"submenu": [
+				{
+					"name": "Veepuhastussüsteemid",
+					"href": "/catalog/veepuhassusteemid"
+				},
+				{
+					"name": "Dušifilter",
+					"href": ""
+				},
+				{
+					"name": "Vahetusfiltrid",
+					"href": "/catalog/veefiltrid"
+				},
+				{
+					"name": "Lisavarustus",
+					"href": "/catalog/aksessuaarid"
+				},
+				{
+					"name": "Osta kinkekaart",
+					"href": ""
+				}
+			]
+		},
+		{
+			"name": "Võta ühendust",
+			"href": "#contact"
+		},
+		{
+			"name": "Järelmaks",
+			"href": "/installments"
+		},
+		{
+			"name": "Kontaktid",
+			"href": "/contacts"
+		}
+	]
+}

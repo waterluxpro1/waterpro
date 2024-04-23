@@ -10,8 +10,6 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 
 	const goods = await Promise.all(cart.map(async (item) => await woocomerence.getGoodById(item.id)))
 
-	console.log(goods[0])
-
 	return (
 		<Container className={styles.container}>
 			<div className={styles.goods}>

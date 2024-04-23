@@ -63,6 +63,6 @@
 }
 
 .body {
-	@include mixins.adaptive-value('font-size', 18, 12);
+	// @include mixins.adaptive-value('font-size', 18, 12);
 	@include mixins.adaptive-value('margin-top', 20, 10);
 }

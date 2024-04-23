@@ -7,6 +7,9 @@ export interface AdvantagesProps {
 			title: string
 			description: string
 		}[]
-		blocks: {}[]
+		blocks: {
+			title: string
+			description: string
+		}[]
 	}
 }

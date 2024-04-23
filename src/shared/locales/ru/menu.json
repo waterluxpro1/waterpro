@@ -1,0 +1,45 @@
+{
+	"menu": [
+		{
+			"name": "Главная",
+			"href": ""
+		},
+		{
+			"name": "Товары",
+			"submenu": [
+				{
+					"name": "Водоочистительные системы",
+					"href": "/catalog/vodoochistitelnye-sistemy-ru"
+				},
+				{
+					"name": "Фильтр для душа",
+					"href": "/good/"
+				},
+				{
+					"name": "Сменные фильтры",
+					"href": "/catalog/vodyanye-filtry"
+				},
+				{
+					"name": "Дополнительные запчасти",
+					"href": "/catalog/aksessuary"
+				},
+				{
+					"name": "Подарочная карта",
+					"href": "/good/podarochnaya-karta"
+				}
+			]
+		},
+		{
+			"name": "Связаться с нами",
+			"href": "#contact"
+		},
+		{
+			"name": "Рассрочка",
+			"href": "/installments"
+		},
+		{
+			"name": "Контакты",
+			"href": "/contacts"
+		}
+	]
+}

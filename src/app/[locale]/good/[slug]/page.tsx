@@ -45,8 +45,6 @@ const addToCard = async (formData: FormData) => {
 	}
 
 	revalidatePath('.')
-
-	console.log(cookies().get('cart'))
 }
 
 const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {

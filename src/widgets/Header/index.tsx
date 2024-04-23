@@ -8,12 +8,19 @@ import { Select } from '@/shared/ui/Select'
 import { SelectItem } from '@/shared/ui/SelectItem'
 import { Button } from '@/shared/ui/Button'
 import { Menu } from './Menu'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export const Header = ({ lang }: { lang: string }) => {
 	const [isOpened, setIsOpened] = useState(false)
+	const [locale, setLocale] = useState<{ contact_button: string }>()
+
+	useEffect(() => {
+		import(`@/shared/locales/${lang}/header.json`).then(data => {
+			setLocale(data)
+		})
+	}, [lang])
 
 	return (
 		<header className={styles.header}>
@@ -47,14 +54,14 @@ export const Header = ({ lang }: { lang: string }) => {
 						}
 					</Select>
 					<Link prefetch={false} href="?modal=contact" className={styles.button}>
-						<Button appearance="secondary" size="normal">Связаться</Button>
+						<Button appearance="secondary" size="normal">{locale?.contact_button}</Button>
 					</Link>
 					<div className={styles.menuButton} onClick={() => { setIsOpened(!isOpened) }}><span></span></div>
 				</div>
 			</Container>
 			<div className={styles.navigation}>
 				<Container>
-					<Menu isOpened={isOpened} />
+					<Menu locale={lang} isOpened={isOpened} />
 				</Container>
 			</div>
 		</header>

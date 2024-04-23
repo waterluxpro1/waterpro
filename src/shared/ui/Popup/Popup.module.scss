@@ -34,13 +34,14 @@
 	cursor: default;
 	background-color: #EEF3F6;
 	border-radius: 15px;
-	max-width: 1440px;
+	max-width: 900px;
 	width: 100%;
 
 	max-height: calc(100dvh - 64px);
 	overflow-y: auto;
-
-	@include mixins.adaptive-value('padding', 80, 32);
+	margin-inline: 16px;
+	@include mixins.adaptive-value('padding', 64, 32);
+	padding-top: 48px;
 
 	transform: translateY(-150px);
 	opacity: 0;
@@ -54,6 +55,12 @@
 
 .close {
 	position: absolute;
-	top: 32px;
-	right: 32px;
+
+	@include mixins.adaptive-value('top', 30, 20);
+	@include mixins.adaptive-value('right', 30, 20);
+
+	svg {
+		@include mixins.adaptive-value('width', 30, 20);
+		@include mixins.adaptive-value('height', 30, 20);
+	}
 }

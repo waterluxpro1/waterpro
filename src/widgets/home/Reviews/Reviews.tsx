@@ -3,10 +3,10 @@ import styles from './Reviews.module.scss'
 import { Container } from '@/shared/ui/Container'
 import { Title2 } from '@/shared/ui/Title2'
 
-export const Reviews = () => {
+export const Reviews = ({ locale }: { locale: { title: string } }) => {
 	return (
 		<Container>
-			<Title2 className={styles.title}>Отзывы от наших КЛИЕНТОВ</Title2>
+			<Title2 className={styles.title}>{locale.title}</Title2>
 			<ReviewsSlider className={styles.slider} />
 		</Container>
 	)

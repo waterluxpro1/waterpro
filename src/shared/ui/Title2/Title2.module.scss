@@ -2,7 +2,7 @@
 @use "@/global/scss/mixins";
 
 .title2 {
-	@include mixins.adaptive-value('font-size', 64, 32);
+	@include mixins.adaptive-value('font-size', 50, 32);
 
 	line-height: 120%;
 	font-weight: 500;

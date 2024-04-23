@@ -28,15 +28,15 @@ export const Advantages = ({ locale }: AdvantagesProps) => {
 				)}
 			</div>
 
-			{/* {acf.advantages_blocks &&
+			{locale?.blocks &&
 				<div className={styles.blocks}>
-					{acf.advantages_blocks.map((block) =>
+					{locale?.blocks.map((block) =>
 						<div className={styles.block} key={JSON.stringify(block)}>
 							<Title4 className={styles.subtitle}>{block.title}</Title4>
 							<Body2>{block.description}</Body2>
 						</div>
-					)} */}
-			{/* </div> */}
+					)}
+				</div>}
 
 		</Container >
 	)
