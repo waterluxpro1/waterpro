@@ -1,7 +1,5 @@
 import { Container } from '@/shared/ui/Container'
 import styles from './Footer.module.scss'
-import { Logo } from '@/entities/Logo'
-import { Body2 } from '@/shared/ui/Body2'
 import Link from 'next/link'
 import { Button } from '@/shared/ui/Button'
 import clsx from 'clsx'
