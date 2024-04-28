@@ -1,0 +1,28 @@
+{
+	"h1": "MAKSAMINE",
+	"additional": {
+		"title": "PIKEMAD MAKSED",
+		"description": "Elu on täis üllatusi. Ootamatute ja suurte väljaminekute puhul on nutikaks abimeheks järelmaksud, millega saab tasuda toote või teenuse eest pikema perioodi jooksul järelmaksuga. Liisi järelmaksud on levinud üle Eesti."
+	},
+	"variants": {
+		"title": "JÄRELMAKSE VÕIMALUSED",
+		"select_button": "Vali",
+		"cards": [
+			{
+				"logo_path": "",
+				"title": "",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore eeldada necessitatibus, tempore uptatibus,."
+			},
+			{
+				"logo_path": "",
+				"title": "",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore eeldada necessitatibus, tempore uptatibus,."
+			},
+			{
+				"logo_path": "",
+				"title": "",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore eeldada necessitatibus, tempore uptatibus,."
+			}
+		]
+	}
+}

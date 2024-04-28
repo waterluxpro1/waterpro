@@ -1,0 +1,79 @@
+@use "@/global/scss/vars";
+
+.footer {
+	background-color: vars.$dark-blue;
+	padding: 100px 0;
+	color: #fff;
+
+	margin-top: 100px;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 32px;
+
+	@media (max-width: 640px) {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+.legals {
+	flex-direction: column;
+	display: flex;
+	gap: 12px;
+	margin-top: 64px;
+	font-size: 18px;
+
+	@media (max-width: 640px) {
+		text-align: center;
+	}
+}
+
+.menuList {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+
+	@media (max-width: 640px) {
+		align-items: center;
+	}
+
+	.menuItem {
+		font-size: 20px;
+	}
+}
+
+.last {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	align-items: flex-end;
+
+	@media (max-width: 640px) {
+		align-items: center;
+	}
+}
+
+.contacts {
+	flex-direction: column;
+	gap: 24px;
+
+	svg,
+	svg * {
+		fill: #fff;
+	}
+}
+
+.socials {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.button.button.button {
+	font-size: 20px;
+	padding: 16px 32px;
+}

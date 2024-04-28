@@ -4,14 +4,15 @@ import { OverflowImage } from '@/shared/ui/OverflowImage/OverflowImage'
 import { Title1 } from '@/shared/ui/Title1/Title1'
 import Image from 'next/image'
 
-const Contacts = async () => {
+const Contacts = async ({ params }: { params: { locale: string } }) => {
+	const translation = await import(`@/shared/locales/${params.locale}/contacts.json`)
 
 	return (
 		<>
 			<OverflowImage
 				content={
 					<div className={styles.head}>
-						<Title1>Контакты</Title1>
+						<Title1>{translation.h1}</Title1>
 					</div>
 				}
 				image={<Image src="/img/drops.png" alt="Капли воды" width={1000} height={480} />}

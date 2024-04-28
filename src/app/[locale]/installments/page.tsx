@@ -9,13 +9,30 @@ import { Card } from '@/shared/ui/Card/Card'
 import { Button } from '@/shared/ui/Button'
 import { Contact } from '@/widgets/home/Contact/Contact'
 
-const Installments = () => {
+const Installments = async ({ params }: { params: { locale: string } }) => {
+	const translation: {
+		h1: string
+		additional: {
+			title: string
+			description: string
+		}
+		variants: {
+			title: string
+			select_button: string
+			cards: Array<{
+				logo_path: string
+				title: string
+				description: string
+			}>
+		}
+	} = await import(`@/shared/locales/${params.locale}/installements.json`)
+
 	return (
 		<>
 			<OverflowImage
 				content={
 					<div className={styles.content}>
-						<Title1 className={styles.title}>РАССРОЧКА</Title1>
+						<Title1 className={styles.title}>{translation.h1}</Title1>
 						<ul className={styles.logos}>
 							<li>
 								<svg width="128" height="64" viewBox="0 0 128 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,32 +79,20 @@ const Installments = () => {
 				image={<Image src="/img/drops.png" alt="" width={1000} height={480} />}
 			/>
 			<Container>
-				<Title3 className={styles.subtitle} variant="highlighted">Платежи на более длительный срок</Title3>
+				<Title3 className={styles.subtitle} variant="highlighted">{translation.additional.title}</Title3>
 				<Body1 className={styles.description}>
-					Жизнь полна сюрпризов. Для непредвиденных и крупных расходов разумным помощником станет рассрочка, с помощью которой вы сможете оплатить товар или услугу частями в течение более длительного периода. Рассрочка Liisi широко распространена по всей Эстонии.
+					{translation.additional.description}
 				</Body1>
 
-				<Title3 className={styles.subtitle} variant="highlighted">ВАРИАНТЫ РАССРОЧКИ</Title3>
+				<Title3 className={styles.subtitle} variant="highlighted">{translation.variants.title}</Title3>
 
 				<div className={styles.variants}>
-					<Card className={styles.card}>
-						<Body1 className={styles.body}>
-							ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ   ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ
-						</Body1>
-						<Button className={styles.button} appearance="primary">Выбрать</Button>
-					</Card>
-					<Card className={styles.card}>
-						<Body1 className={styles.body}>
-							ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ   ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ
-						</Body1>
-						<Button className={styles.button} appearance="primary">Выбрать</Button>
-					</Card>
-					<Card className={styles.card}>
-						<Body1 className={styles.body}>
-							ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ   ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ  ТЕКСТ ТЕКСТ ТЕКСТ
-						</Body1>
-						<Button className={styles.button} appearance="primary">Выбрать</Button>
-					</Card>
+					{translation.variants.cards.map((card) =>
+						<Card className={styles.card} key={JSON.stringify(card)}>
+							<Body1 className={styles.body}>{card.description}</Body1>
+							<Button className={styles.button} appearance="primary">{translation.variants.select_button}</Button>
+						</Card>
+					)}
 				</div>
 			</Container>
 			<div className={styles.contact}>

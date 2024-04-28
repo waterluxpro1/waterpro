@@ -1,0 +1,28 @@
+{
+	"h1": "РАССРОЧКА",
+	"additional": {
+		"title": "ПЛАТЕЖИ НА БОЛЕЕ ДЛИТЕЛЬНЫЙ СРОК",
+		"description": "Жизнь полна сюрпризов. Для непредвиденных и крупных расходов разумным помощником станет рассрочка, с помощью которой вы сможете оплатить товар или услугу частями в течение более длительного периода. Рассрочка Liisi широко распространена по всей Эстонии."
+	},
+	"variants": {
+		"title": "ВАРИАНТЫ РАССРОЧКИ",
+		"select_button": "Выбрать",
+		"cards": [
+			{
+				"logo_path": "",
+				"title": "",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore assumenda necessitatibus tempore? Fuga, voluptatibus."
+			},
+			{
+				"logo_path": "",
+				"title": "",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore assumenda necessitatibus tempore? Fuga, voluptatibus."
+			},
+			{
+				"logo_path": "",
+				"title": "",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore assumenda necessitatibus tempore? Fuga, voluptatibus."
+			}
+		]
+	}
+}
