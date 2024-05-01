@@ -37,6 +37,7 @@ img {
 
 body {
   background-color: #efefef;
+  overflow-x: clip;
 }
 
 a {

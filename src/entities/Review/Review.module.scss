@@ -6,7 +6,7 @@
 	overflow: hidden;
 	gap: 32px;
 
-	@media (max-width: 1200px) {
+	@media (max-width: 1400px) {
 		flex-direction: column;
 	}
 
@@ -26,13 +26,15 @@
 	margin: -16px;
 	margin-right: 0;
 
-	@media (max-width: 1200px) {
+	@media (max-width: 1400px) {
 		margin-right: -16px;
 		margin-bottom: 0;
 	}
 
 	@media (max-width: (vars.$tablet - 2px)) {
 		margin-bottom: -16px;
+
+		flex-basis: 110px;
 	}
 }
 
@@ -44,7 +46,7 @@
 	min-height: 240px;
 	height: 100%;
 
-	@media (max-width: 1200px) {
+	@media (max-width: 1400px) {
 		aspect-ratio: 2/1;
 		width: 100%;
 	}
@@ -52,6 +54,8 @@
 	@media (max-width: (vars.$tablet - 2px)) {
 		aspect-ratio: 1/1;
 		width: 100%;
+		min-height: 180px;
+		height: auto;
 	}
 }
 
@@ -63,6 +67,7 @@
 }
 
 .body {
-	// @include mixins.adaptive-value('font-size', 18, 12);
-	@include mixins.adaptive-value('margin-top', 20, 10);
+	@include mixins.adaptive-value('margin-top', 20, 8);
+	@include mixins.adaptive-value('font-size', 16, 12);
+	line-height: 110%;
 }

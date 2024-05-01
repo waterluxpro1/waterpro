@@ -6,6 +6,11 @@ import { PopularGoods } from '@/widgets/home/PopularGoods/PopularGoods'
 import { Reviews } from '@/widgets/home/Reviews/Reviews'
 import { Welcome } from '@/widgets/home/Welcome'
 import styles from './page.module.scss'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Главная - WaterPro'
+}
 
 export default async function Home({ params }: { params: { locale: string } }) {
   const lang = await import(`@/shared/locales/${params.locale}/home.json`)

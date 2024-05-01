@@ -1,5 +1,8 @@
 @use "@/global/scss/vars";
 
+.container {
+	max-width: 900px;
+}
 
 .goods {
 	border: vars.$light-blue 1px solid;
@@ -11,15 +14,14 @@
 	display: flex;
 	justify-content: space-between;
 	background-color: #fff;
-	padding-block: 84px;
-	padding-inline: 32px;
+	padding-block: 16px;
+	padding-inline: 16px;
 	align-items: center;
 	gap: 16px;
 
 	@media (max-width: vars.$tablet) {
 		flex-direction: column;
 		align-items: flex-start;
-		padding-block: 32px;
 	}
 
 	&:not(:last-child) {
@@ -38,9 +40,9 @@
 }
 
 .image {
-	width: 160px;
-	height: 160px;
-	margin-block: -64px;
+	width: 100px;
+	height: 100px;
+	// margin-block: -40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -51,8 +53,8 @@
 }
 
 .title {
-	width: 350px;
-	font-size: 24px;
+	width: 200px;
+	font-size: 16px;
 	line-height: 120%;
 	white-space: nowrap;
 	overflow: hidden;
@@ -64,8 +66,8 @@
 }
 
 .price {
-	width: 120px;
-	font-size: 24px;
+	width: 100px;
+	font-size: 16px;
 
 	@media (max-width: vars.$tablet) {
 		width: auto;
@@ -73,8 +75,8 @@
 }
 
 .count {
-	width: 120px;
-	font-size: 28px;
+	width: 100px;
+	font-size: 16px;
 
 	@media (max-width: vars.$tablet) {
 		width: auto;
@@ -82,10 +84,71 @@
 }
 
 .preTotal {
-	width: 120px;
-	font-size: 24px;
+	width: 100px;
+	font-size: 16px;
 
 	@media (max-width: vars.$tablet) {
 		width: auto;
+	}
+}
+
+.delete {
+	width: 32px;
+
+	svg {
+		width: 32px;
+		height: 32px;
+	}
+}
+
+.head {
+	@media (max-width: vars.$tablet) {
+		display: none;
+	}
+
+	.good {
+		padding-block: 16px;
+		border: #262323 1px solid;
+		border-radius: 15px;
+	}
+
+	.image {
+		height: 0;
+	}
+
+	.count,
+	.title,
+	.preTotal,
+	.price {
+		font-size: 16px;
+	}
+}
+
+.titleLink {
+	@media (max-width: vars.$tablet) {
+		width: 100%;
+	}
+}
+
+.mobileLabel {
+	display: none;
+	font-weight: 600;
+
+	@media (max-width: vars.$tablet) {
+		display: block;
+	}
+}
+
+.labeledField {
+	@media (max-width: vars.$tablet) {
+		display: flex;
+		width: 100%;
+	}
+
+	&>* {
+		@media (max-width: vars.$tablet) {
+			flex-basis: 50%;
+			flex-shrink: 0;
+		}
 	}
 }

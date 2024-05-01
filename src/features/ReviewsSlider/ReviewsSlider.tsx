@@ -1,9 +1,10 @@
 'use client'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
 import { Review } from '@/entities/Review/Review'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
+import { Slider } from '@/shared/ui/Slider/Slider'
 
 export const ReviewsSlider = ({ className }: { className?: string }) => {
 	const { locale } = useParams()
@@ -24,7 +25,7 @@ export const ReviewsSlider = ({ className }: { className?: string }) => {
 	}, [locale])
 
 	return (
-		<Swiper className={className} slidesPerView={1} spaceBetween={32}
+		<Slider className={className} slidesPerView={1} spaceBetween={32} autoHeight
 			breakpoints={{
 				767: {
 					slidesPerView: 2
@@ -39,6 +40,6 @@ export const ReviewsSlider = ({ className }: { className?: string }) => {
 					/>
 				</SwiperSlide>
 			)}
-		</Swiper>
+		</Slider>
 	)
 }

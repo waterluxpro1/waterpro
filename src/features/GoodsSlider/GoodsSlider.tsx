@@ -2,11 +2,12 @@
 
 import { Good } from '@/entities/Good/Good'
 import type { IGood } from '@/shared/interfaces/models/Good.interface'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Slider } from '@/shared/ui/Slider/Slider'
+import { SwiperSlide } from 'swiper/react'
 
 export const GoodsSlider = ({ className, goods, lang }: { className?: string, goods: IGood[], lang: string }) => {
 	return (
-		<Swiper className={className}
+		<Slider className={className}
 			spaceBetween={10}
 			slidesPerView={1}
 
@@ -33,6 +34,6 @@ export const GoodsSlider = ({ className, goods, lang }: { className?: string, go
 					url={`/${lang}/good/${good.slug}`}
 				/>
 			</SwiperSlide>)}
-		</Swiper>
+		</Slider>
 	)
 }

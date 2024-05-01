@@ -6,7 +6,7 @@
 }
 
 .content {
-	@include mixins.adaptive-value('padding-block', 150, 36);
+	@include mixins.adaptive-value('padding-block', 120, 36);
 
 	@media (max-width: vars.$tablet) {
 		text-align: center;

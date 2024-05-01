@@ -12,8 +12,14 @@
 	justify-content: space-between;
 	align-items: center;
 
+	list-style: none;
+
+	text-align: left;
+
 	&::marker {
 		content: '';
+		display: none;
+		z-index: -5;
 	}
 
 	&::after {

@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 import styles from './page.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
+import clsx from 'clsx'
 
 const Cart = async ({ params }: { params: { locale: string } }) => {
 	const cart: Array<{ id: number, count: number }> = JSON.parse(cookies().get('cart')?.value!)
@@ -13,6 +14,18 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 	return (
 		<Container className={styles.container}>
 			<div className={styles.goods}>
+				<div className={styles.head}>
+					<div className={styles.good}>
+						<div className={styles.goodPreview}>
+							<div className={styles.delete}></div>
+							<div className={styles.image}></div>
+						</div>
+						<div className={styles.title}>Название</div>
+						<div className={styles.price}>Цена</div>
+						<div className={styles.count}>Количество</div>
+						<div className={styles.preTotal}>Подытог</div>
+					</div>
+				</div>
 				{goods.map((good, index) => (
 					<div key={good.id} className={styles.good}>
 						<div className={styles.goodPreview}>
@@ -28,12 +41,24 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 								</div>
 							</Link>
 						</div>
-						<Link href={`/${params.locale}/good/${good.slug}`}>
-							<div className={styles.title} title={good.name}>{good.name}</div>
+						<Link className={styles.titleLink} href={`/${params.locale}/good/${good.slug}`}>
+							<div className={clsx(styles.labeledField, styles.title)} title={good.name}>
+								<span className={styles.mobileLabel}>Название</span>
+								<span>{good.name}</span>
+							</div>
 						</Link>
-						<div className={styles.price}>{good.price} €</div>
-						<div className={styles.count}>{cart[index].count}</div>
-						<div className={styles.preTotal}>{good.price * cart[index].count} €</div>
+						<div className={clsx(styles.labeledField, styles.price)}>
+							<span className={styles.mobileLabel}>Цена</span>
+							<span>{good.price} €</span>
+						</div>
+						<div className={clsx(styles.labeledField, styles.count)}>
+							<span className={styles.mobileLabel}>Количество</span>
+							<span>{cart[index].count}</span>
+						</div>
+						<div className={clsx(styles.labeledField, styles.preTotal)}>
+							<span className={styles.mobileLabel}>Подытог</span>
+							<span>{good.price * cart[index].count} €</span>
+						</div>
 					</div>
 				))}
 			</div>
