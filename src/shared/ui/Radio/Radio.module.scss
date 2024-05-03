@@ -1,0 +1,56 @@
+@use "@/global/scss/mixins";
+@use "@/global/scss/vars";
+
+.radio {
+	display: none;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	position: relative;
+
+	cursor: pointer;
+
+	@include mixins.adaptive-value('font-size', 16, 12);
+
+	&::before {
+		transition: border-color .3s;
+		content: '';
+		display: inline-block;
+		background-color: #fff;
+		border: #000 1px solid;
+		width: 22px;
+		height: 22px;
+		border-radius: 999px;
+	}
+
+	&::after {
+		transition: width, height, top, left, opacity;
+		transition-duration: .3s;
+		content: '';
+		position: absolute;
+		background-color: vars.$light-blue;
+		width: 0;
+		height: 0;
+		left: 9px;
+		top: 50%;
+		opacity: 0;
+		border-radius: 999px;
+	}
+}
+
+.radio:checked+label {
+	&::after {
+		width: 12px;
+		height: 12px;
+		left: 6px;
+		top: 6px;
+		opacity: 1;
+	}
+
+	&::before {
+		border-color: vars.$light-blue;
+	}
+}

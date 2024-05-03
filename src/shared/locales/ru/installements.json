@@ -9,19 +9,19 @@
 		"select_button": "Выбрать",
 		"cards": [
 			{
-				"logo_path": "",
-				"title": "",
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore assumenda necessitatibus tempore? Fuga, voluptatibus."
+				"logo_path": "/img/logos/inbank.png",
+				"title": "РАЗДЕЛЕНИЕ НА 3 ПЛАТЕЖА БЕЗ ДОПОЛНИТЕЛЬНОЙ КОМИССИИ.",
+				"description": "Способ оплаты, позволяющий разделить оплату на три равные части с оплатой в течение месяцев. Минимальная сумма: 75 евро.<br>✔ Никаких процентов и комиссий.<br>✔ Просто: три равных платежа в течение трех месяцев.<br>✔ Первый платеж в следующем месяце"
 			},
 			{
-				"logo_path": "",
-				"title": "",
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore assumenda necessitatibus tempore? Fuga, voluptatibus."
+				"logo_path": "/img/logos/inbank.png",
+				"title": "ОПЛАТА В СЛЕДУЮЩЕМ МЕСЯЦЕ БЕЗ ДОПОЛНИТЕЛЬНОЙ КОМИССИИ.",
+				"description": "Минимальная сумма: 30 евро.<br>✔ Оплата 25 числа следующего месяца.<br>✔ Нет процентов<br>✔ Брокерское обслуживание бесплатно"
 			},
 			{
-				"logo_path": "",
-				"title": "",
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore assumenda necessitatibus tempore? Fuga, voluptatibus."
+				"logo_path": "/img/logos/jarelmaks.png",
+				"title": "ГИБКИЕ ВЫПЛАТЫ НА ДЛИТЕЛЬНЫЙ ПЕРИОД",
+				"description": "При рассрочке вы можете оплатить покупку гибкими частями в течение более длительного периода.<br>✔ Быстрый ответ на запрос<br>✔ Депозит от 0 евро<br>✔ Рассрочка от 7 €<br>✔ Административный сбор 0 евро"
 			}
 		]
 	}

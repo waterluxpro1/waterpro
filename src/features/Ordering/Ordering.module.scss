@@ -1,0 +1,37 @@
+@use "@/global/scss/vars";
+
+.title {
+	margin-top: 48px;
+	color: vars.$dark-blue;
+}
+
+.summary {
+	max-width: 450px;
+	background-color: #fff;
+	border-radius: 16px;
+	margin-top: 24px;
+}
+
+.row {
+	display: flex;
+
+	&:not(:last-child, .noBorderBottom) {
+		border-bottom: #aaa 1px solid;
+	}
+
+	padding: 16px;
+}
+
+.cell {
+	flex-basis: 70%;
+
+	&:first-child {
+		flex-basis: 30%;
+	}
+}
+
+.radios {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}

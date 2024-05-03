@@ -89,7 +89,9 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 				<div className={styles.variants}>
 					{translation.variants.cards.map((card) =>
 						<Card className={styles.card} key={JSON.stringify(card)}>
-							<Body1 className={styles.body}>{card.description}</Body1>
+							<Image className={styles.logo} src={card.logo_path} alt={card.logo_path} width={400} height={90} />
+							<span className={styles.cardTitle}>{card.title}</span>
+							<Body1 className={styles.body} dangerouslySetInnerHTML={{ __html: card.description }}></Body1>
 							<Button className={styles.button} appearance="primary">{translation.variants.select_button}</Button>
 						</Card>
 					)}

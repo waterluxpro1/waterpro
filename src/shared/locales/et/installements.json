@@ -9,19 +9,19 @@
 		"select_button": "Vali",
 		"cards": [
 			{
-				"logo_path": "",
-				"title": "",
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore eeldada necessitatibus, tempore uptatibus,."
+				"logo_path": "/img/logos/inbank.png",
+				"title": "jaotamine 3 makseks ilma lisatasuta",
+				"description": "Makseviis, mis võimaldab jagada makse kolmeks võrdseks osamakseks kuu jooksul. Miinimumsumma: 75 eurot.<br>✔ Intresse ega teenustasusid pole.<br>✔ Lihtne: kolm võrdset makset kolme kuu jooksul.<br>✔ Esimene makse järgmisel kuul"
 			},
 			{
-				"logo_path": "",
-				"title": "",
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore eeldada necessitatibus, tempore uptatibus,."
+				"logo_path": "/img/logos/inbank.png",
+				"title": "makse järgmisel kuu ilma tasuta",
+				"description": "Miinimumsumma: 30 eurot.<br>✔ Tasumine järgmise kuu 25. kuupäeval.<br>✔ Intress puudub<br>✔ Tasuta maaklerteenus"
 			},
 			{
-				"logo_path": "",
-				"title": "",
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sint quia, cupiditate nobis nostrum, exercitationem optio architecto voluptatibus modi soluta autem odit asperiores cum labore eeldada necessitatibus, tempore uptatibus,."
+				"logo_path": "/img/logos/jarelmaks.png",
+				"title": "paindlik maksed pikaajaks",
+				"description": "Järelmaksuga saate tasuda ostu eest paindliku järelmaksuga pikema perioodi jooksul.<br>✔ Kiire päringutele vastamine<br>✔ Sissemakse alates 0 eurost<br>✔ Järelmaks alates 7 €<br>✔ Haldustasu 0 eurot"
 			}
 		]
 	}
