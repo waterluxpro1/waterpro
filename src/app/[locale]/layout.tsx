@@ -8,7 +8,7 @@ const Layout = ({ children, params }: { children: ReactNode, params: { locale: s
 	const cart = JSON.parse(
 		cookies().has('cart') && cookies().get('cart')?.value
 			? cookies().get('cart')?.value!
-			: ''
+			: '{}'
 	)
 
 	return (

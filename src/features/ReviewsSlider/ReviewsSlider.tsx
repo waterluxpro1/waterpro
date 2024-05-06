@@ -19,9 +19,13 @@ export const ReviewsSlider = ({ className }: { className?: string }) => {
 	} | undefined>()
 
 	useEffect(() => {
-		import(`@/shared/locales/${locale}/reviews-slider.json`).then((data) => {
-			setReviews(data)
-		})
+		try {
+			import(`@/shared/locales/${locale}/reviews-slider.json`).then((data) => {
+				setReviews(data)
+			})
+		} catch (e) {
+			console.error(e)
+		}
 	}, [locale])
 
 	return (

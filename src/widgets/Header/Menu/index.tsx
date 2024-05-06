@@ -21,12 +21,14 @@ export const Menu = ({ isOpened, locale }: { isOpened: boolean, locale: string }
 	}[]>()
 
 	useEffect(() => {
-		import(`@/shared/locales/${locale}/menu.json`).then((menu) => {
-			setMenu(menu.menu)
-		})
+		try {
+			import(`@/shared/locales/${locale}/menu.json`).then((menu) => {
+				setMenu(menu.menu)
+			})
+		} catch (e) {
+			console.error(e)
+		}
 	}, [locale])
-
-	console.log(menu)
 
 	return (
 		<div className={clsx(styles.menu, isOpened && styles.opened)}>

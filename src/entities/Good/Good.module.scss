@@ -26,8 +26,30 @@
 	width: 100%;
 }
 
+.title {
+	margin-top: 8px;
+	width: 200px;
+	height: 40px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	line-clamp: 2;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.imageWrapper {
+	height: 240px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .image {
 	aspect-ratio: 9/10;
-	object-fit: cover;
-	max-width: 100%;
+	// object-fit: cover;
+	width: 100%;
+	height: auto;
 }

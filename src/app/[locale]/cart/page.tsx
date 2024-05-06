@@ -9,12 +9,12 @@ import { Card } from '@/shared/ui/Card/Card'
 import { Ordering } from '@/features/Ordering/Ordering'
 
 const Cart = async ({ params }: { params: { locale: string } }) => {
-	const cart: Array<{ id: number, count: number }> =
+	const cart: Array<{ product_id: number, quantity: number }> =
 		cookies().has('cart')
 			? JSON.parse(cookies().get('cart')?.value!)
 			: undefined
 
-	const goods = cart && await Promise.all(cart.map(async (item) => await woocomerence.getGoodById(item.id)))
+	const goods = cart && await Promise.all(cart.map(async (item) => await woocomerence.getGoodById(item.product_id)))
 
 	return (
 		<Container className={styles.container}>
@@ -44,7 +44,7 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 								</div>
 								<Link href={`/${params.locale}/good/${good.slug}`}>
 									<div className={styles.image}>
-										<Image src={good.images[0].src} alt={good.images[0].alt} width={160} height={160} />
+										<Image src={good.images?.[0].src} alt={good.images?.[0].alt} width={160} height={160} />
 									</div>
 								</Link>
 							</div>
@@ -60,11 +60,11 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 							</div>
 							<div className={clsx(styles.labeledField, styles.count)}>
 								<span className={styles.mobileLabel}>Количество</span>
-								<span>{cart[index].count}</span>
+								<span>{cart[index].quantity}</span>
 							</div>
 							<div className={clsx(styles.labeledField, styles.preTotal)}>
 								<span className={styles.mobileLabel}>Подытог</span>
-								<span>{good.price * cart[index].count} €</span>
+								<span>{good.price * cart[index].quantity} €</span>
 							</div>
 						</div>
 					))}
@@ -72,8 +72,8 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 				: <Card>
 					В вашей корзине пока нет товаров. Добавьте первый!
 				</Card>}
-			{goods.length > 0 &&
-				<Ordering goods={goods} />
+			{goods && goods.length > 0 &&
+				<Ordering showOrderButton goods={goods} />
 			}
 		</Container>
 	)

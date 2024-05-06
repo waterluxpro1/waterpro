@@ -16,32 +16,23 @@ import { revalidatePath } from 'next/cache'
 const addToCard = async (formData: FormData) => {
 	'use server'
 
-	const id = +formData.get('id')!
+	const product_id = +formData.get('product_id')!
 
-	if (!cookies().has('cart')) {
-		cookies().set('cart', '[]')
-	}
+	if (!cookies().has('cart')) cookies().set('cart', '[]')
 
 	const cart = cookies().get('cart')
-
-	const idInCart = !!JSON.parse(cart?.value!).find((item: any) => item.id === id)
+	const idInCart = !!JSON.parse(cart?.value!).find((item: any) => item.product_id === product_id)
 
 	if (!idInCart) {
 		cookies().set('cart',
-			JSON.stringify([...JSON.parse(cart?.value!), { id, count: 1 }])
+			JSON.stringify([...JSON.parse(cart?.value!), { product_id, quantity: 1 }])
 		)
-	}
-	else {
-		cookies().set('cart',
-			JSON.stringify(
-				JSON.parse(cart?.value!)
-					.splice(
-						JSON.parse(cart?.value!).
-							findIndex((item: any) => item.id === id) + 1,
-						1
-					)
-			)
-		)
+	} else {
+		const newCart = JSON.parse(cart?.value!)
+		const deleteIndex = newCart.findIndex((item: any) => item.product_id === product_id)
+		newCart.splice(deleteIndex, 1)
+
+		cookies().set('cart', JSON.stringify(newCart))
 	}
 
 	revalidatePath('.')
@@ -56,9 +47,13 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 		return good
 	}))
 
+	const cart = cookies().get('cart')?.value
+	const isInCart = cart && JSON.parse(cart).find((item: any) => item.product_id === good.id)
+
 	return (
 		<div className={styles.wrapper}>
 			<Container>
+				id: {good.id}
 				<div className={styles.card}>
 					<div className={styles.image}>
 						<Image src={good.images[0].src} alt={good.images[0].alt} width={300} height={300} />
@@ -66,17 +61,10 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					<div className={styles.info}>
 						<Title3 className={styles.title}>{good.name}</Title3>
 						<span className={styles.price} dangerouslySetInnerHTML={{ __html: good.price_html }}></span>
-						{cookies().get('cart')?.value! && !JSON.parse(cookies().get('cart')?.value!).find((item: any) => item.id === good.id) ?
-							<form className={styles.addToCart} action={addToCard}>
-								<input type="text" name="id" readOnly value={good.id} style={{ display: 'none' }} />
-								<button type="submit"><Button>В корзину</Button></button>
-							</form>
-							:
-							<form className={styles.addToCart} action={addToCard}>
-								<input type="text" name="id" readOnly value={good.id} style={{ display: 'none' }} />
-								<button type="submit"><Button>Удалить из корзины</Button></button>
-							</form>
-						}
+						<form className={styles.addToCart} action={addToCard}>
+							<input type="text" name="product_id" readOnly value={good.id} style={{ display: 'none' }} />
+							<button type="submit"><Button>{!isInCart ? 'В корзину' : 'Удалить из корзины'}</Button></button>
+						</form>
 					</div>
 				</div>
 				<Tabs defaultActive={1}>

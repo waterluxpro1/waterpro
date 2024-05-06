@@ -1,0 +1,36 @@
+@use "@/global/scss/vars";
+
+.form {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	margin-top: 72px;
+	gap: 32px;
+
+	@media (max-width: 992px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.formFields {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 24px;
+}
+
+.title {
+	text-transform: uppercase;
+	color: vars.$dark-blue;
+}
+
+.attention {
+	margin-top: 24px;
+}
+
+.button {
+	margin-top: 32px;
+}
+
+.field {
+	display: none;
+}

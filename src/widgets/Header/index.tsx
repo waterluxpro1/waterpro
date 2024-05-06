@@ -18,9 +18,13 @@ export const Header = ({ lang, goods }: { lang: string, goods: number }) => {
 	const [locale, setLocale] = useState<{ contact_button: string }>()
 
 	useEffect(() => {
-		import(`@/shared/locales/${lang}/header.json`).then(data => {
-			setLocale(data)
-		})
+		try {
+			import(`@/shared/locales/${lang}/header.json`).then(data => {
+				setLocale(data)
+			})
+		} catch (e) {
+			console.log(e)
+		}
 	}, [lang])
 
 	return (

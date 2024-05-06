@@ -10,18 +10,23 @@ import { Title2 } from '@/shared/ui/Title2'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 
-const getKeyIfItIsExists = (object: Record<string, unknown>, key: string): string =>
-	key in object && typeof object[key] === 'string' ? object[key] as string : ''
+const getKeyIfItIsExists = (object: Record<string, unknown> | undefined, key: string): string =>
+	object && key in object && typeof object[key] === 'string' ? object[key] as string : ''
 
 export const ContactForm = () => {
 	const { locale: lang } = useParams()
 
-	const [locale, setLocale] = useState<Record<string, unknown>>({})
+	const [locale, setLocale] = useState<Record<string, unknown> | undefined>({})
 
 	useEffect(() => {
-		import(`@/shared/locales/${lang}/contact-form.json`).then((result) => {
-			setLocale(result)
-		})
+		try {
+			import(`@/shared/locales/${lang}/contact-form.json`).then((result) => {
+				setLocale(result)
+			})
+		}
+		catch (e) {
+			console.error(e)
+		}
 	}, [lang])
 
 	return (
@@ -29,15 +34,15 @@ export const ContactForm = () => {
 			<Title2 className={styles.title}>{getKeyIfItIsExists(locale, 'title')}</Title2>
 			<form className={styles.form} action="">
 				<div className={styles.block}>
-					<Input name="name" placeholder={getKeyIfItIsExists(locale, 'name')} required />
-					<Input name="name" placeholder="Email*" required />
+					<Input name="name" autoComplete="name" placeholder={getKeyIfItIsExists(locale, 'name')} required />
+					<Input name="email" autoComplete="email" placeholder="Email*" required />
 				</div>
 				<div className={styles.block}>
-					<Input name="name" placeholder={getKeyIfItIsExists(locale, 'phone')} required />
-					<Input name="name" placeholder={getKeyIfItIsExists(locale, 'address')} required />
+					<Input name="phone" autoComplete="tel" placeholder={getKeyIfItIsExists(locale, 'phone')} required />
+					<Input name="address" autoComplete="address-line1" placeholder={getKeyIfItIsExists(locale, 'address')} required />
 				</div>
 				<div className={styles.block}>
-					<Textarea className={styles.textarea} placeholder={getKeyIfItIsExists(locale, 'question')} />
+					<Textarea name="message" autoComplete="none" className={styles.textarea} placeholder={getKeyIfItIsExists(locale, 'question')} />
 				</div>
 				<div className={styles.checkboxWrapper}>
 					<Checkbox id="form-agree"
