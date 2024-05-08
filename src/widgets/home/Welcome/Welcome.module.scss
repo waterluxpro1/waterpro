@@ -6,7 +6,7 @@
 }
 
 .content {
-	@include mixins.adaptive-value('padding-block', 120, 36);
+	@include mixins.adaptive-value('padding-block', 100, 36);
 
 	@media (max-width: vars.$tablet) {
 		text-align: center;
@@ -18,8 +18,8 @@
 }
 
 .subtitle {
-	@include mixins.adaptive-value('font-size', 40, 18);
-	margin-top: 16px;
+	@include mixins.adaptive-value('font-size', 36, 18);
+	margin-top: 24px;
 }
 
 .button {

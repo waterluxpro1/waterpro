@@ -11,7 +11,7 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 32px;
-	padding-block: 24px;
+	padding-block: 16px;
 	position: relative;
 	z-index: 20;
 	background-color: #EFEFEF;
@@ -31,7 +31,7 @@
 
 .navigation {
 	background-color: #335577;
-	padding-block: 24px;
+	padding-block: 16px;
 	color: #fff;
 
 	@media (max-width: vars.$tablet) {
