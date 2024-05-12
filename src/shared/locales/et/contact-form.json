@@ -6,5 +6,6 @@
 	"address": "Aadress*",
 	"question": "Küsi küsimus",
 	"agree_policy": "Nõustun andmete > töötlemisega",
+	"policy_url": "/et/doc/privaatsuspoliitika-3",
 	"send": "Saada"
 }

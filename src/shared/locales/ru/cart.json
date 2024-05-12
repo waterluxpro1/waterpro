@@ -1,0 +1,12 @@
+{
+	"no_goods_message": "В вашей корзине пока нет товаров. Добавьте первый!",
+	"name": "Название",
+	"price": "Цена",
+	"count": "Количество",
+	"subtotal": "Подытог",
+	"delivery": "Доставка",
+	"total": "Итого",
+	"policy_url": "/ru/doc/politika-konfidenczialnosti/",
+	"site_rules_url": "/ru/doc/usloviya-pokupki",
+	"create_order": "Оформить заказ"
+}

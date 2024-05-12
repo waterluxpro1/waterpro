@@ -5,5 +5,6 @@
 	"address": "Адрес*",
 	"question": "Задайте вопрос",
 	"agree_policy": "Даю согласие на > обработку личных данных",
+	"policy_url": "/ru/doc/politika-konfidenczialnosti/",
 	"send": "Отправить"
 }

@@ -6,4 +6,10 @@ export interface OrderingProps extends HTMLAttributes<HTMLDivElement> {
 	showOrderButton?: boolean
 	showGoods?: boolean
 	cart?: Array<{ product_id: number, quantity: number }>
+	translation: {
+		subtotal: string
+		delivery: string
+		total: string
+		create_order: string
+	}
 }

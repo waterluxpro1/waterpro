@@ -46,7 +46,7 @@ export const ContactForm = () => {
 				</div>
 				<div className={styles.checkboxWrapper}>
 					<Checkbox id="form-agree"
-						label={<>{getKeyIfItIsExists(locale, 'agree_policy').split('>')[0]} <Link prefetch={false} className={styles.link} href="#">{getKeyIfItIsExists(locale, 'agree_policy').split('>')[1]}</Link></>} />
+						label={<>{getKeyIfItIsExists(locale, 'agree_policy').split('>')[0]} <Link prefetch={false} className={styles.link} href={getKeyIfItIsExists(locale, 'policy_url')}>{getKeyIfItIsExists(locale, 'agree_policy').split('>')[1]}</Link></>} />
 				</div>
 				<Button className={styles.button} appearance="primary" size="large">{getKeyIfItIsExists(locale, 'send')}</Button>
 			</form>

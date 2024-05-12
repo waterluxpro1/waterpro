@@ -1,0 +1,17 @@
+{
+	"payment": "Maksmine ja kohaletoimetamine",
+	"first_name": "Nimi*",
+	"last_name": "Perenimi*",
+	"company": "Ettevõtte nimi",
+	"country": "Riik/piirkond*",
+	"address": "Aadress*",
+	"state": "Paikkond*",
+	"city": "Linn*",
+	"postcode": "Postiindeks*",
+	"phone": "Telefon*",
+	"message": "Tellimismärkus",
+	"order": "Teie tellimus",
+	"data_proccessing": "Teie isikuandmeid töödeldakse, täpsemalt lehel > Privaatsuspoliitika.",
+	"site_rules": "Olen lugenud saidi reegleid ja > nõustun nendega*",
+	"submit": "Kinnita tellimus"
+}

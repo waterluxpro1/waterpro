@@ -34,3 +34,19 @@
 .field {
 	display: none;
 }
+
+.link {
+	text-decoration: underline;
+
+	&:hover {
+		@media (hover: hover) {
+			opacity: 0.85;
+		}
+	}
+
+	&:active {
+		@media (hover: none) {
+			opacity: 0.85;
+		}
+	}
+}

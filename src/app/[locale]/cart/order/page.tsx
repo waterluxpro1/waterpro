@@ -50,12 +50,15 @@ const createOrder = async (formData: FormData) => {
 	redirect(`/ru/payment/${json.id}`)
 }
 
-const OrderPage = async () => {
+const OrderPage = async ({ params }: { params: { locale: string } }) => {
 	const cart: Array<{ product_id: number, quantity: number }> =
 		cookies().has('cart')
 			? JSON.parse(cookies().get('cart')?.value!)
 			: undefined
 	const goods = cart && await Promise.all(cart.map(async (item) => await woocomerence.getGoodById(item.product_id)))
+
+	const cartTranslation = await import(`@/shared/locales/${params.locale}/cart.json`)
+	const translation = await import(`@/shared/locales/${params.locale}/cart--order.json`)
 
 	return (
 		<Container>
@@ -63,24 +66,24 @@ const OrderPage = async () => {
 				<input type="text" className={styles.field} name="cart" value={JSON.stringify(cart)} readOnly />
 
 				<div className={styles.column}>
-					<Title3 className={styles.title}>Оплата и доставка</Title3>
+					<Title3 className={styles.title}>{translation.payment}</Title3>
 					<div className={styles.formFields}>
-						<Input placeholder="Имя*" name="first_name" autoComplete="name" />
-						<Input placeholder="Фамилия*" name="last_name" autoComplete="family-name" />
-						<Input placeholder="Названии компаниии" name="company" autoComplete="company" />
-						<Input placeholder="Страна/регион*" name="country" autoComplete="country-name" />
-						<Input placeholder="Адрес*" name="address_1" autoComplete="country-name" />
-						<Input placeholder="Населенный пункт*" name="state" autoComplete="state" />
-						<Input placeholder="Город*" name="city" autoComplete="city" />
-						<Input placeholder="Почтовый индекс*" name="postcode" autoComplete="postal-code" />
-						<Input placeholder="Телефон*" name="phone" autoComplete="tel" />
+						<Input placeholder={translation.first_name} name="first_name" autoComplete="name" />
+						<Input placeholder={translation.last_name} name="last_name" autoComplete="family-name" />
+						<Input placeholder={translation.company} name="company" autoComplete="company" />
+						<Input placeholder={translation.country} name="country" autoComplete="country-name" />
+						<Input placeholder={translation.address} name="address_1" autoComplete="country-name" />
+						<Input placeholder={translation.state} name="state" autoComplete="state" />
+						<Input placeholder={translation.city} name="city" autoComplete="city" />
+						<Input placeholder={translation.postcode} name="postcode" autoComplete="postal-code" />
+						<Input placeholder={translation.phone} name="phone" autoComplete="tel" />
 						<Input placeholder="Email*" name="email" autoComplete="email" />
-						<Textarea placeholder="Примечание к заказу" name="message" autoComplete="off"></Textarea>
+						<Textarea placeholder={translation.message} name="message" autoComplete="off"></Textarea>
 					</div>
 				</div>
 				<div className={styles.column}>
-					<Title3 className={styles.title}>Ваш заказ</Title3>
-					<Ordering showGoods cart={cart} goods={goods} />
+					<Title3 className={styles.title}>{translation.order}</Title3>
+					<Ordering showGoods translation={JSON.parse(JSON.stringify(cartTranslation))} cart={cart} goods={goods} />
 					<div className={clsx(styles.paymentMethods, styles.formFields)}>
 						<Radio label={<>Этот раздел будет работать позднее</>} />
 						<Radio label={<>Liisi рассрочка</>} />
@@ -89,12 +92,12 @@ const OrderPage = async () => {
 						<Radio label={<>Pay Later</>} />
 					</div>
 					<Body2 className={styles.attention}>
-						Ваши личные данные обрабатываются, подробнее на странице <Link href="#">Политика конфедициальности</Link>.
+						{translation.data_proccessing.split('>')[0]} <Link className={styles.link} href={cartTranslation.policy_url}>{translation.data_proccessing.split('>')[1]}</Link>.
 					</Body2>
 					<Checkbox className={styles.attention} id="agree-rules"
-						label={<>Я прочитал(а) и соглашаюсь с правилами сайта <Link href="#">правила и условия</Link>*</>} />
+						label={<>{translation.site_rules.split('>')[0]} <Link className={styles.link} href={cartTranslation.site_rules_url}>{translation.site_rules.split('>')[1]}</Link></>} />
 					<button className={styles.button} type="submit">
-						<Button>Подтвердить заказ</Button>
+						<Button>{translation.submit}</Button>
 					</button>
 				</div>
 			</form>
