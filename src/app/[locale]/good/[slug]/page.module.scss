@@ -19,6 +19,7 @@
 	display: flex;
 	@include mixins.adaptive-value('gap', 80, 10);
 	align-items: center;
+	padding-block: 80px;
 }
 
 .title {
@@ -33,4 +34,16 @@
 
 .addToCart {
 	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	gap: 40px;
+}
+
+.delete {
+	cursor: pointer;
+}
+
+.relatedGoods {
+	margin-top: 80px;
+	padding-bottom: 80px;
 }

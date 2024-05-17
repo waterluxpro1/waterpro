@@ -1,0 +1,24 @@
+@use "@/global/scss/vars";
+
+.mobileLabel {
+	display: none;
+	font-weight: 600;
+
+	@media (max-width: vars.$tablet) {
+		display: block;
+	}
+}
+
+.labeledField {
+	@media (max-width: vars.$tablet) {
+		display: flex;
+		width: 100%;
+	}
+
+	&>* {
+		@media (max-width: vars.$tablet) {
+			flex-basis: 50%;
+			flex-shrink: 0;
+		}
+	}
+}

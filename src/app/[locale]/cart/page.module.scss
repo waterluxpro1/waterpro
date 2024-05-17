@@ -16,8 +16,7 @@
 	display: flex;
 	justify-content: space-between;
 	background-color: #fff;
-	padding-block: 16px;
-	padding-inline: 16px;
+	padding: 24px 16px;
 	align-items: center;
 	gap: 16px;
 
@@ -42,8 +41,8 @@
 }
 
 .image {
-	width: 100px;
-	height: 100px;
+	width: 140px;
+
 	// margin-block: -40px;
 	display: flex;
 	align-items: center;
@@ -96,8 +95,20 @@
 
 .delete {
 	width: 32px;
+	cursor: pointer;
+
+	&:hover {
+		@media (hover) {
+			opacity: .9;
+		}
+	}
+
+	&:active {
+		opacity: .8;
+	}
 
 	svg {
+		cursor: pointer;
 		width: 32px;
 		height: 32px;
 	}
@@ -129,28 +140,5 @@
 .titleLink {
 	@media (max-width: vars.$tablet) {
 		width: 100%;
-	}
-}
-
-.mobileLabel {
-	display: none;
-	font-weight: 600;
-
-	@media (max-width: vars.$tablet) {
-		display: block;
-	}
-}
-
-.labeledField {
-	@media (max-width: vars.$tablet) {
-		display: flex;
-		width: 100%;
-	}
-
-	&>* {
-		@media (max-width: vars.$tablet) {
-			flex-basis: 50%;
-			flex-shrink: 0;
-		}
 	}
 }

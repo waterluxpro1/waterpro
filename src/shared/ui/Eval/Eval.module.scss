@@ -1,0 +1,38 @@
+@use "@/global/scss/vars";
+
+.eval {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	font-size: 18px;
+	line-height: 150%;
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	ul li {
+		font-size: 18px;
+		line-height: 150%;
+
+		&::before {
+			content: '•';
+			margin-right: 10px;
+		}
+	}
+
+
+	h3 {
+		font-size: 32px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: vars.$dark-blue;
+	}
+
+	p {
+		font-size: 18px;
+		line-height: 150%;
+	}
+}

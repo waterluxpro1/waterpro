@@ -8,14 +8,14 @@
 		"more_button": "Mine",
 		"cards": [
 			{
-				"image": "https://waterpro.ee/wp-content/uploads/2024/04/shower-filter.png",
-				"title": "DUŠIFILTER",
-				"href": "/"
-			},
-			{
 				"image": "https://waterpro.ee/wp-content/uploads/2024/04/water-treatment-systems.png",
 				"title": "VAHETUSFILTRID",
 				"href": "/et/catalog/veefiltrid"
+			},
+			{
+				"image": "https://waterpro.ee/wp-content/uploads/2024/04/shower-filter.png",
+				"title": "DUŠIFILTER",
+				"href": "/et/catalog/dushifilter"
 			},
 			{
 				"image": "https://waterpro.ee/wp-content/uploads/2024/04/replacement-filters.png",

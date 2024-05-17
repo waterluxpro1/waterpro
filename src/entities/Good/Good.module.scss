@@ -12,10 +12,6 @@
 	@include mixins.adaptive-value('padding', 16, 12);
 }
 
-.title {
-	@include mixins.adaptive-value('font-size', 18, 10);
-}
-
 .price {
 	@include mixins.adaptive-value('font-size', 24, 16);
 	font-weight: 600;
@@ -27,7 +23,9 @@
 }
 
 .title {
-	margin-top: 8px;
+	@include mixins.adaptive-value('font-size', 18, 10);
+	text-align: center;
+	margin-top: 16px;
 	width: 200px;
 	height: 40px;
 	display: -webkit-box;
@@ -48,8 +46,6 @@
 }
 
 .image {
-	aspect-ratio: 9/10;
-	// object-fit: cover;
 	width: 100%;
 	height: auto;
 }

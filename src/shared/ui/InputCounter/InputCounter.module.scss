@@ -1,0 +1,51 @@
+@use "@/global/scss/vars";
+
+.counter {
+	display: flex;
+	border: rgba(#5B7B90, 0.4) 1px solid;
+	border-radius: 8px;
+	overflow: hidden;
+	max-width: 96px;
+	position: relative;
+}
+
+.button {
+	transition: background-color .2s;
+	padding: 12px 8px;
+	cursor: pointer;
+	font-size: 20px;
+
+	&:hover {
+		@media (hover) {
+			background-color: #eee;
+		}
+	}
+
+	&:active {
+		background-color: #eee;
+	}
+}
+
+.input {
+	width: 100%;
+	text-align: center;
+	border: rgba(#5B7B90, 0.4) 1px solid;
+	margin-block: -1px;
+	border-radius: 8px;
+}
+
+.hiddenInput {
+	position: absolute;
+	background-color: transparent;
+	top: -1px;
+	bottom: -1px;
+	left: 24px;
+	right: 27.5px;
+	border-radius: 8px;
+
+	&:focus {
+		background-color: #fff;
+		border: rgba(#5B7B90, 0.4) 1px solid;
+		text-align: center;
+	}
+}

@@ -42,7 +42,8 @@ export const woocomerence = {
 	getGoodsByCategoryId: async (categodyId: number) => wcRequest<IGood[]>(`products?category=${categodyId}`),
 	getCategoryBySlug: async (categorySlug: string) => wcRequest<ICategory[]>(`products/categories?slug=${categorySlug}`),
 	getGoodBySlug: async (slug: string) => wcRequest<IGood[]>(`products?slug=${slug}`),
-	getGoodById: async (id: number) => wcRequest<IGood>(`products/${id}?lang=ru`),
+	getGoodById: async (id: number) => wcRequest<IGood>(`products/${id}`),
+	getShippingMethods: async () => wcRequest<any[]>('shipping_methods '),
 }
 
 export const wordpress = {

@@ -23,7 +23,7 @@
 .image {
 	flex-grow: 0;
 	flex-shrink: 0;
-	max-width: 50%;
+	max-width: 60%;
 	flex-basis: 1000px;
 	transform: translateX(-100%);
 	position: relative;
@@ -31,10 +31,6 @@
 	align-self: stretch;
 
 	overflow: hidden;
-
-	@media (max-width: #{vars.$container}px) {
-		max-width: 60%;
-	}
 
 	@media (max-width: vars.$tablet) {
 		flex: auto;

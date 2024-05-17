@@ -9,34 +9,9 @@ import Image from 'next/image'
 import { woocomerence } from '@/shared/api/wordpress.service'
 import { Title3 } from '@/shared/ui/Title3/Title3'
 import { GoodsSlider } from '@/features/GoodsSlider/GoodsSlider'
-import { Button } from '@/shared/ui/Button'
 import { cookies } from 'next/headers'
-import { revalidatePath } from 'next/cache'
-
-const addToCard = async (formData: FormData) => {
-	'use server'
-
-	const product_id = +formData.get('product_id')!
-
-	if (!cookies().has('cart')) cookies().set('cart', '[]')
-
-	const cart = cookies().get('cart')
-	const idInCart = !!JSON.parse(cart?.value!).find((item: any) => item.product_id === product_id)
-
-	if (!idInCart) {
-		cookies().set('cart',
-			JSON.stringify([...JSON.parse(cart?.value!), { product_id, quantity: 1 }])
-		)
-	} else {
-		const newCart = JSON.parse(cart?.value!)
-		const deleteIndex = newCart.findIndex((item: any) => item.product_id === product_id)
-		newCart.splice(deleteIndex, 1)
-
-		cookies().set('cart', JSON.stringify(newCart))
-	}
-
-	revalidatePath('.')
-}
+import { AddToCartButton } from '@/features/goodCard/AddToCartButton/AddToCartButton'
+import { Eval } from '@/shared/ui/Eval/Eval'
 
 const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)
@@ -53,7 +28,6 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 	return (
 		<div className={styles.wrapper}>
 			<Container>
-				id: {good.id}
 				<div className={styles.card}>
 					<div className={styles.image}>
 						<Image src={good.images[0].src} alt={good.images[0].alt} width={300} height={300} />
@@ -61,24 +35,19 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					<div className={styles.info}>
 						<Title3 className={styles.title}>{good.name}</Title3>
 						<span className={styles.price} dangerouslySetInnerHTML={{ __html: good.price_html }}></span>
-						<form className={styles.addToCart} action={addToCard}>
-							<input type="text" name="product_id" readOnly value={good.id} style={{ display: 'none' }} />
-							<button type="submit"><Button>{!isInCart ? 'В корзину' : 'Удалить из корзины'}</Button></button>
-						</form>
+						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} />
 					</div>
 				</div>
 				<Tabs defaultActive={1}>
-					<TabsList>
-						<Tab index={1}>В комплекте</Tab>
-						<Tab index={2}>Описание</Tab>
-					</TabsList>
+					<TabsList><Tab index={1}>Описание</Tab></TabsList>
 					<TabPanel index={1}>
-						<div dangerouslySetInnerHTML={{ __html: good.meta_data.find(item => item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : '' }}></div>
+						<Eval>
+							{good.meta_data.find(item =>
+								item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : ''}
+						</Eval>
 					</TabPanel>
-					<TabPanel index={2}>2 tab</TabPanel>
 				</Tabs>
-
-				<GoodsSlider lang={params.locale} goods={relatedGoods} />
+				<GoodsSlider className={styles.relatedGoods} lang={params.locale} goods={relatedGoods} />
 			</Container>
 		</div>
 	)

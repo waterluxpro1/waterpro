@@ -8,14 +8,14 @@
 		"more_button": "Перейти",
 		"cards": [
 			{
-				"image": "https://waterpro.ee/wp-content/uploads/2024/04/shower-filter.png",
-				"title": "ФИЛЬТР ДЛЯ ДУША",
-				"href": "/"
-			},
-			{
 				"image": "https://waterpro.ee/wp-content/uploads/2024/04/water-treatment-systems.png",
 				"title": "Водоочистительные системы",
 				"href": "ru/catalog/vodoochistitelnye-sistemy-ru"
+			},
+			{
+				"image": "https://waterpro.ee/wp-content/uploads/2024/04/shower-filter.png",
+				"title": "ФИЛЬТР ДЛЯ ДУША",
+				"href": "/ru/catalog/filtr-dlya-dusha"
 			},
 			{
 				"image": "https://waterpro.ee/wp-content/uploads/2024/04/replacement-filters.png",

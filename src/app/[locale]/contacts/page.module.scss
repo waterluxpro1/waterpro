@@ -18,11 +18,10 @@
 
 .info {
 	align-self: center;
-	padding-block: 35px;
 	line-height: 140%;
 	color: vars.$dark-blue;
 	font-weight: 600;
-	@include mixins.adaptive-value('font-size', 28, 12);
+	@include mixins.adaptive-value('font-size', 24, 16);
 }
 
 .map {
@@ -38,4 +37,19 @@
 	@media (max-width: vars.$tablet) {
 		height: 200px;
 	}
+}
+
+.card {
+	background-color: #fff;
+	padding: 64px;
+	width: 120%;
+	z-index: 999;
+
+	@media (max-width: vars.$tablet) {
+		width: 100%;
+	}
+}
+
+.body {
+	margin-top: 24px;
 }

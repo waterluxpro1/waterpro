@@ -11,10 +11,8 @@ import { useParams } from 'next/navigation'
 
 export const Ordering = ({ className, goods, showOrderButton, showGoods, cart, translation, ...props }: OrderingProps) => {
 	const [selectedItem, setSelectedItem] = useState('0')
-	const subtotal = goods.length > 0 ? goods.map(item => item.price).reduce((acc, number) => +acc + +number) : 0
+	const subtotal = goods.length > 0 ? goods.map((item, index) => item.price * +cart[index].quantity).reduce((acc, number) => +acc + +number) : 0
 	const { locale } = useParams()
-
-	console.log(goods)
 
 	return (
 		<div className={clsx(className)} {...props}>
