@@ -3,7 +3,8 @@ import styles from './Faq.module.scss'
 import { Title2 } from '@/shared/ui/Title2'
 import { Spoiler } from '@/shared/ui/Spoiler/Spoiler'
 import { SpoilerTitle } from '@/shared/ui/SpoilerTitle/SpoilerTitle'
-import { Body2 } from '@/shared/ui/Body2'
+import { SpoilerBody } from '@/shared/ui/SpoilerBody/SpoilerBody'
+import { Body1 } from '@/shared/ui/Body1'
 
 export const Faq = ({ locale }: {
 	locale?: {
@@ -22,7 +23,7 @@ export const Faq = ({ locale }: {
 					{locale.questions.map((question) =>
 						<Spoiler key={JSON.stringify(question)}>
 							<SpoilerTitle>{question.question}</SpoilerTitle>
-							<Body2>{question.answer}</Body2>
+							<SpoilerBody><Body1>{question.answer}</Body1></SpoilerBody>
 						</Spoiler>
 					)}
 				</div>

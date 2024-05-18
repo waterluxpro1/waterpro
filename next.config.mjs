@@ -7,7 +7,12 @@ const nextConfig = {
 				protocol: 'https',
 				hostname: 'waterpro.ee',
 				pathname: '/wp-content/**'
-			}
+			},
+			{
+				protocol: 'https',
+				hostname: 'fb24m.ru',
+				pathname: '/watertest/wp-content/**'
+			},
 		]
 	}
 }

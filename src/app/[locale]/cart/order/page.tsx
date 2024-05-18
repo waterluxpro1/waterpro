@@ -7,8 +7,6 @@ import { Title3 } from '@/shared/ui/Title3/Title3'
 import { Ordering } from '@/features/Ordering/Ordering'
 import { cookies } from 'next/headers'
 import { woocomerence } from '@/shared/api/wordpress.service'
-import clsx from 'clsx'
-import { Radio } from '@/shared/ui/Radio/Radio'
 import Link from 'next/link'
 import { Checkbox } from '@/shared/ui/Checkbox/Checkbox'
 import { Body2 } from '@/shared/ui/Body2'
@@ -33,7 +31,7 @@ const createOrder = async (formData: FormData) => {
 	const response = await fetch('https://waterpro.ee/wp-json/wc/v3/orders', {
 		method: 'POST',
 		headers: {
-			'Authorization': `Basic ${btoa('API user:bxJv_tuG1_F94O_XQd5_vAdt_hw69')}`,
+			'Authorization': `Basic ${process.env.WP_PASSWORD}`,
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
@@ -47,7 +45,10 @@ const createOrder = async (formData: FormData) => {
 
 	const json = await response.json()
 
-	redirect(`/ru/payment/${json.id}`)
+	console.log(json.payment_url)
+
+	redirect(json.payment_url)
+
 }
 
 const OrderPage = async ({ params }: { params: { locale: string } }) => {
@@ -59,6 +60,8 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 
 	const cartTranslation = await import(`@/shared/locales/${params.locale}/cart.json`)
 	const translation = await import(`@/shared/locales/${params.locale}/cart--order.json`)
+
+	const shippingMethods = await woocomerence.getShippingMethods()
 
 	return (
 		<Container>
@@ -83,14 +86,14 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 				</div>
 				<div className={styles.column}>
 					<Title3 className={styles.title}>{translation.order}</Title3>
-					<Ordering showGoods translation={JSON.parse(JSON.stringify(cartTranslation))} cart={cart} goods={goods} />
-					<div className={clsx(styles.paymentMethods, styles.formFields)}>
+					<Ordering shippingMethods={shippingMethods} showGoods translation={JSON.parse(JSON.stringify(cartTranslation))} cart={cart} goods={goods} />
+					{/* <div className={clsx(styles.paymentMethods, styles.formFields)}>
 						<Radio label={<>Этот раздел будет работать позднее</>} />
 						<Radio label={<>Liisi рассрочка</>} />
 						<Radio label={<>Оплата через банк</>} />
 						<Radio label={<>Оплата картой</>} />
 						<Radio label={<>Pay Later</>} />
-					</div>
+					</div> */}
 					<Body2 className={styles.attention}>
 						{translation.data_proccessing.split('>')[0]} <Link className={styles.link} href={cartTranslation.policy_url}>{translation.data_proccessing.split('>')[1]}</Link>.
 					</Body2>

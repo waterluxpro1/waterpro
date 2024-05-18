@@ -30,7 +30,7 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 			<Container>
 				<div className={styles.card}>
 					<div className={styles.image}>
-						<Image src={good.images[0].src} alt={good.images[0].alt} width={300} height={300} />
+						<Image src={good.images[0]?.src} alt={good.images[0]?.alt} width={300} height={300} />
 					</div>
 					<div className={styles.info}>
 						<Title3 className={styles.title}>{good.name}</Title3>

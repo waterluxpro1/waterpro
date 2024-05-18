@@ -1,8 +1,20 @@
 {
 	"menu": [
 		{
-			"name": "",
-			"link": ""
+			"name": "Условия покупки",
+			"link": "/ru/doc/usloviya-pokupki"
+		},
+		{
+			"name": "Рассрочка",
+			"link": "/ru/installments"
+		},
+		{
+			"name": "Отзывы",
+			"link": "/ru#reviews"
+		},
+		{
+			"name": "Контакты",
+			"link": "/ru/contacts"
 		}
 	],
 	"contact": "Связаться"

@@ -17,6 +17,7 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 		cookies().has('cart') ? JSON.parse(cookies().get('cart')?.value!) : undefined
 
 	const goods = cart && await Promise.all(cart.map(async (item) => await woocomerence.getGoodById(item.product_id)))
+	const shippingMethods = await woocomerence.getShippingMethods()
 
 	try {
 		const translation = await import(`@/shared/locales/${params.locale}/cart.json`)
@@ -50,7 +51,7 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 										title={translation.name} value={good.name} />
 								</Link>
 								<CartGoodParam className={styles.price}
-									title={translation.price} value={good.price.toString()} />
+									title={translation.price} value={`${good.price.toString()} €`} />
 								<CartGoodParam className={styles.count}
 									title={translation.count} value={cart[index].quantity.toString()} />
 								<CartGoodParam className={styles.preTotal}
@@ -60,7 +61,7 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 					</div>
 					: <Card>{translation.no_goods_message}</Card>}
 				{goods && goods.length > 0 &&
-					<Ordering showOrderButton translation={JSON.parse(JSON.stringify(translation))} cart={cart} goods={goods} />}
+					<Ordering shippingMethods={shippingMethods} showOrderButton translation={JSON.parse(JSON.stringify(translation))} cart={cart} goods={goods} />}
 			</Container>
 		)
 	}

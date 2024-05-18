@@ -1,0 +1,21 @@
+{
+	"menu": [
+		{
+			"name": "Ostutingimused",
+			"link": "/et/doc/ostutingimused"
+		},
+		{
+			"name": "Järelmaksuplaan",
+			"link": "/et/installments"
+		},
+		{
+			"name": "Arvustused",
+			"link": "/et#reviews"
+		},
+		{
+			"name": "Kontaktid",
+			"link": "/et/contacts"
+		}
+	],
+	"contact": "Võtke ühendust"
+}

@@ -12,7 +12,5 @@ export interface OrderingProps extends HTMLAttributes<HTMLDivElement> {
 		total: string
 		create_order: string
 	}
-	delivery_variations?: {
-
-	}[]
+	shippingMethods?: any[]
 }

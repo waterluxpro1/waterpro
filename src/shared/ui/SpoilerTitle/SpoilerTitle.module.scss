@@ -16,14 +16,9 @@
 
 	text-align: left;
 
-	&::marker {
-		content: '';
-		display: none;
-		z-index: -5;
-	}
-
 	&::after {
 		content: '';
+		transition: transform .3s;
 		transform: rotateZ(180deg);
 
 		background-image: url('/spoiler-arrow.svg');
@@ -35,7 +30,7 @@
 		@include mixins.adaptive-value('height', 12, 6);
 	}
 
-	[open] & {
+	&.opened {
 
 		&::after {
 			transform: rotateZ(0);

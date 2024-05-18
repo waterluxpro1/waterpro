@@ -12,9 +12,9 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 	return (
 		<>
 			<OverflowImage
-				content={<>
+				content={<div className={styles.content}>
 					<Title2>{category.name}</Title2>
-				</>}
+				</div>}
 				image={
 					<picture>
 						<source srcSet="/img/modern-water-filtration-system.png" media="(min-width: 768px)" />

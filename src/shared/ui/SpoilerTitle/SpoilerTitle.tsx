@@ -1,9 +1,14 @@
-import type { HTMLAttributes } from 'react'
+'use client'
+
+import { useContext, type HTMLAttributes } from 'react'
 import styles from './SpoilerTitle.module.scss'
 import clsx from 'clsx'
+import { SpoilerContext } from '../Spoiler/Spoiler'
 
-export const SpoilerTitle = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
+export const SpoilerTitle = ({ className, ...props }: HTMLAttributes<HTMLSpanElement>) => {
+	const spoiler = useContext(SpoilerContext)
+
 	return (
-		<summary className={clsx(styles.spoilerTitle, className)}{...props}></summary>
+		<span className={clsx(styles.spoilerTitle, spoiler.opened && styles.opened, className)} {...props} onClick={() => { spoiler.setOpened(!spoiler.opened) }}></span>
 	)
 }

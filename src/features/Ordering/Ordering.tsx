@@ -9,7 +9,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
-export const Ordering = ({ className, goods, showOrderButton, showGoods, cart, translation, ...props }: OrderingProps) => {
+export const Ordering = ({ className, goods, showOrderButton, showGoods, shippingMethods, cart, translation, ...props }: OrderingProps) => {
 	const [selectedItem, setSelectedItem] = useState('0')
 	const subtotal = goods.length > 0 ? goods.map((item, index) => item.price * +cart[index].quantity).reduce((acc, number) => +acc + +number) : 0
 	const { locale } = useParams()
@@ -32,21 +32,11 @@ export const Ordering = ({ className, goods, showOrderButton, showGoods, cart, t
 				<div className={styles.row}>
 					<div className={styles.cell}>{translation.delivery}</div>
 					<div className={clsx(styles.cell, styles.radios)}>
-						<Radio value="0"
+						{shippingMethods?.map((item) => <Radio key={item.id} value={parseFloat(item?.settings?.cost?.value || 0)}
 							setFunction={setSelectedItem}
-							label="Заберу сам"
-							id="delivery-self" name="delivery"
-						/>
-						<Radio value="2.99"
-							setFunction={setSelectedItem}
-							label="Smartpost Эстония: €2.99"
-							id="delivery-v1" name="delivery"
-						/>
-						<Radio value="2.99"
-							setFunction={setSelectedItem}
-							label="Omniva Эстония: €2.99"
-							id="delivery-v2" name="delivery"
-						/>
+							label={`${item.title} - ${item?.settings?.cost?.value || 0} €`}
+							id={`${item.method_id}-${item.id}`} name="delivery"
+						/>)}
 					</div>
 				</div>
 				<div className={clsx(styles.row, styles.noBorderBottom)}>

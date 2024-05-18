@@ -23,22 +23,19 @@
 }
 
 .title {
-	@include mixins.adaptive-value('font-size', 18, 10);
+	@include mixins.adaptive-value('font-size', 18, 14);
 	text-align: center;
 	margin-top: 16px;
-	width: 200px;
 	height: 40px;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	box-orient: vertical;
-	line-clamp: 2;
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
 .imageWrapper {
-	height: 240px;
+	@include mixins.adaptive-value('height', 240, 160);
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -46,6 +43,6 @@
 }
 
 .image {
-	width: 100%;
-	height: auto;
+	width: auto;
+	height: 100%;
 }

@@ -16,7 +16,7 @@ const wcRequest = async <T>(path: string): Promise<T> => {
 			tags: [path]
 		},
 		headers: {
-			'Authorization': `Basic ${btoa('API user:bxJv_tuG1_F94O_XQd5_vAdt_hw69')}`
+			'Authorization': `Basic ${process.env.WP_PASSWORD}`
 		}
 	})
 
@@ -30,7 +30,7 @@ const wpRequest = async <T>(path: string): Promise<T> => {
 			tags: [path]
 		},
 		headers: {
-			'Authorization': `Basic ${btoa('API user:bxJv_tuG1_F94O_XQd5_vAdt_hw69')}`
+			'Authorization': `Basic ${process.env.WP_PASSWORD}`
 		}
 	})
 
@@ -43,7 +43,7 @@ export const woocomerence = {
 	getCategoryBySlug: async (categorySlug: string) => wcRequest<ICategory[]>(`products/categories?slug=${categorySlug}`),
 	getGoodBySlug: async (slug: string) => wcRequest<IGood[]>(`products?slug=${slug}`),
 	getGoodById: async (id: number) => wcRequest<IGood>(`products/${id}`),
-	getShippingMethods: async () => wcRequest<any[]>('shipping_methods '),
+	getShippingMethods: async () => wcRequest<any[]>('shipping/zones/2/methods'),
 }
 
 export const wordpress = {
