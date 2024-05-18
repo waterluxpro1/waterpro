@@ -20,7 +20,7 @@ export const Faq = ({ locale }: {
 			<Container>
 				<Title2 className={styles.title}>{locale?.title}</Title2>
 				<div className={styles.spoilers}>
-					{locale.questions.map((question) =>
+					{locale.questions?.map((question) =>
 						<Spoiler key={JSON.stringify(question)}>
 							<SpoilerTitle>{question.question}</SpoilerTitle>
 							<SpoilerBody><Body1>{question.answer}</Body1></SpoilerBody>

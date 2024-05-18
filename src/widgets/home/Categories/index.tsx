@@ -10,7 +10,7 @@ export const Categories = ({ cards, more_button }: {
 }) => {
 	return (
 		<Container className={styles.container}>
-			{cards && cards.map(category =>
+			{cards && cards?.map(category =>
 				<Category key={category.href} href={category.href} image={category.image} title={category.title} buttonText={more_button} />
 			)}
 		</Container>

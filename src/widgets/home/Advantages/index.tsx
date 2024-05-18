@@ -14,7 +14,7 @@ export const Advantages = ({ locale }: AdvantagesProps) => {
 		<Container>
 			<Title2 className={styles.title}>{locale?.title}</Title2>
 			<div className={styles.description}>
-				{locale?.description.split('\n').map((item) => <Body1 key={item}>
+				{locale?.description.split('\n')?.map((item) => <Body1 key={item}>
 					{item}
 				</Body1>)}
 			</div>
