@@ -12,14 +12,14 @@ const Layout = ({ children, params }: { children: ReactNode, params: { locale: s
 	)
 
 	return (
-		<>
+		<div className="global-wrapper">
 			<Header goods={cart.length} lang={params.locale} />
 			<main>
 				{children}
 			</main>
 			<Footer lang={params.locale} />
 			<ContactPopup />
-		</>
+		</div>
 	)
 }
 export default Layout
