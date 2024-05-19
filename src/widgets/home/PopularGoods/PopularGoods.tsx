@@ -11,7 +11,6 @@ export const PopularGoods = async ({ lang = 'ru', locale }: PopularGoodsModel) =
 	return (
 		<Container>
 			<Title2 className={styles.title}>{locale?.title}</Title2>
-			{JSON.stringify(goods)}
 			<GoodsSlider lang={lang} className={styles.slider} goods={goods} />
 		</Container>
 	)
