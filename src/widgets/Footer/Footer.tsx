@@ -73,7 +73,7 @@ export const Footer = async ({ lang }: { lang: string }) => {
 					</div>
 					<div className={styles.column}>
 						<ul className={styles.menuList}>
-							{translations.menu.map((item: any) =>
+							{translations.menu?.map((item: any) =>
 								<li key={JSON.stringify(item)} className={styles.menuItem}><Link href={item.link}>{item.name}</Link></li>
 							)}
 						</ul>
