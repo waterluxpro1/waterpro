@@ -25,7 +25,7 @@ export const GoodsSlider = ({ className, goods, lang }: { className?: string, go
 				}
 			}}
 		>
-			{goods.map((good) => <SwiperSlide key={good.id}>
+			{goods?.map((good) => <SwiperSlide key={good.id}>
 				<Good
 					id={good.id}
 					image={good.images[0]?.src}
