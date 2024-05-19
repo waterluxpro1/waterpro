@@ -18,9 +18,9 @@
 
 .cards {
 	@include gridest.gridest(3, 2);
-	gap: 32px;
 
 	@include mixins.adaptive-value('margin-top', 64, 32);
+	@include mixins.adaptive-value('gap', 48, 8);
 }
 
 .blocks {

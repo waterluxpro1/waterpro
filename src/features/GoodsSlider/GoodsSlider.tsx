@@ -9,7 +9,7 @@ export const GoodsSlider = ({ className, goods, lang }: { className?: string, go
 	return (
 		<Slider className={className}
 			spaceBetween={10}
-			slidesPerView={1}
+			slidesPerView={2}
 
 			breakpoints={{
 				480: {

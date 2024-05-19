@@ -8,8 +8,9 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import type { MenuProps } from './Menu.props'
 
-export const Menu = ({ isOpened, locale }: { isOpened: boolean, locale: string }) => {
+export const Menu = ({ isOpened, locale, setIsOpened }: MenuProps) => {
 	const pathname = usePathname()
 	const [menu, setMenu] = useState<{
 		name: string
@@ -32,11 +33,15 @@ export const Menu = ({ isOpened, locale }: { isOpened: boolean, locale: string }
 
 	return (
 		<div className={clsx(styles.menu, isOpened && styles.opened)}>
-			<ul className={styles.menuList}>
+			<ul className={styles.menuList} onClick={(e) => {
+				if ((e.target as HTMLElement).hasAttribute('data-link')) {
+					setIsOpened(false)
+				}
+			}}>
 				{menu && menu?.map((item) => (
 					<li className={styles.menuItem} key={JSON.stringify(item)}>
 						{typeof item.href !== 'undefined' && (
-							<Link href={`/${pathname?.split('/')[1]}${item.href}`}>{item.name}</Link>
+							<Link data-link href={`/${pathname?.split('/')[1]}${item.href}`}>{item.name}</Link>
 						)}
 
 						{item.submenu && (
@@ -45,7 +50,7 @@ export const Menu = ({ isOpened, locale }: { isOpened: boolean, locale: string }
 								<ul className={styles.submenu}>
 									{item.submenu?.map((submenu) => (
 										<li className={styles.submenuItem} key={JSON.stringify(submenu)}>
-											<Link prefetch={false} href={`/${pathname?.split('/')[1]}${submenu.href}`}>{submenu.name}</Link>
+											<Link data-link prefetch={false} href={`/${pathname?.split('/')[1]}${submenu.href}`}>{submenu.name}</Link>
 										</li>
 									))}
 								</ul>

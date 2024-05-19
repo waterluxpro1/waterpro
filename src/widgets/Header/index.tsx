@@ -72,7 +72,7 @@ export const Header = ({ lang, goods }: { lang: string, goods: number }) => {
 			</Container>
 			<div className={styles.navigation}>
 				<Container>
-					<Menu locale={lang} isOpened={isOpened} />
+					<Menu locale={lang} isOpened={isOpened} setIsOpened={setIsOpened} />
 				</Container>
 			</div>
 		</header>

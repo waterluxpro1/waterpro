@@ -21,6 +21,10 @@
 		}
 	}
 
+	@media (max-width: vars.$medium) {
+		padding: 8px;
+	}
+
 }
 
 .arrowPrev {
@@ -34,7 +38,7 @@
 	}
 
 	@media(max-width: vars.$medium) {
-		left: -32px;
+		left: -14px;
 	}
 }
 
@@ -50,7 +54,7 @@
 	}
 
 	@media(max-width: vars.$medium) {
-		right: -32px;
+		right: -14px;
 	}
 }
 

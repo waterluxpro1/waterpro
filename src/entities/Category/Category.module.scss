@@ -1,10 +1,12 @@
 @use "@/global/scss/vars";
+@use "@/global/scss/mixins";
 
 .card {
 	display: flex;
 	flex-direction: column;
 	background-color: #fff;
-	padding: 16px;
+	@include mixins.adaptive-value('padding', 16, 10);
+	align-items: center;
 	justify-content: space-between;
 	border-radius: 12px;
 
@@ -21,18 +23,17 @@
 	line-height: 115%;
 	margin-top: 32px;
 	font-weight: 500;
+	hyphens: auto;
+	max-width: 100%;
 
 	@media (max-width: vars.$medium) {
 		font-size: 12px;
-	}
-
-	@media (max-width: vars.$mobile-l) {
-		font-size: 16px;
+		margin-top: 16px;
 	}
 }
 
-.button {
+.button.button.button {
 	margin-top: 20px;
-	width: 100%;
+	padding-inline: 40px;
 	text-align: center;
 }
