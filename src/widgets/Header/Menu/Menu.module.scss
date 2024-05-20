@@ -122,16 +122,15 @@
 .submenu {
 	position: absolute;
 	top: 100%;
-	max-width: 440px;
-	width: 100%;
+	width: 440px;
 
 	background-color: #fff;
 	color: #000;
-	padding: 16px 20px;
+	padding: 20px;
 
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 16px;
 
 	cursor: pointer;
 	pointer-events: none;
@@ -158,6 +157,8 @@
 		color: #fff;
 		padding: 15px 0;
 		gap: 12px;
+		max-width: 440px;
+		width: 100%;
 	}
 }
 
