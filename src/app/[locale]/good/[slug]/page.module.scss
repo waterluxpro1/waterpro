@@ -19,7 +19,7 @@
 	display: flex;
 	@include mixins.adaptive-value('gap', 80, 10);
 	align-items: center;
-	padding-block: 80px;
+	padding-block: 60px;
 }
 
 .title {
@@ -46,4 +46,8 @@
 .relatedGoods {
 	margin-top: 80px;
 	padding-bottom: 80px;
+}
+
+.breadcrumbs {
+	padding-top: 32px;
 }

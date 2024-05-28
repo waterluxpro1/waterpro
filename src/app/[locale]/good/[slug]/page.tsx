@@ -12,6 +12,8 @@ import { GoodsSlider } from '@/features/GoodsSlider/GoodsSlider'
 import { cookies } from 'next/headers'
 import { AddToCartButton } from '@/features/goodCard/AddToCartButton/AddToCartButton'
 import { Eval } from '@/shared/ui/Eval/Eval'
+import { Breadcrumbs } from '@/shared/ui/Breadcrumbs/Breadcrumbs'
+import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
 
 const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)
@@ -28,6 +30,11 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 	return (
 		<div className={styles.wrapper}>
 			<Container>
+				<Breadcrumbs className={styles.breadcrumbs}>
+					<BreadcrumbsItem first>Главная</BreadcrumbsItem>
+					<BreadcrumbsItem href={`good/${good.categories[0].slug}`}>{good.categories[0].name}</BreadcrumbsItem>
+					<BreadcrumbsItem>{good.name}</BreadcrumbsItem>
+				</Breadcrumbs>
 				<div className={styles.card}>
 					<div className={styles.image}>
 						<Image src={good.images[0]?.src} alt={good.images[0]?.alt} width={300} height={300} />
@@ -39,8 +46,15 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					</div>
 				</div>
 				<Tabs defaultActive={1}>
-					<TabsList><Tab index={1}>Описание</Tab></TabsList>
+					<TabsList><Tab index={1}>Описание</Tab>
+						<Tab index={2}>В комплекте</Tab></TabsList>
 					<TabPanel index={1}>
+						<Eval>
+							{good.meta_data.find(item =>
+								item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : ''}
+						</Eval>
+					</TabPanel>
+					<TabPanel index={2}>
 						<Eval>
 							{good.meta_data.find(item =>
 								item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : ''}

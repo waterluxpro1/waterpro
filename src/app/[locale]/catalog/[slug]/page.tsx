@@ -4,6 +4,8 @@ import { Container } from '@/shared/ui/Container'
 import { OverflowImage } from '@/shared/ui/OverflowImage/OverflowImage'
 import { Title2 } from '@/shared/ui/Title2'
 import styles from './page.module.scss'
+import { Breadcrumbs } from '@/shared/ui/Breadcrumbs/Breadcrumbs'
+import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
 
 const CatalogPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [category] = await woocomerence.getCategoryBySlug(params.slug)
@@ -13,6 +15,10 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 		<>
 			<OverflowImage
 				content={<div className={styles.content}>
+					<Breadcrumbs>
+						<BreadcrumbsItem first>Главная</BreadcrumbsItem>
+						<BreadcrumbsItem>{category.name}</BreadcrumbsItem>
+					</Breadcrumbs>
 					<Title2>{category.name}</Title2>
 				</div>}
 				image={

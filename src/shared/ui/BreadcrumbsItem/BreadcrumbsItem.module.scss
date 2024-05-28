@@ -1,0 +1,16 @@
+.breadcrumb {
+	&:not(.last) {
+		color: #808080;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		&::after {
+			content: '/';
+			display: inline-block;
+			margin-left: 8px;
+
+		}
+	}
+}
