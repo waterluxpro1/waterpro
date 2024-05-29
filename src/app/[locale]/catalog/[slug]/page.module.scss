@@ -1,5 +1,6 @@
 @use "@/global/scss/gridest";
 @use "@/global/scss/mixins";
+@use "@/global/scss/vars";
 
 .grid {
 	@include gridest.gridest(4, 2);
@@ -17,6 +18,10 @@
 
 .image.image {
 	height: 450px;
+
+	@media (max-width: vars.$tablet) {
+		height: 200px;
+	}
 }
 
 .title.title {

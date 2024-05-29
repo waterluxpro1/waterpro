@@ -81,4 +81,8 @@
 
 .image.image {
 	height: 450px;
+
+	@media (max-width: vars.$tablet) {
+		height: 200px;
+	}
 }
