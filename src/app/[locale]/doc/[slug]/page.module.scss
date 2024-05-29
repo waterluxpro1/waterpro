@@ -1,9 +1,5 @@
 @use "@/global/scss/vars";
 
-.title {
-	font-size: 64px;
-	font-weight: 600;
-}
 
 .eval {
 	margin-top: 48px;
@@ -39,4 +35,8 @@
 		font-size: 18px;
 		line-height: 120%;
 	}
+}
+
+.image.image {
+	height: 450px;
 }

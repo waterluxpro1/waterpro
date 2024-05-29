@@ -3,7 +3,7 @@ import styles from './page.module.scss'
 import { OverflowImage } from '@/shared/ui/OverflowImage/OverflowImage'
 import Image from 'next/image'
 import { Body1 } from '@/shared/ui/Body1'
-import { Title2 } from '@/shared/ui/Title2'
+import { Title1 } from '@/shared/ui/Title1/Title1'
 
 const Contacts = async ({ params }: { params: { locale: string } }) => {
 	const translation = await import(`@/shared/locales/${params.locale}/contacts.json`)
@@ -13,10 +13,10 @@ const Contacts = async ({ params }: { params: { locale: string } }) => {
 			<OverflowImage
 				content={
 					<div className={styles.head}>
-						<Title2>{translation.h1}</Title2>
+						<Title1>{translation.h1}</Title1>
 					</div>
 				}
-				image={<Image src="/img/drops.png" alt="Капли воды" width={1000} height={480} />}
+				image={<Image className={styles.image} src="/img/drops.png" alt="Капли воды" width={1000} height={480} />}
 			/>
 			<Container className={styles.container}>
 				<div className={styles.card}>

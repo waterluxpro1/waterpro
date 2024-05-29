@@ -7,7 +7,7 @@ import { Title3 } from '@/shared/ui/Title3/Title3'
 import { Card } from '@/shared/ui/Card/Card'
 import { Button } from '@/shared/ui/Button'
 import { Contact } from '@/widgets/home/Contact/Contact'
-import { Title2 } from '@/shared/ui/Title2'
+import { Title1 } from '@/shared/ui/Title1/Title1'
 
 const Installments = async ({ params }: { params: { locale: string } }) => {
 	const translation: {
@@ -32,7 +32,7 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 			<OverflowImage
 				content={
 					<div className={styles.content}>
-						<Title2 className={styles.title}>{translation.h1}</Title2>
+						<Title1 className={styles.title}>{translation.h1}</Title1>
 						<ul className={styles.logos}>
 							<li>
 								<svg width="128" height="64" viewBox="0 0 128 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +74,7 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 						</ul>
 					</div>
 				}
-				image={<Image src="/img/drops.png" alt="" width={1000} height={480} />}
+				image={<Image className={styles.image} src="/img/drops.png" alt="" width={1000} height={480} />}
 			/>
 			<Container>
 				<Title3 className={styles.subtitle} variant="highlighted">{translation.additional.title}</Title3>

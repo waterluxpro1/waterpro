@@ -35,8 +35,6 @@ const createOrder = async (formData: FormData) => {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			payment_method: 'wc_montonio_card',
-			payment_method_title: 'Оплата картой',
 			billing: formDataToObject(formData),
 			shipping: formDataToObject(formData),
 			line_items: JSON.parse(formData.get('cart')?.toString()!)
@@ -45,10 +43,7 @@ const createOrder = async (formData: FormData) => {
 
 	const json = await response.json()
 
-	console.log(json.payment_url)
-
 	redirect(json.payment_url)
-
 }
 
 const OrderPage = async ({ params }: { params: { locale: string } }) => {
@@ -87,13 +82,6 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 				<div className={styles.column}>
 					<Title3 className={styles.title}>{translation.order}</Title3>
 					<Ordering shippingMethods={shippingMethods} showGoods translation={JSON.parse(JSON.stringify(cartTranslation))} cart={cart} goods={goods} />
-					{/* <div className={clsx(styles.paymentMethods, styles.formFields)}>
-						<Radio label={<>Этот раздел будет работать позднее</>} />
-						<Radio label={<>Liisi рассрочка</>} />
-						<Radio label={<>Оплата через банк</>} />
-						<Radio label={<>Оплата картой</>} />
-						<Radio label={<>Pay Later</>} />
-					</div> */}
 					<Body2 className={styles.attention}>
 						{translation.data_proccessing.split('>')[0]} <Link className={styles.link} href={cartTranslation.policy_url}>{translation.data_proccessing.split('>')[1]}</Link>.
 					</Body2>

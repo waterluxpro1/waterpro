@@ -2,10 +2,10 @@ import { Good } from '@/entities/Good/Good'
 import { woocomerence } from '@/shared/api/wordpress.service'
 import { Container } from '@/shared/ui/Container'
 import { OverflowImage } from '@/shared/ui/OverflowImage/OverflowImage'
-import { Title2 } from '@/shared/ui/Title2'
 import styles from './page.module.scss'
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
+import { Title1 } from '@/shared/ui/Title1/Title1'
 
 const CatalogPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [category] = await woocomerence.getCategoryBySlug(params.slug)
@@ -19,7 +19,7 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 						<BreadcrumbsItem first>Главная</BreadcrumbsItem>
 						<BreadcrumbsItem>{category.name}</BreadcrumbsItem>
 					</Breadcrumbs>
-					<Title2 className={styles.title}>{category.name}</Title2>
+					<Title1 className={styles.title}>{category.name}</Title1>
 				</div>}
 				image={
 					<picture>
