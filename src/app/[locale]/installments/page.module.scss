@@ -4,12 +4,12 @@
 
 .logos {
 	display: flex;
-	@include mixins.adaptive-value('gap', 72, 24);
-	@include mixins.adaptive-value('margin-top', 55, 8);
+	@include mixins.adaptive-value('gap', 40, 24);
+	@include mixins.adaptive-value('margin-top', 28, 8);
 
 	li {
 		svg {
-			@include mixins.adaptive-value('height', 50, 26);
+			@include mixins.adaptive-value('height', 32, 20);
 			width: auto;
 		}
 	}

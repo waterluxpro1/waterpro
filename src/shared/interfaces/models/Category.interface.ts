@@ -3,4 +3,10 @@ export interface ICategory {
 	name: string
 	slug: string
 	description: string
+	image: {
+		id: number
+		src: string
+		alt: string
+		name: string
+	} | null
 }

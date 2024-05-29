@@ -1,9 +1,9 @@
 import { Container } from '@/shared/ui/Container'
 import styles from './page.module.scss'
 import { OverflowImage } from '@/shared/ui/OverflowImage/OverflowImage'
-import { Title1 } from '@/shared/ui/Title1/Title1'
 import Image from 'next/image'
 import { Body1 } from '@/shared/ui/Body1'
+import { Title2 } from '@/shared/ui/Title2'
 
 const Contacts = async ({ params }: { params: { locale: string } }) => {
 	const translation = await import(`@/shared/locales/${params.locale}/contacts.json`)
@@ -13,7 +13,7 @@ const Contacts = async ({ params }: { params: { locale: string } }) => {
 			<OverflowImage
 				content={
 					<div className={styles.head}>
-						<Title1>{translation.h1}</Title1>
+						<Title2>{translation.h1}</Title2>
 					</div>
 				}
 				image={<Image src="/img/drops.png" alt="Капли воды" width={1000} height={480} />}
@@ -24,7 +24,6 @@ const Contacts = async ({ params }: { params: { locale: string } }) => {
 						<li>WaterPro OÜ</li>
 						<li>info@waterpro.ee</li>
 						<li>Tel. +372 56484797</li>
-						<li>Tähe tee 24, Uusküla, Jõelähtme vald, 74120, Eesti</li>
 						<li>Reg.nr.14608633</li>
 						<li>Swedbank</li>
 						<li>nr.EE402200221070576725</li>

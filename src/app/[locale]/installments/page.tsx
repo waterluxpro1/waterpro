@@ -1,6 +1,5 @@
 import { Container } from '@/shared/ui/Container'
 import { OverflowImage } from '@/shared/ui/OverflowImage/OverflowImage'
-import { Title1 } from '@/shared/ui/Title1/Title1'
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { Body1 } from '@/shared/ui/Body1'
@@ -8,6 +7,7 @@ import { Title3 } from '@/shared/ui/Title3/Title3'
 import { Card } from '@/shared/ui/Card/Card'
 import { Button } from '@/shared/ui/Button'
 import { Contact } from '@/widgets/home/Contact/Contact'
+import { Title2 } from '@/shared/ui/Title2'
 
 const Installments = async ({ params }: { params: { locale: string } }) => {
 	const translation: {
@@ -32,7 +32,7 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 			<OverflowImage
 				content={
 					<div className={styles.content}>
-						<Title1 className={styles.title}>{translation.h1}</Title1>
+						<Title2 className={styles.title}>{translation.h1}</Title2>
 						<ul className={styles.logos}>
 							<li>
 								<svg width="128" height="64" viewBox="0 0 128 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,6 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 										</clipPath>
 									</defs>
 								</svg>
-
 							</li>
 							<li>
 								<svg width="378" height="50" viewBox="0 0 378 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +70,6 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 										</clipPath>
 									</defs>
 								</svg>
-
 							</li>
 						</ul>
 					</div>

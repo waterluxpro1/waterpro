@@ -19,13 +19,16 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 						<BreadcrumbsItem first>Главная</BreadcrumbsItem>
 						<BreadcrumbsItem>{category.name}</BreadcrumbsItem>
 					</Breadcrumbs>
-					<Title2>{category.name}</Title2>
+					<Title2 className={styles.title}>{category.name}</Title2>
 				</div>}
 				image={
 					<picture>
-						<source srcSet="/img/modern-water-filtration-system.png" media="(min-width: 768px)" />
+						{category.image
+							? <source srcSet={category.image.src} media="(min-width: 768px)" />
+							: <source srcSet="/img/modern-water-filtration-system.png" media="(min-width: 768px)" />
+						}
 						<source srcSet="/img/drops.png" media="(max-width: 769px)" />
-						<img src="/img/modern-water-filtration-system.png" alt="" />
+						<img className={styles.image} src="/img/modern-water-filtration-system.png" alt="" />
 					</picture>
 				}
 			/>
