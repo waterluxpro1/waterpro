@@ -1,7 +1,6 @@
+import type { IGood } from '@/shared/interfaces/models/Good.interface'
+
 export interface GoodProps {
-	image: string
-	title: string
-	price: string
-	id: number
+	good: IGood
 	url: string
 }

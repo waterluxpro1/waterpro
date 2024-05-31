@@ -1,0 +1,44 @@
+.modal {
+	transition: transform .5s;
+	position: fixed;
+	left: 16px;
+	bottom: 0;
+	right: 16px;
+	max-height: 50vh;
+	overflow: auto;
+	border-radius: 16px 16px 0 0;
+	box-shadow: rgba(crimson, 50%) 0 0 16px;
+	border: crimson 1px solid;
+	border-bottom: none;
+
+	transform: translateY(150%);
+
+	&.opened {
+		transform: translateY(0);
+	}
+}
+
+.window {
+	transition: padding-bottom .3s;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 16px 16px 0 0;
+	position: relative;
+
+	&:hover {
+		padding-bottom: 32px;
+	}
+
+	display: flex;
+	gap: 16px;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.text {
+	line-height: 120%;
+}
+
+.button {
+	flex-shrink: 0;
+}

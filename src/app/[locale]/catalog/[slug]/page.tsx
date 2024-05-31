@@ -38,10 +38,7 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 						<Good
 							key={good.id}
 							url={`/${params.locale}/good/${good.slug}`}
-							image={good.images[0]?.src}
-							title={good.name}
-							price={good.price_html}
-							id={good.id}
+							good={good}
 						/>
 					)}
 				</Container>

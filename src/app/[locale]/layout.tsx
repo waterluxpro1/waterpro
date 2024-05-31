@@ -1,3 +1,4 @@
+import { ErrorModal } from '@/entities/ErrorModal/ErrorModal'
 import { ContactPopup } from '@/widgets/(popups)/ContactPopup/ContactPopup'
 import { Footer } from '@/widgets/Footer/Footer'
 import { Header } from '@/widgets/Header'
@@ -19,6 +20,7 @@ const Layout = ({ children, params }: { children: ReactNode, params: { locale: s
 			</main>
 			<Footer lang={params.locale} />
 			<ContactPopup />
+			<ErrorModal />
 		</div>
 	)
 }

@@ -3,9 +3,9 @@ export interface IGood {
 	name: string
 	slug: string
 	short_description: string
-	price_html: string
 	related_ids: number[]
 	price: number
+	regular_price: number
 
 	categories: {
 		id: number

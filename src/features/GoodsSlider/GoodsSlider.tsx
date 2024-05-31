@@ -6,6 +6,8 @@ import { Slider } from '@/shared/ui/Slider/Slider'
 import { SwiperSlide } from 'swiper/react'
 
 export const GoodsSlider = ({ className, goods, lang }: { className?: string, goods: IGood[], lang: string }) => {
+	console.log(goods)
+
 	return (
 		<Slider className={className}
 			spaceBetween={10}
@@ -27,10 +29,7 @@ export const GoodsSlider = ({ className, goods, lang }: { className?: string, go
 		>
 			{goods?.map((good) => <SwiperSlide key={good.id}>
 				<Good
-					id={good.id}
-					image={good.images[0]?.src}
-					title={good.name}
-					price={good.price_html}
+					good={good}
 					url={`/${lang}/good/${good.slug}`}
 				/>
 			</SwiperSlide>)}

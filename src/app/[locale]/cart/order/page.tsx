@@ -43,7 +43,12 @@ const createOrder = async (formData: FormData) => {
 
 	const json = await response.json()
 
-	redirect(json.payment_url)
+	if (response.ok) {
+		redirect(json.payment_url)
+	}
+	else {
+		redirect(`?error&error_text=${JSON.stringify(json)}`)
+	}
 }
 
 const OrderPage = async ({ params }: { params: { locale: string } }) => {
@@ -66,16 +71,16 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 				<div className={styles.column}>
 					<Title3 className={styles.title}>{translation.payment}</Title3>
 					<div className={styles.formFields}>
-						<Input placeholder={translation.first_name} name="first_name" autoComplete="name" />
-						<Input placeholder={translation.last_name} name="last_name" autoComplete="family-name" />
+						<Input placeholder={translation.first_name} name="first_name" autoComplete="name" required />
+						<Input placeholder={translation.last_name} name="last_name" autoComplete="family-name" required />
 						<Input placeholder={translation.company} name="company" autoComplete="company" />
-						<Input placeholder={translation.country} name="country" autoComplete="country-name" />
-						<Input placeholder={translation.address} name="address_1" autoComplete="country-name" />
-						<Input placeholder={translation.state} name="state" autoComplete="state" />
-						<Input placeholder={translation.city} name="city" autoComplete="city" />
-						<Input placeholder={translation.postcode} name="postcode" autoComplete="postal-code" />
-						<Input placeholder={translation.phone} name="phone" autoComplete="tel" />
-						<Input placeholder="Email*" name="email" autoComplete="email" />
+						<Input placeholder={translation.country} name="country" autoComplete="country-name" required />
+						<Input placeholder={translation.address} name="address_1" autoComplete="country-name" required />
+						<Input placeholder={translation.state} name="state" autoComplete="state" required />
+						<Input placeholder={translation.city} name="city" autoComplete="city" required />
+						<Input placeholder={translation.postcode} name="postcode" autoComplete="postal-code" required />
+						<Input placeholder={translation.phone} name="phone" autoComplete="tel" required />
+						<Input type="email" placeholder="Email*" name="email" autoComplete="email" required />
 						<Textarea placeholder={translation.message} name="message" autoComplete="off"></Textarea>
 					</div>
 				</div>
@@ -85,7 +90,7 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 					<Body2 className={styles.attention}>
 						{translation.data_proccessing.split('>')[0]} <Link className={styles.link} href={cartTranslation.policy_url}>{translation.data_proccessing.split('>')[1]}</Link>.
 					</Body2>
-					<Checkbox className={styles.attention} id="agree-rules"
+					<Checkbox required className={styles.attention} id="agree-rules"
 						label={<>{translation.site_rules.split('>')[0]} <Link className={styles.link} href={cartTranslation.site_rules_url}>{translation.site_rules.split('>')[1]}</Link></>} />
 					<button className={styles.button} type="submit">
 						<Button>{translation.submit}</Button>

@@ -13,9 +13,24 @@
 }
 
 .price {
-	@include mixins.adaptive-value('font-size', 24, 16);
+	@include mixins.adaptive-value('font-size', 18, 16);
 	font-weight: 600;
 	color: vars.$dark-blue;
+
+	display: flex;
+	// flex-direction: row-reverse;
+	align-items: flex-end;
+	gap: 4px;
+
+	del {
+		font-size: 14px;
+		opacity: 50%;
+	}
+
+	.discount {
+		color: #c00;
+		font-size: 14px;
+	}
 }
 
 .button {
