@@ -6,8 +6,6 @@ import { Slider } from '@/shared/ui/Slider/Slider'
 import { SwiperSlide } from 'swiper/react'
 
 export const GoodsSlider = ({ className, goods, lang }: { className?: string, goods: IGood[], lang: string }) => {
-	console.log(goods)
-
 	return (
 		<Slider className={className}
 			spaceBetween={10}

@@ -8,6 +8,7 @@ import { Faq } from '@/widgets/home/Faq/Faq'
 import styles from './page.module.scss'
 import type { Metadata } from 'next'
 import { Container } from '@/shared/ui/Container'
+import { wordpress } from '@/shared/api/wordpress.service'
 
 export const metadata: Metadata = {
   title: 'Главная - WaterPro'
@@ -15,17 +16,19 @@ export const metadata: Metadata = {
 
 export default async function Home({ params }: { params: { locale: string } }) {
   try {
-    const lang = await import(`@/shared/locales/${params.locale}/home.json`)
+    const [lang] = await wordpress.getTranslations('home')
+    const translations =
+      JSON.parse(typeof lang.acf[params.locale] === 'string' ? lang.acf[params.locale]!.toString() : '')
 
     return (
       <div className={styles.page}>
-        <Welcome locale={lang.welcome} />
-        <Categories {...lang.categories} />
-        <Advantages locale={lang.advantages} />
-        <PopularGoods locale={lang.popular_goods} lang={params.locale} />
+        <Welcome locale={translations.welcome} />
+        <Categories {...translations.categories} />
+        <Advantages locale={translations.advantages} />
+        <PopularGoods locale={translations.popular_goods} lang={params.locale} />
         <Contact />
-        <Reviews locale={lang.reviews} />
-        <Faq locale={lang.faq} />
+        <Reviews locale={translations.reviews} />
+        <Faq locale={translations.faq} />
       </div>
     )
   }

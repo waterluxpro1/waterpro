@@ -1,6 +1,7 @@
 import type { ICategory } from '../interfaces/models/Category.interface'
 import type { IGood } from '../interfaces/models/Good.interface'
 import type { PageModel } from '../interfaces/models/Page.model'
+import type { TranslationModel } from '../interfaces/models/Translation.model'
 
 const request = async<T>(path: URL | string, init?: RequestInit | undefined): Promise<T> => {
 	const response = await fetch(path, init)
@@ -49,4 +50,5 @@ export const woocomerence = {
 export const wordpress = {
 	getPage: async (slug: string) => wpRequest<PageModel[]>(`pages?slug=${slug}&acf_format=standard`),
 	getMediaById: async (id: number) => wpRequest<{ source_url: string }>(`media/${id}`),
+	getTranslations: async (slug: string) => wpRequest<TranslationModel[]>(`translations?slug=${slug}`)
 }
