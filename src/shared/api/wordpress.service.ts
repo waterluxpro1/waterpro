@@ -13,7 +13,7 @@ const request = async<T>(path: URL | string, init?: RequestInit | undefined): Pr
 const wcRequest = async <T>(path: string): Promise<T> => {
 	const response = await request<T>(`https://waterpro.ee/wp-json/wc/v3/${path}`, {
 		next: {
-			revalidate: 600,
+			revalidate: 180,
 			tags: [path]
 		},
 		headers: {
@@ -27,7 +27,7 @@ const wcRequest = async <T>(path: string): Promise<T> => {
 const wpRequest = async <T>(path: string): Promise<T> => {
 	const response = await request<T>(`https://waterpro.ee/wp-json/wp/v2/${path}`, {
 		next: {
-			revalidate: 600,
+			revalidate: 180,
 			tags: [path]
 		},
 		headers: {
