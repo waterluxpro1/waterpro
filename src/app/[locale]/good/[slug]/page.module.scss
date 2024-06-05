@@ -6,15 +6,6 @@
 	min-height: 100vh;
 }
 
-.price {
-	font-size: 24px;
-	color: vars.$dark-blue;
-	font-weight: 700;
-	line-height: 115%;
-	display: block;
-	margin-top: 24px;
-}
-
 .card {
 	display: flex;
 	@include mixins.adaptive-value('gap', 80, 10);
@@ -50,4 +41,26 @@
 
 .breadcrumbs {
 	padding-top: 32px;
+}
+
+.price {
+	margin-top: 18px;
+	@include mixins.adaptive-value('font-size', 24, 16);
+	font-weight: 600;
+	color: vars.$dark-blue;
+
+	display: flex;
+	// flex-direction: row-reverse;
+	align-items: flex-end;
+	gap: 4px;
+
+	del {
+		font-size: 16px;
+		opacity: 50%;
+	}
+
+	.discount {
+		color: #c00;
+		font-size: 16px;
+	}
 }

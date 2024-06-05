@@ -7,10 +7,7 @@ export const WpGood = async (props: WpGoodProps) => {
 
 	return (
 		<Good
-			image={good.images[0].src}
-			title={good.name}
-			price={good.price_html}
-			id={good.id}
+			good={good}
 			url={'/'}
 		/>
 	)

@@ -41,7 +41,7 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					</div>
 					<div className={styles.info}>
 						<Title3 className={styles.title}>{good.name}</Title3>
-						<span className={styles.price} dangerouslySetInnerHTML={{ __html: good.price_html }}></span>
+						<span className={styles.price}>€{good.price} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
 						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} />
 					</div>
 				</div>
