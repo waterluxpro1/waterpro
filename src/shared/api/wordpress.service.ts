@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import type { ICategory } from '../interfaces/models/Category.interface'
 import type { IGood } from '../interfaces/models/Good.interface'
 import type { PageModel } from '../interfaces/models/Page.model'
@@ -50,5 +51,15 @@ export const woocomerence = {
 export const wordpress = {
 	getPage: async (slug: string) => wpRequest<PageModel[]>(`pages?slug=${slug}&acf_format=standard`),
 	getMediaById: async (id: number) => wpRequest<{ source_url: string }>(`media/${id}`),
-	getTranslations: async (slug: string) => wpRequest<TranslationModel[]>(`translations?slug=${slug}`)
+	getTranslations: async (slug: string, lang: string) => {
+		const [translation] = await wpRequest<TranslationModel[]>(`translations?slug=${slug}`)
+
+		if (translation) {
+			return JSON.parse(typeof translation.acf[lang] === 'string' ? translation.acf[lang]! : '')
+		}
+		else {
+			console.error(`translation ${slug} in ${lang} not found (404)`)
+			notFound()
+		}
+	}
 }

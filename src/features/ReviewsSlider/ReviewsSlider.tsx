@@ -5,11 +5,12 @@ import { Review } from '@/entities/Review/Review'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { Slider } from '@/shared/ui/Slider/Slider'
+import { wordpress } from '@/shared/api/wordpress.service'
 
 export const ReviewsSlider = ({ className }: { className?: string }) => {
 	const { locale } = useParams()
 
-	const [reviews, setReviews] = useState<{
+	const [translations, setTranslations] = useState<{
 		title: string
 		reviews: {
 			image: string
@@ -19,13 +20,10 @@ export const ReviewsSlider = ({ className }: { className?: string }) => {
 	} | undefined>()
 
 	useEffect(() => {
-		try {
-			import(`@/shared/locales/${locale}/reviews-slider.json`).then((data) => {
-				setReviews(data)
-			})
-		} catch (e) {
-			console.error(e)
-		}
+		(async () => {
+			const translations = await wordpress.getTranslations('reviews-slider', locale.toString())
+			setTranslations(translations)
+		})()
 	}, [locale])
 
 	return (
@@ -35,7 +33,7 @@ export const ReviewsSlider = ({ className }: { className?: string }) => {
 					slidesPerView: 2
 				}
 			}}>
-			{reviews?.reviews.map((review) =>
+			{translations?.reviews.map((review) =>
 				<SwiperSlide key={JSON.stringify(review)}>
 					<Review
 						image={review.image}

@@ -9,50 +9,43 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import type { MenuProps } from './Menu.props'
+import { wordpress } from '@/shared/api/wordpress.service'
+import type { MenuModel } from './Menu.model'
 
 export const Menu = ({ isOpened, locale, setIsOpened }: MenuProps) => {
 	const pathname = usePathname()
-	const [menu, setMenu] = useState<{
-		name: string
-		href?: string
-		submenu?: {
-			name: string
-			href: string
-		}[]
-	}[]>()
+	const [translations, setTranslations] = useState<MenuModel>()
 
 	useEffect(() => {
-		try {
-			import(`@/shared/locales/${locale}/menu.json`).then((menu) => {
-				setMenu(menu.menu)
-			})
-		} catch (e) {
-			console.error(e)
-		}
+		(async () => {
+			const translations = await wordpress.getTranslations('menu', locale)
+			setTranslations(translations)
+
+			console.log(translations)
+		})()
 	}, [locale])
 
 	return (
 		<div className={clsx(styles.menu, isOpened && styles.opened)}>
 			<ul className={styles.menuList} onClick={(e) => {
-				if ((e.target as HTMLElement).hasAttribute('data-link')) {
-					setIsOpened(false)
-				}
+				if ((e.target as HTMLElement).hasAttribute('data-link')) { setIsOpened(false) }
 			}}>
-				{menu && menu?.map((item) => (
+				{translations && translations?.menu.map((item) => (
 					<li className={styles.menuItem} key={JSON.stringify(item)}>
-						{typeof item.href !== 'undefined' && (
-							<Link data-link href={`/${pathname?.split('/')[1]}${item.href}`}>{item.name}</Link>
+						{Object.hasOwn(item, 'href') && (
+							<Link data-link prefetch={false} href={`/${pathname?.split('/')[1]}${item.href}`}>{item.name}</Link>
 						)}
 
 						{item.submenu && (
 							<>
 								<span className={styles.menuTitle}>{item.name} <Dropdown /></span>
 								<ul className={styles.submenu}>
-									{item.submenu?.map((submenu) => (
-										<li className={styles.submenuItem} key={JSON.stringify(submenu)}>
-											<Link data-link prefetch={false} href={`/${pathname?.split('/')[1]}${submenu.href}`}>{submenu.name}</Link>
+									{item.submenu?.map((submenu) =>
+										<li key={JSON.stringify(submenu)} className={styles.submenuItem}>
+											<Link data-link prefetch={false} href={`/${pathname?.split('/')[1]}${submenu.href}`}>
+												{submenu.name}</Link>
 										</li>
-									))}
+									)}
 								</ul>
 							</>
 						)}

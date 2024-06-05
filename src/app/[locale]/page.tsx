@@ -16,9 +16,7 @@ export const metadata: Metadata = {
 
 export default async function Home({ params }: { params: { locale: string } }) {
   try {
-    const [lang] = await wordpress.getTranslations('home')
-    const translations =
-      JSON.parse(typeof lang.acf[params.locale] === 'string' ? lang.acf[params.locale]!.toString() : '')
+    const translations = await wordpress.getTranslations('home', params.locale)
 
     return (
       <div className={styles.page}>

@@ -7,24 +7,22 @@ import { Contacts } from '@/features/Contacts'
 import { Select } from '@/shared/ui/Select'
 import { SelectItem } from '@/shared/ui/SelectItem'
 import { Button } from '@/shared/ui/Button'
-import { Menu } from './Menu'
+import { Menu } from './Menu/Menu'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import clsx from 'clsx'
+import { wordpress } from '@/shared/api/wordpress.service'
 
 export const Header = ({ lang, goods }: { lang: string, goods: number }) => {
 	const [isOpened, setIsOpened] = useState(false)
-	const [locale, setLocale] = useState<{ contact_button: string }>()
+	const [translations, setTranslations] = useState<{ contact_button: string }>()
 
 	useEffect(() => {
-		try {
-			import(`@/shared/locales/${lang}/header.json`).then(data => {
-				setLocale(data)
-			})
-		} catch (e) {
-			console.log(e)
-		}
+		(async () => {
+			const translations = await wordpress.getTranslations('header', lang)
+			setTranslations(translations)
+		})()
 	}, [lang])
 
 	return (
@@ -65,7 +63,7 @@ export const Header = ({ lang, goods }: { lang: string, goods: number }) => {
 						</svg>
 					</span></Link>
 					<Link prefetch={false} href="?modal=contact" className={styles.button}>
-						<Button appearance="secondary" size="normal">{locale?.contact_button}</Button>
+						<Button appearance="secondary" size="normal">{translations?.contact_button}</Button>
 					</Link>
 					<div className={styles.menuButton} onClick={() => { setIsOpened(!isOpened) }}><span></span></div>
 				</div>

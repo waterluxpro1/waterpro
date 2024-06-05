@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 import { Title3 } from '@/shared/ui/Title3/Title3'
 import { Ordering } from '@/features/Ordering/Ordering'
 import { cookies } from 'next/headers'
-import { woocomerence } from '@/shared/api/wordpress.service'
+import { woocomerence, wordpress } from '@/shared/api/wordpress.service'
 import Link from 'next/link'
 import { Checkbox } from '@/shared/ui/Checkbox/Checkbox'
 import { Body2 } from '@/shared/ui/Body2'
@@ -58,8 +58,8 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 			: undefined
 	const goods = cart && await Promise.all(cart.map(async (item) => await woocomerence.getGoodById(item.product_id)))
 
-	const cartTranslation = await import(`@/shared/locales/${params.locale}/cart.json`)
-	const translation = await import(`@/shared/locales/${params.locale}/cart--order.json`)
+	const cartTranslation = await wordpress.getTranslations('cart', params.locale)
+	const translation = await wordpress.getTranslations('cart-order', params.locale)
 
 	const shippingMethods = await woocomerence.getShippingMethods()
 

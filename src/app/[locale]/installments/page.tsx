@@ -8,6 +8,15 @@ import { Card } from '@/shared/ui/Card/Card'
 import { Button } from '@/shared/ui/Button'
 import { Contact } from '@/widgets/home/Contact/Contact'
 import { Title1 } from '@/shared/ui/Title1/Title1'
+import { wordpress } from '@/shared/api/wordpress.service'
+
+export const generateMetadata = async ({ params }: { params: { locale: string } }) => {
+	const translation = await wordpress.getTranslations('installments', params.locale)
+
+	return {
+		title: `${translation.h1} - Water PRO`
+	}
+}
 
 const Installments = async ({ params }: { params: { locale: string } }) => {
 	const translation: {
@@ -25,7 +34,7 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 				description: string
 			}>
 		}
-	} = await import(`@/shared/locales/${params.locale}/installements.json`)
+	} = await wordpress.getTranslations('installments', params.locale)
 
 	return (
 		<>

@@ -5,10 +5,11 @@ import { Button } from '@/shared/ui/Button'
 import clsx from 'clsx'
 import { Contacts } from '@/features/Contacts'
 import { Card } from '@/shared/ui/Card/Card'
+import { wordpress } from '@/shared/api/wordpress.service'
 
 export const Footer = async ({ lang }: { lang: string }) => {
 	try {
-		const translations = await import(`@/shared/locales/${lang}/footer.json`)
+		const translations = await wordpress.getTranslations('footer', lang)
 
 		return (
 			<article className={styles.footer}>
