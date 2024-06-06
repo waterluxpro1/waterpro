@@ -14,9 +14,13 @@ import { AddToCartButton } from '@/features/goodCard/AddToCartButton/AddToCartBu
 import { Eval } from '@/shared/ui/Eval/Eval'
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
+import { notFound } from 'next/navigation'
+import clsx from 'clsx'
 
 const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)
+
+	if (!good) notFound()
 
 	const relatedGoods = await Promise.all(good.related_ids.map(async (id) => {
 		const good = await woocomerence.getGoodById(id)
@@ -36,11 +40,14 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					<BreadcrumbsItem>{good.name}</BreadcrumbsItem>
 				</Breadcrumbs>
 				<div className={styles.card}>
-					<div className={styles.image}>
-						<Image src={good.images[0]?.src} alt={good.images[0]?.alt} width={300} height={300} />
+					<div className={styles.imageCard}>
+						<Title3 className={clsx(styles.title, styles.mobile)}>{good.name}</Title3>
+						<div className={styles.image}>
+							<Image src={good.images[0]?.src} alt={good.images[0]?.alt} width={300} height={300} />
+						</div>
 					</div>
 					<div className={styles.info}>
-						<Title3 className={styles.title}>{good.name}</Title3>
+						<Title3 className={clsx(styles.title, styles.desktop)}>{good.name}</Title3>
 						<span className={styles.price}>€{good.price} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
 						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} />
 					</div>

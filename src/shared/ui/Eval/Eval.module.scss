@@ -1,10 +1,11 @@
 @use "@/global/scss/vars";
+@use "@/global/scss/mixins";
 
 .eval {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
-	font-size: 18px;
+	@include mixins.adaptive-value('font-size', 18, 16);
 	line-height: 150%;
 
 	ul {
@@ -14,7 +15,7 @@
 	}
 
 	ul li {
-		font-size: 18px;
+		@include mixins.adaptive-value('font-size', 18, 16);
 		line-height: 150%;
 
 		&::before {
@@ -25,14 +26,15 @@
 
 
 	h3 {
-		font-size: 32px;
+		@include mixins.adaptive-value('font-size', 35, 24);
 		font-weight: 600;
 		text-transform: uppercase;
 		color: vars.$dark-blue;
+		line-height: 130%;
 	}
 
 	p {
-		font-size: 18px;
+		@include mixins.adaptive-value('font-size', 18, 16);
 		line-height: 150%;
 	}
 }

@@ -43,10 +43,11 @@
 	background-color: #fff;
 	padding: 64px;
 	width: 120%;
-	z-index: 999;
+	z-index: 2;
 
 	@media (max-width: vars.$tablet) {
 		width: 100%;
+		padding: 40px;
 	}
 }
 

@@ -4,6 +4,10 @@
 .wrapper {
 	background-color: #fff;
 	min-height: 100vh;
+
+	@media (max-width: vars.$medium) {
+		background-color: #f9f9f9;
+	}
 }
 
 .card {
@@ -11,6 +15,13 @@
 	@include mixins.adaptive-value('gap', 80, 10);
 	align-items: center;
 	padding-block: 60px;
+
+	@media (max-width: vars.$medium) {
+		flex-direction: column;
+		align-items: start;
+		gap: 40px;
+		padding-block: 32px;
+	}
 }
 
 .title {
@@ -21,13 +32,67 @@
 
 .image {
 	flex-basis: 430px;
+
+	@media (max-width: vars.$medium) {
+		flex-basis: auto;
+		width: 100%;
+	}
+}
+
+.imageCard {
+	@media (max-width: vars.$medium) {
+		margin: -12px;
+		width: 100vw;
+		background-color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 32px;
+		border-radius: 16px;
+		box-shadow: rgba(#eee, 30%) 0 0 16px;
+	}
+}
+
+.desktop {
+	display: block;
+
+	@media (max-width: vars.$medium) {
+		display: none;
+	}
+}
+
+.mobile {
+	display: none;
+
+	@media (max-width: vars.$medium) {
+		display: block;
+	}
 }
 
 .addToCart {
-	margin-top: 30px;
+	margin-top: 24px;
 	display: flex;
 	align-items: center;
 	gap: 40px;
+
+	@media (max-width: vars.$medium) {
+		gap: 20px;
+	}
+}
+
+.info {
+	@media (max-width: vars.$medium) {
+		margin: -12px;
+		width: 100vw;
+		background-color: #fff;
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 16px;
+		box-shadow: rgba(#eee, 30%) 0 0 16px;
+	}
 }
 
 .delete {
@@ -45,7 +110,7 @@
 
 .price {
 	margin-top: 18px;
-	@include mixins.adaptive-value('font-size', 24, 16);
+	font-size: 24px;
 	font-weight: 600;
 	color: vars.$dark-blue;
 
@@ -54,13 +119,17 @@
 	align-items: flex-end;
 	gap: 4px;
 
+	@media (max-width: vars.$medium) {
+		margin-top: 0;
+	}
+
 	del {
-		font-size: 16px;
+		font-size: 20px;
 		opacity: 50%;
 	}
 
 	.discount {
 		color: #c00;
-		font-size: 16px;
+		font-size: 20px;
 	}
 }

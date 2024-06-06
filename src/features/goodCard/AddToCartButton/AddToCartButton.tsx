@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import { FormField } from '@/shared/ui/FormField/FormField'
 import type { AddToCartButtonProps } from './AddToCartButton.props'
+import styles from './AddToCartButton.module.scss'
 
 const addToCard = async (formData: FormData) => {
 	'use server'
@@ -36,7 +37,7 @@ export const AddToCartButton = ({ isInCart, goodId, ...props }: AddToCartButtonP
 		<form {...props} action={addToCard}>
 			<FormField name="product_id" value={goodId} />
 			{!isInCart && <InputCounter name="quantity" />}
-			<button type="submit"><Button>{!isInCart ? 'В корзину' : 'Удалить из корзины'}</Button></button>
+			<button type="submit"><Button className={styles.button}>{!isInCart ? 'В корзину' : 'Удалить из корзины'}</Button></button>
 		</form>
 	)
 }
