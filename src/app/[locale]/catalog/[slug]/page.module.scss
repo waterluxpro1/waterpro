@@ -17,8 +17,16 @@
 }
 
 .image.image {
-	height: 350px;
+	height: 480px;
 	width: 100%;
+
+	@media (max-width: 1920px) {
+		height: 420px;
+	}
+
+	@media (max-width: 1440px) {
+		height: 320px;
+	}
 
 	@media (max-width: vars.$tablet) {
 		height: 240px;
