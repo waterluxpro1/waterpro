@@ -16,10 +16,11 @@
 .title {
 	max-width: 600px;
 	font-weight: 700;
+	font-size: 40px;
 }
 
 .subtitle {
-	@include mixins.adaptive-value('font-size', 30, 18);
+	@include mixins.adaptive-value('font-size', 28, 18);
 	margin-top: 24px;
 }
 

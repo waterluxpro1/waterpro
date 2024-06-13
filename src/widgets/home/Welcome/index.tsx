@@ -10,7 +10,7 @@ export const Welcome = async (props: WelcomeModel) => {
 		<article className={styles.welcome}>
 			<OverflowImage
 				content={<div className={styles.content}>
-					<Title1 className={styles.title}>{props.locale?.title}</Title1>
+					<Title1 className={styles.title} dangerouslySetInnerHTML={{ __html: props.locale?.title! }}></Title1>
 					<h2 className={styles.subtitle}>{props.locale?.subtitle}</h2>
 					<Button className={styles.button} size="large">{props.locale?.button}</Button>
 				</div>}
