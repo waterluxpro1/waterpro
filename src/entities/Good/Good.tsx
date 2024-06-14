@@ -13,7 +13,7 @@ export const Good = ({ good, url }: GoodProps) => {
 				<Image className={styles.image} src={good.images[0].src} alt={good.name} width={300} height={300} />
 			</div>
 			<Title5 className={styles.title}>{good.name}</Title5>
-			<span className={styles.price}>€{good.price} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
+			<span className={styles.price}>€{good.price}{Math.floor(+good.price) === +good.price && '.00'} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
 			<Link prefetch={false} href={url}>
 				<Button className={styles.button} appearance="primary">Подробнее</Button>
 			</Link>

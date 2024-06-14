@@ -32,12 +32,12 @@ const addToCard = async (formData: FormData) => {
 	revalidatePath('.')
 }
 
-export const AddToCartButton = ({ isInCart, goodId, ...props }: AddToCartButtonProps) => {
+export const AddToCartButton = ({ isInCart, goodId, addToCartText, removeFromCartText, ...props }: AddToCartButtonProps) => {
 	return (
 		<form {...props} action={addToCard}>
 			<FormField name="product_id" value={goodId} />
 			{!isInCart && <InputCounter name="quantity" />}
-			<button type="submit"><Button className={styles.button}>{!isInCart ? 'В корзину' : 'Удалить из корзины'}</Button></button>
+			<button type="submit"><Button className={styles.button}>{!isInCart ? addToCartText : removeFromCartText}</Button></button>
 		</form>
 	)
 }

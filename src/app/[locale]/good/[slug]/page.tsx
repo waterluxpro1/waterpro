@@ -6,7 +6,7 @@ import { TabsList } from '@/shared/ui/TabsList'
 
 import styles from './page.module.scss'
 import Image from 'next/image'
-import { woocomerence } from '@/shared/api/wordpress.service'
+import { woocomerence, wordpress } from '@/shared/api/wordpress.service'
 import { Title3 } from '@/shared/ui/Title3/Title3'
 import { GoodsSlider } from '@/features/GoodsSlider/GoodsSlider'
 import { cookies } from 'next/headers'
@@ -16,6 +16,7 @@ import { Breadcrumbs } from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
 import { notFound } from 'next/navigation'
 import clsx from 'clsx'
+import { Title4 } from '@/shared/ui/Title4'
 
 const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)
@@ -27,6 +28,8 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 
 		return good
 	}))
+
+	const translations = await wordpress.getTranslations('good-card', params.locale)
 
 	const cart = cookies().get('cart')?.value
 	const isInCart = cart && JSON.parse(cart).find((item: any) => item.product_id === good.id)
@@ -48,13 +51,13 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					</div>
 					<div className={styles.info}>
 						<Title3 className={clsx(styles.title, styles.desktop)}>{good.name}</Title3>
-						<span className={styles.price}>€{good.price} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
-						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} />
+						<span className={styles.price}>€{good.price}{Math.floor(+good.price) === +good.price && '.00'} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
+						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} addToCartText={translations.add_to_cart} removeFromCartText={translations.remove_to_cart} />
 					</div>
 				</div>
 				<Tabs defaultActive={1}>
-					<TabsList><Tab index={1}>Описание</Tab>
-						<Tab index={2}>В комплекте</Tab></TabsList>
+					<TabsList><Tab index={1}>{translations.description}</Tab>
+						<Tab index={2}>{translations.included}</Tab></TabsList>
 					<TabPanel index={1}>
 						<Eval>
 							{good.meta_data.find(item =>
@@ -68,6 +71,7 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 						</Eval>
 					</TabPanel>
 				</Tabs>
+				<Title4 className={styles.similar}>{translations.similar_goods}</Title4>
 				<GoodsSlider className={styles.relatedGoods} lang={params.locale} goods={relatedGoods} />
 			</Container>
 		</div>

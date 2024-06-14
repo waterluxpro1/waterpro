@@ -99,8 +99,16 @@
 	cursor: pointer;
 }
 
-.relatedGoods {
+.similar {
 	margin-top: 80px;
+	border-bottom: vars.$dark-blue 1px solid;
+	padding-bottom: 20px;
+	color: vars.$dark-blue;
+	text-transform: uppercase;
+}
+
+.relatedGoods {
+	margin-top: 10px;
 	padding-bottom: 80px;
 }
 
