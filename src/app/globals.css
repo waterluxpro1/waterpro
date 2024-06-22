@@ -73,3 +73,8 @@ textarea {
 .global-wrapper main {
   flex-grow: 1;
 }
+.meta {
+  display: none;
+  fontsize: 0;
+  opacity: 0;
+}

@@ -9,12 +9,16 @@ import { Button } from '@/shared/ui/Button'
 import { Contact } from '@/widgets/home/Contact/Contact'
 import { Title1 } from '@/shared/ui/Title1/Title1'
 import { wordpress } from '@/shared/api/wordpress.service'
+import { headers } from 'next/headers'
 
 export const generateMetadata = async ({ params }: { params: { locale: string } }) => {
 	const translation = await wordpress.getTranslations('installments', params.locale)
 
 	return {
-		title: `${translation.h1} - Water PRO`
+		title: `${translation.h1} - Water PRO`,
+		openGraph: {
+			url: headers().get('referer') ? headers().get('referer')! : 'https://www.waterpro.ee'
+		}
 	}
 }
 
@@ -45,7 +49,7 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 						<ul className={styles.logos}>
 							<li>
 								<svg width="128" height="64" viewBox="0 0 128 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<g clip-path="url(#clip0_257_1112)">
+									<g clipPath="url(#clip0_257_1112)">
 										<path d="M56.7369 17.3964C57.3123 15.938 57.4561 14.6255 57.0246 13.1672C56.5931 11.4172 56.1615 10.8339 55.2985 9.37554C54.0039 7.18804 51.5586 6.75054 50.1201 9.08388C48.9694 10.8339 49.4009 14.9172 50.264 16.6672C51.4147 19.438 56.3054 18.563 56.7369 17.3964Z" fill="#335577" />
 										<path d="M105.501 20.4584C105.501 19.1459 105.357 17.9792 104.494 16.9584C103.631 15.6459 103.2 15.3542 102.049 14.3334C100.323 13.0209 98.1652 13.3125 97.5898 15.6459C97.1583 17.3959 98.5967 20.6042 99.8913 21.7709C101.617 23.8125 105.501 21.625 105.501 20.4584Z" fill="#335577" />
 										<path d="M63.7855 24.9795C70.2585 30.0836 69.9708 21.042 65.3678 17.6878C61.9156 15.0628 60.9087 22.792 63.7855 24.9795Z" fill="#335577" />
@@ -61,7 +65,7 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 							</li>
 							<li>
 								<svg width="378" height="50" viewBox="0 0 378 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<g clip-path="url(#clip0_257_1119)">
+									<g clipPath="url(#clip0_257_1119)">
 										<path d="M147.354 26.305V44.5744H139.881L139.753 27.264C139.688 20.63 137.242 19.1213 133.979 19.1213C130.38 19.1213 126.917 21.3822 126.847 27.6773V44.5744H119.365L119.234 27.264C119.168 20.63 116.723 19.1213 113.325 19.1213C109.791 19.1213 106.397 21.3822 106.348 27.6773L106.213 44.5744H98.7148V13.4462H105.371V18.4393C107.206 14.6077 110.805 12.4873 115.766 12.4873C120.318 12.4873 124.052 13.9216 125.616 18.9849C127.38 14.8144 131.324 12.4873 136.552 12.4873C142.733 12.4873 147.354 15.1533 147.354 26.305Z" fill="#335577" />
 										<path d="M154.898 29.1116C154.898 18.9849 162.101 12.4873 171.609 12.4873C181.118 12.4873 188.32 18.9849 188.32 29.1116C188.32 39.168 181.257 45.5333 171.609 45.5333C161.961 45.5333 154.898 39.168 154.898 29.1116ZM180.576 28.9752C180.511 23.4324 176.907 19.5346 171.609 19.5346C166.381 19.5346 162.778 23.5026 162.642 28.9752C162.507 34.5841 166.381 38.4818 171.609 38.4818C176.907 38.5066 180.712 34.5841 180.576 28.9752Z" fill="#335577" />
 										<path d="M223.063 26.305V44.5744H215.676L215.541 27.264C215.471 20.63 213.079 19.1916 209.627 19.1916C205.823 19.1916 202.495 21.4484 202.429 27.5368L202.294 44.5744H194.816V13.4462H201.473V18.4393C203.307 14.678 206.976 12.4873 212.003 12.4873C218.524 12.4873 223.063 15.1533 223.063 26.305Z" fill="#335577" />
@@ -96,7 +100,7 @@ const Installments = async ({ params }: { params: { locale: string } }) => {
 				<div className={styles.variants}>
 					{translation.variants.cards.map((card) =>
 						<Card className={styles.card} key={JSON.stringify(card)}>
-							<Image className={styles.logo} src={card.logo_path} alt={card.logo_path} width={400} height={90} />
+							<Image className={styles.logo} src={card.logo_path} alt={card.logo_path} width={200} height={90} />
 							<span className={styles.cardTitle}>{card.title}</span>
 							<Body1 className={styles.body} dangerouslySetInnerHTML={{ __html: card.description }}></Body1>
 							<Button className={styles.button} appearance="primary">{translation.variants.select_button}</Button>

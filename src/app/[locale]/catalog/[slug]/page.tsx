@@ -7,6 +7,18 @@ import { Breadcrumbs } from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
 import { Title1 } from '@/shared/ui/Title1/Title1'
 import Image from 'next/image'
+import { headers } from 'next/headers'
+
+export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
+	const [category] = await woocomerence.getCategoryBySlug(params.slug)
+
+	return {
+		title: `${category.name} | Water PRO`,
+		openGraph: {
+			url: headers().get('referer') ? headers().get('referer')! : 'https://www.waterpro.ee'
+		}
+	}
+}
 
 const CatalogPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [category] = await woocomerence.getCategoryBySlug(params.slug)

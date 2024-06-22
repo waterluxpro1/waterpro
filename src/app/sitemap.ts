@@ -18,7 +18,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 			url: 'https://www.waterpro.ee/et/installments',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 2,
+			priority: 0.8,
 			alternates: {
 				languages: {
 					et: 'https://www.waterpro.ee/et/installments',
@@ -30,7 +30,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 			url: 'https://www.waterpro.ee/et/contacts',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 2,
+			priority: 0.8,
 			alternates: {
 				languages: {
 					et: 'https://www.waterpro.ee/et/contacts',
@@ -42,7 +42,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 			url: 'https://www.waterpro.ee/et/cart',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 2,
+			priority: 0.8,
 			alternates: {
 				languages: {
 					et: 'https://www.waterpro.ee/et/cart',
@@ -54,7 +54,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 			url: 'https://www.waterpro.ee/et/catalog/veepuhassusteemid',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 2,
+			priority: 0.8,
 			alternates: {
 				languages: {
 					et: 'https://www.waterpro.ee/et/catalog/veepuhassusteemid',
@@ -66,7 +66,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 			url: 'https://www.waterpro.ee/et/catalog/dushifilter',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 2,
+			priority: 0.8,
 			alternates: {
 				languages: {
 					et: 'https://www.waterpro.ee/et/catalog/dushifilter',
@@ -78,7 +78,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 			url: 'https://www.waterpro.ee/et/catalog/veefiltrid',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 2,
+			priority: 0.8,
 			alternates: {
 				languages: {
 					et: 'https://www.waterpro.ee/et/catalog/veefiltrid',
@@ -90,7 +90,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 			url: 'https://www.waterpro.ee/et/catalog/aksessuaarid',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 2,
+			priority: 0.8,
 			alternates: {
 				languages: {
 					et: 'https://www.waterpro.ee/et/catalog/aksessuaarid',

@@ -1,16 +1,26 @@
 import { woocomerence, wordpress } from '@/shared/api/wordpress.service'
 import { Container } from '@/shared/ui/Container'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import styles from './page.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Card } from '@/shared/ui/Card/Card'
 import { Ordering } from '@/features/Ordering/Ordering'
-import type { Metadata } from 'next'
 import { CartGoodParam } from '@/entities/cart/CartGoodParam/CartGoodParam'
 import { RemoveGoodButton } from '@/features/cart/RemoveGoodButton/RemoveGoodButton'
+import type { Metadata } from 'next'
 
-export const metadata: Metadata = { title: 'Корзина - WaterPro' }
+export const generateMetadata = async ({ params }: { params: { locale: string } }): Promise<Metadata> => {
+	const translations = await wordpress.getTranslations('cart', params.locale)
+	console.log(translations)
+
+	return {
+		title: `${translations.h1} | Water PRO`,
+		openGraph: {
+			url: headers().get('referer') ? headers().get('referer')! : 'https://www.waterpro.ee'
+		}
+	}
+}
 
 const Cart = async ({ params }: { params: { locale: string } }) => {
 	const cart: Array<{ product_id: number, quantity: number }> =

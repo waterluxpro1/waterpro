@@ -5,6 +5,18 @@ import Image from 'next/image'
 import { Body1 } from '@/shared/ui/Body1'
 import { Title1 } from '@/shared/ui/Title1/Title1'
 import { wordpress } from '@/shared/api/wordpress.service'
+import { headers } from 'next/headers'
+
+export const generateMetadata = async ({ params }: { params: { locale: string } }) => {
+	const translations = await wordpress.getTranslations('contacts', params.locale)
+
+	return {
+		title: `${translations.h1} | Water PRO`,
+		openGraph: {
+			url: headers().get('referer') ? headers().get('referer')! : 'https://www.waterpro.ee'
+		}
+	}
+}
 
 const Contacts = async ({ params }: { params: { locale: string } }) => {
 	const translations = await wordpress.getTranslations('contacts', params.locale)

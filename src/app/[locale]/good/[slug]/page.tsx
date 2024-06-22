@@ -17,6 +17,18 @@ import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
 import { notFound } from 'next/navigation'
 import clsx from 'clsx'
 import { Title4 } from '@/shared/ui/Title4'
+import type { Metadata } from 'next'
+
+export const generateMetadata = async ({ params }: { params: { slug: string } }): Promise<Metadata> => {
+	const [good] = await woocomerence.getGoodBySlug(params.slug)
+
+	if (!good) notFound()
+
+	return {
+		title: `${good.name} | WaterPRO`,
+		description: good.short_description
+	}
+}
 
 const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)

@@ -9,9 +9,17 @@ import styles from './page.module.scss'
 import type { Metadata } from 'next'
 import { Container } from '@/shared/ui/Container'
 import { wordpress } from '@/shared/api/wordpress.service'
+import { headers } from 'next/headers'
 
-export const metadata: Metadata = {
-  title: 'Главная - WaterPro'
+export const generateMetadata = async ({ params }: { params: { locale: string } }): Promise<Metadata> => {
+  const translations = await wordpress.getTranslations('home', params.locale)
+
+  return {
+    title: `${translations.welcome.title.replace('<br>', '')} | Water PRO`,
+    openGraph: {
+      url: headers().get('referer') ? headers().get('referer')! : 'https://www.waterpro.ee'
+    }
+  }
 }
 
 export default async function Home({ params }: { params: { locale: string } }) {
