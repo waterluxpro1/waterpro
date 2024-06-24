@@ -78,3 +78,9 @@ textarea {
   fontsize: 0;
   opacity: 0;
 }
+
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  min-width: 0;
+}

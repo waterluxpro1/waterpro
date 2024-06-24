@@ -1,3 +1,5 @@
+'use client'
+
 import clsx from 'clsx'
 import styles from './Slider.module.scss'
 import { Swiper, type SwiperProps } from 'swiper/react'

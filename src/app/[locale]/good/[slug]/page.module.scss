@@ -40,6 +40,9 @@
 }
 
 .imageCard {
+	min-width: 0;
+	max-width: 430px;
+
 	@media (max-width: vars.$medium) {
 		margin: -12px;
 		width: 100vw;

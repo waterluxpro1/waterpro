@@ -1,0 +1,30 @@
+.image {
+	background-color: #fff;
+	height: 480px;
+
+
+	img {
+		object-position: 50% 50%;
+		object-fit: cover;
+	}
+
+}
+
+.slideWrapper {
+	height: 100%;
+}
+
+.arrows {
+	display: flex;
+	gap: 24px;
+}
+
+.arrowPrev,
+.arrowNext {
+	cursor: pointer;
+
+	svg {
+		width: 16px;
+		height: auto;
+	}
+}

@@ -5,7 +5,6 @@ import { Tabs } from '@/shared/ui/Tabs'
 import { TabsList } from '@/shared/ui/TabsList'
 
 import styles from './page.module.scss'
-import Image from 'next/image'
 import { woocomerence, wordpress } from '@/shared/api/wordpress.service'
 import { Title3 } from '@/shared/ui/Title3/Title3'
 import { GoodsSlider } from '@/features/GoodsSlider/GoodsSlider'
@@ -18,6 +17,7 @@ import { notFound } from 'next/navigation'
 import clsx from 'clsx'
 import { Title4 } from '@/shared/ui/Title4'
 import type { Metadata } from 'next'
+import { GoodCardSlider } from '@/entities/GoodCardSlider/GoodCardSlider'
 
 export const generateMetadata = async ({ params }: { params: { slug: string } }): Promise<Metadata> => {
 	const [good] = await woocomerence.getGoodBySlug(params.slug)
@@ -57,14 +57,12 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 				<div className={styles.card}>
 					<div className={styles.imageCard}>
 						<Title3 className={clsx(styles.title, styles.mobile)}>{good.name}</Title3>
-						<div className={styles.image}>
-							<Image src={good.images[0]?.src} alt={good.images[0]?.alt} width={300} height={300} />
-						</div>
+						<GoodCardSlider images={good.images} />
 					</div>
 					<div className={styles.info}>
 						<Title3 className={clsx(styles.title, styles.desktop)}>{good.name}</Title3>
 						<span className={styles.price}>€{good.price}{Math.floor(+good.price) === +good.price && '.00'} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
-						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} addToCartText={translations.add_to_cart} removeFromCartText={translations.remove_to_cart} />
+						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} addToCartText={translations.add_to_cart} removeFromCartText={translations.remove_from_cart} />
 					</div>
 				</div>
 				<Tabs defaultActive={1}>

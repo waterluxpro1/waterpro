@@ -1,5 +1,11 @@
+@use "@/global/scss/vars";
+
 .breadcrumbs {
 	display: flex;
 	gap: 8px;
 	flex-wrap: wrap;
+
+	@media (max-width: vars.$tablet) {
+		justify-content: center;
+	}
 }

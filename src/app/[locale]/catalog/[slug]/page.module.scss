@@ -29,11 +29,15 @@
 	}
 
 	@media (max-width: vars.$tablet) {
-		height: 240px;
+		height: 100%;
 	}
 }
 
 .title.title {
 	margin-top: 12px;
 	line-height: 110%;
+
+	@media (max-width: vars.$tablet) {
+		text-align: center;
+	}
 }
