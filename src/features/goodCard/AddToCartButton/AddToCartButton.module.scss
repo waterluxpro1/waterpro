@@ -8,3 +8,43 @@
 		font-size: 16px;
 	}
 }
+
+.buttonWrapper {
+	margin-top: 24px;
+	display: flex;
+	align-items: center;
+	gap: 40px;
+
+
+	@media (max-width: vars.$medium) {
+		gap: 20px;
+	}
+}
+
+.variations {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 24px;
+	gap: 8px;
+	max-width: 560px;
+}
+
+.variation {
+	input {
+		display: none;
+	}
+
+	input+label {
+		cursor: pointer;
+		border-radius: 8px;
+		display: inline-block;
+		padding: 8px;
+		border: vars.$light-blue 1px solid;
+	}
+
+
+	input:checked+label {
+		color: #fff;
+		background-color: vars.$light-blue;
+	}
+}

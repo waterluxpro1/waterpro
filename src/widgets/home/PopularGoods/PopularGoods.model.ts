@@ -1,5 +1,5 @@
 export interface PopularGoodsModel {
-	locale?: {
+	locale: {
 		title: string
 	}
 	lang?: string

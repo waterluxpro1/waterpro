@@ -5,7 +5,9 @@ import type { IGood } from '@/shared/interfaces/models/Good.interface'
 import { Slider } from '@/shared/ui/Slider/Slider'
 import { SwiperSlide } from 'swiper/react'
 
-export const GoodsSlider = ({ className, goods, lang }: { className?: string, goods: IGood[], lang: string }) => {
+export const GoodsSlider = ({ className, goods, lang, translations }: { className?: string, goods: IGood[], lang: string, translations: Record<string, string> }) => {
+	console.log(translations)
+
 	return (
 		<Slider className={className}
 			spaceBetween={10}
@@ -29,6 +31,7 @@ export const GoodsSlider = ({ className, goods, lang }: { className?: string, go
 				<Good
 					good={good}
 					url={`/${lang}/good/${good.slug}`}
+					detailsButton={translations?.details && translations?.details}
 				/>
 			</SwiperSlide>)}
 		</Slider>

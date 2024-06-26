@@ -37,17 +37,31 @@ const createOrder = async (formData: FormData) => {
 		body: JSON.stringify({
 			billing: formDataToObject(formData),
 			shipping: formDataToObject(formData),
-			line_items: JSON.parse(formData.get('cart')?.toString()!)
+			line_items: JSON.parse(formData.get('cart')?.toString()!),
+
+			...formData.get('gift-code') && {
+				coupon_lines: [{
+					code: formData.get('gift-code')
+				}]
+			}
+
 		})
 	})
 
 	const json = await response.json()
 
 	if (response.ok) {
+
+		console.log(json)
 		redirect(json.payment_url)
 	}
 	else {
-		redirect(`?error&error_text=${JSON.stringify(json)}`)
+		if (json.code === 'woocommerce_rest_invalid_coupon') {
+			redirect(`?error&error_text=${encodeURI(`Подарочной карты ${formData.get('gift-code')} не существует или она уже была активирована`)}`)
+		}
+		else {
+			redirect(`?error&error_text=${JSON.stringify(json)}`)
+		}
 	}
 }
 
@@ -81,6 +95,7 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 						<Input placeholder={translation.postcode} name="postcode" autoComplete="postal-code" required />
 						<Input placeholder={translation.phone} name="phone" autoComplete="tel" required />
 						<Input type="email" placeholder="Email*" name="email" autoComplete="email" required />
+						<Input type="text" placeholder="Подарочная карта" name="gift-code" />
 						<Textarea placeholder={translation.message} name="message" autoComplete="off"></Textarea>
 					</div>
 				</div>

@@ -18,7 +18,8 @@ const wcRequest = async <T>(path: string): Promise<T> => {
 			tags: [path]
 		},
 		headers: {
-			'Authorization': `Basic ${process.env.WP_PASSWORD}`
+			'Authorization': `Basic ${process.env.WP_PASSWORD}`,
+			'Access-Control-Allow-Origin': '*'
 		}
 	})
 
@@ -32,7 +33,8 @@ const wpRequest = async <T>(path: string): Promise<T> => {
 			tags: [path]
 		},
 		headers: {
-			'Authorization': `Basic ${process.env.WP_PASSWORD}`
+			'Authorization': `Basic ${process.env.WP_PASSWORD}`,
+			'Access-Control-Allow-Origin': '*'
 		}
 	})
 
@@ -54,8 +56,15 @@ export const wordpress = {
 	getTranslations: async (slug: string, lang: string) => {
 		const [translation] = await wpRequest<TranslationModel[]>(`translations?slug=${slug}`)
 
+		console.log(translation.acf, lang)
+
 		if (translation) {
-			return JSON.parse(typeof translation.acf[lang] === 'string' ? translation.acf[lang]! : '')
+			try {
+				return JSON.parse(typeof translation.acf[lang] === 'string' ? translation.acf[lang]! : '')
+			}
+			catch (e) {
+				console.log(e)
+			}
 		}
 		else {
 			console.error(`translation ${slug} in ${lang} not found (404)`)

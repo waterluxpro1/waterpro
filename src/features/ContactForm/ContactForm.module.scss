@@ -1,6 +1,35 @@
 @use "@/global/scss/vars";
 @use "@/global/scss/mixins";
 
+.okMessage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff10;
+	backdrop-filter: blur(5px);
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 16px;
+
+	.ok {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 48px;
+		border: #000 5px solid;
+		width: 96px;
+		height: 96px;
+		border-radius: 999px;
+		color: #000;
+
+	}
+}
+
 .title.title {
 	text-align: center;
 	max-width: 720px;
@@ -43,6 +72,7 @@
 }
 
 .form {
+	position: relative;
 	@include mixins.adaptive-value('margin-top', 40, 20);
 	display: flex;
 	flex-direction: column;

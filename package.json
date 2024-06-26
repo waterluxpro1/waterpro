@@ -6,14 +6,14 @@
     "cover 99.5%, not dead"
   ],
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --experimental-https",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "clsx": "^2.1.0",
-    "next": "^14.2.3",
+    "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.33.3",

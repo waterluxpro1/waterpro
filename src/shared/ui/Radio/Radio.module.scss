@@ -7,9 +7,9 @@
 
 .label {
 	display: flex;
-	align-items: center;
 	gap: 8px;
 	position: relative;
+	margin-top: 4px;
 
 	cursor: pointer;
 
@@ -21,9 +21,12 @@
 		display: inline-block;
 		background-color: #fff;
 		border: #000 1px solid;
-		width: 22px;
+		flex-basis: 22px;
+		flex-shrink: 0;
 		height: 22px;
 		border-radius: 999px;
+
+		margin-top: -4px;
 	}
 
 	&::after {
@@ -34,10 +37,12 @@
 		background-color: vars.$light-blue;
 		width: 0;
 		height: 0;
-		left: 9px;
+		left: 11px;
 		top: 50%;
 		opacity: 0;
 		border-radius: 999px;
+
+		margin-top: -4px;
 	}
 }
 

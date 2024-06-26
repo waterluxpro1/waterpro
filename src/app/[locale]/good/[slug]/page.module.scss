@@ -28,14 +28,11 @@
 	text-transform: uppercase;
 	color: vars.$dark-blue;
 	line-height: 120%;
-}
-
-.image {
-	flex-basis: 430px;
 
 	@media (max-width: vars.$medium) {
-		flex-basis: auto;
-		width: 100%;
+		display: block;
+		margin-bottom: 24px;
+		text-align: center;
 	}
 }
 
@@ -47,7 +44,6 @@
 		margin: -12px;
 		width: 100vw;
 		background-color: #fff;
-		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
@@ -73,16 +69,6 @@
 	}
 }
 
-.addToCart {
-	margin-top: 24px;
-	display: flex;
-	align-items: center;
-	gap: 40px;
-
-	@media (max-width: vars.$medium) {
-		gap: 20px;
-	}
-}
 
 .info {
 	@media (max-width: vars.$medium) {

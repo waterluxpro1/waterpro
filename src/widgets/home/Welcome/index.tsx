@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from './Welcome.module.scss'
 import { Button } from '@/shared/ui/Button'
 import type { WelcomeModel } from './Welcome.model'
+import Link from 'next/link'
 
 export const Welcome = async (props: WelcomeModel) => {
 	return (
@@ -12,7 +13,9 @@ export const Welcome = async (props: WelcomeModel) => {
 				content={<div className={styles.content}>
 					<Title1 className={styles.title} dangerouslySetInnerHTML={{ __html: props.locale?.title! }}></Title1>
 					<h2 className={styles.subtitle}>{props.locale?.subtitle}</h2>
-					<Button className={styles.button} size="large">{props.locale?.button}</Button>
+					<Link href="?modal=gift-card">
+						<Button className={styles.button} size="large">{props.locale?.button}</Button>
+					</Link>
 				</div>}
 				image={<Image priority src="/img/modern-water-filtration-system.png" alt="Продвинутая система фильтрации воды" width={768} height={700} />}
 			/>

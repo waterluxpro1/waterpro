@@ -1,5 +1,5 @@
 import { Good } from '@/entities/Good/Good'
-import { woocomerence } from '@/shared/api/wordpress.service'
+import { woocomerence, wordpress } from '@/shared/api/wordpress.service'
 import { Container } from '@/shared/ui/Container'
 import { OverflowImage } from '@/shared/ui/OverflowImage/OverflowImage'
 import styles from './page.module.scss'
@@ -23,13 +23,14 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
 const CatalogPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [category] = await woocomerence.getCategoryBySlug(params.slug)
 	const goods = await woocomerence.getGoodsByCategoryId(category.id)
+	const translations = await wordpress.getTranslations('category', params.locale)
 
 	return (
 		<>
 			<OverflowImage
 				content={<div className={styles.content}>
 					<Breadcrumbs>
-						<BreadcrumbsItem first>Главная</BreadcrumbsItem>
+						<BreadcrumbsItem first>{translations.home}</BreadcrumbsItem>
 						<BreadcrumbsItem>{category.name}</BreadcrumbsItem>
 					</Breadcrumbs>
 					<Title1 className={styles.title}>{category.name}</Title1>
@@ -47,6 +48,7 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 							key={good.id}
 							url={`/${params.locale}/good/${good.slug}`}
 							good={good}
+							detailsButton={translations.details}
 						/>
 					)}
 				</Container>

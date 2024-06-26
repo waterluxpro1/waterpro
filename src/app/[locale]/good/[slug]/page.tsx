@@ -41,6 +41,8 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 		return good
 	}))
 
+	console.log(good)
+
 	const translations = await wordpress.getTranslations('good-card', params.locale)
 
 	const cart = cookies().get('cart')?.value
@@ -51,7 +53,7 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 			<Container>
 				<Breadcrumbs className={styles.breadcrumbs}>
 					<BreadcrumbsItem first>Главная</BreadcrumbsItem>
-					<BreadcrumbsItem href={`good/${good.categories[0].slug}`}>{good.categories[0].name}</BreadcrumbsItem>
+					<BreadcrumbsItem href={`catalog/${good.categories[0].slug}`}>{good.categories[0].name}</BreadcrumbsItem>
 					<BreadcrumbsItem>{good.name}</BreadcrumbsItem>
 				</Breadcrumbs>
 				<div className={styles.card}>
@@ -62,24 +64,33 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					<div className={styles.info}>
 						<Title3 className={clsx(styles.title, styles.desktop)}>{good.name}</Title3>
 						<span className={styles.price}>€{good.price}{Math.floor(+good.price) === +good.price && '.00'} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
-						<AddToCartButton className={styles.addToCart} isInCart={isInCart} goodId={good.id} addToCartText={translations.add_to_cart} removeFromCartText={translations.remove_from_cart} />
+						<AddToCartButton variations={good.variations} className={styles.addToCart} isInCart={isInCart} goodId={good.id} addToCartText={translations.add_to_cart} removeFromCartText={translations.remove_from_cart} />
 					</div>
 				</div>
 				<Tabs defaultActive={1}>
-					<TabsList><Tab index={1}>{translations.description}</Tab>
-						<Tab index={2}>{translations.included}</Tab></TabsList>
+					<TabsList>
+						<Tab index={1}>{translations.description}</Tab>
+						{good.acf.equipment &&
+							<Tab index={2}>{translations.included}</Tab>
+						}
+					</TabsList>
 					<TabPanel index={1}>
 						<Eval>
-							{good.meta_data.find(item =>
-								item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : ''}
+							{/* {
+								good.meta_data.find(item => item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : ''
+							}
+							{'<br>'}
+							== ОПИСАНИЕ == */}
+							{good.description}
 						</Eval>
 					</TabPanel>
-					<TabPanel index={2}>
-						<Eval>
-							{good.meta_data.find(item =>
-								item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : ''}
-						</Eval>
-					</TabPanel>
+					{good.acf.equipment &&
+						<TabPanel index={2}>
+							<Eval>
+								{good.acf.equipment}
+							</Eval>
+						</TabPanel>
+					}
 				</Tabs>
 				<Title4 className={styles.similar}>{translations.similar_goods}</Title4>
 				<GoodsSlider className={styles.relatedGoods} lang={params.locale} goods={relatedGoods} />

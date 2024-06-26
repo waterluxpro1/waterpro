@@ -3,15 +3,20 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import styles from './GoodCardSlider.module.scss'
 import Image from 'next/image'
-import { Autoplay, EffectFade } from 'swiper/modules'
+import { Controller, Thumbs } from 'swiper/modules'
+import { useState } from 'react'
+import { type Swiper as SwiperType } from 'swiper'
 
 export const GoodCardSlider = ({ images }: { images: { id: number, src: string, alt: string }[] }) => {
+	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
+
 	return (
 		<div className={styles.wrapper}>
+
 			<Swiper
-				effect="fade"
-				modules={[EffectFade, Autoplay]}
-				autoplay={{ delay: 3000, waitForTransition: false, disableOnInteraction: false, pauseOnMouseEnter: false, stopOnLastSlide: false }}
+				modules={[Thumbs]}
+				autoHeight
+				thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
 			>
 				{images?.map(image =>
 					<SwiperSlide key={image.id} className={styles.image}>
@@ -21,6 +26,17 @@ export const GoodCardSlider = ({ images }: { images: { id: number, src: string, 
 					</SwiperSlide>
 				)}
 			</Swiper>
-		</div>
+			{images.length > 1 &&
+				<Swiper className={styles.thumbs} onSwiper={setThumbsSwiper} slidesPerView={4} modules={[Controller]} spaceBetween={8}>
+					{images?.map(image =>
+						<SwiperSlide key={image.id} className={styles.thumb}>
+							<div className={styles.slideWrapper}>
+								<Image src={image?.src} alt={image?.alt} width={300} height={300} />
+							</div>
+						</SwiperSlide>
+					)}
+				</Swiper>
+			}
+		</div >
 	)
 }

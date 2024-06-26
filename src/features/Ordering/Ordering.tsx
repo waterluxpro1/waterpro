@@ -34,7 +34,10 @@ export const Ordering = ({ className, goods, showOrderButton, showGoods, shippin
 					<div className={clsx(styles.cell, styles.radios)}>
 						{shippingMethods?.map((item) => <Radio key={item.id} value={parseFloat(item?.settings?.cost?.value || 0)}
 							setFunction={setSelectedItem}
-							label={`${item.title} - ${item?.settings?.cost?.value || 0} €`}
+							label={`${item.title.split(':')[1]?.split('/')[1]
+								//@ts-expect-error
+								? translation[item.title.split(':')[1].split('/')[1]]
+								: item.title} - ${item?.settings?.cost?.value || 0} €`}
 							id={`${item.method_id}-${item.id}`} name="delivery"
 						/>)}
 					</div>

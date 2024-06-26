@@ -5,4 +5,5 @@ export interface AddToCartButtonProps extends HTMLAttributes<HTMLFormElement> {
 	goodId: number
 	addToCartText: string
 	removeFromCartText: string
+	variations: number[]
 }

@@ -1,5 +1,14 @@
 export interface MenuProps {
 	isOpened: boolean
 	setIsOpened: (arg0: boolean) => void
-	locale: string
+	translations: {
+		menu: {
+			name: string
+			href?: string
+			submenu?: {
+				name: string
+				href: string
+			}[]
+		}[]
+	}
 }

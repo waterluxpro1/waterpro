@@ -43,7 +43,7 @@ const Contacts = async ({ params }: { params: { locale: string } }) => {
 					</ul>
 					<Body1 className={styles.body}>{translations.addition}</Body1>
 				</div>
-				<div className={styles.map} style={{ position: 'relative', overflow: 'hidden' }}> <iframe src="https://yandex.ru/map-widget/v1/?ll=25.012326%2C59.483536&mode=whatshere&whatshere%5Bpoint%5D=25.007525%2C59.483749&whatshere%5Bzoom%5D=17&z=15&lang=en_US" width="100%" height="100%" style={{ position: 'relative' }}></iframe></div>
+				<div className={styles.map} style={{ position: 'relative', overflow: 'hidden' }}> <iframe src="https://yandex.ru/map-widget/v1/?ll=24.850270%2C59.436618&mode=whatshere&tab=inside&whatshere%5Bpoint%5D=24.849918%2C59.436509&whatshere%5Bzoom%5D=17&z=18&lang=en_US" width="100%" height="100%" style={{ position: 'relative' }}></iframe></div>
 			</Container >
 		</>
 	)

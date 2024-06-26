@@ -80,22 +80,24 @@ export const Footer = async ({ lang }: { lang: string }) => {
 						</ul>
 					</div>
 					<div className={clsx(styles.column, styles.last)}>
-						<Button className={styles.button} appearance="light">
-							{translations.contact}
-						</Button>
+						<Link href="?modal=contact">
+							<Button className={styles.button} appearance="light">
+								{translations.contact}
+							</Button>
+						</Link>
 
 						<Contacts className={styles.contacts} />
 
 						<ul className={styles.socials}>
 							<li className={styles.social}>
-								<Link href="https://www.instagram.com/waterpro_ou/?hl=ru" target="_blank"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<Link href="https://www.instagram.com/waterpro_ou/" target="_blank"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<rect width="41" height="41" rx="20.5" fill="#E41CB3" />
 									<path d="M19.9995 17.3386C17.9725 17.3386 16.3382 18.9886 16.3382 21C16.3382 23.0114 17.9882 24.6614 19.9995 24.6614C22.0108 24.6614 23.6608 23.0114 23.6608 21C23.6608 18.9886 22.0108 17.3386 19.9995 17.3386ZM30.999 21C30.999 19.4757 30.999 17.9829 30.9205 16.4586C30.8419 14.6986 30.4333 13.1271 29.1448 11.8543C27.8563 10.5657 26.3007 10.1571 24.5407 10.0786C23.0165 10 21.5237 10 19.9995 10C18.4753 10 16.9825 10 15.4583 10.0786C13.6984 10.1571 12.127 10.5657 10.8542 11.8543C9.56569 13.1429 9.15714 14.6986 9.07857 16.4586C9 17.9829 9 19.4757 9 21C9 22.5243 9 24.0171 9.07857 25.5414C9.15714 27.3014 9.56569 28.8729 10.8542 30.1457C12.1427 31.4343 13.6984 31.8429 15.4583 31.9214C16.9825 32 18.4753 32 19.9995 32C21.5237 32 23.0165 32 24.5407 31.9214C26.3007 31.8429 27.872 31.4343 29.1448 30.1457C30.4333 28.8571 30.8419 27.3014 30.9205 25.5414C31.0147 24.0329 30.999 22.5243 30.999 21ZM19.9995 26.6414C16.8725 26.6414 14.3583 24.1271 14.3583 21C14.3583 17.8729 16.8725 15.3586 19.9995 15.3586C23.1265 15.3586 25.6407 17.8729 25.6407 21C25.6407 24.1271 23.1265 26.6414 19.9995 26.6414ZM25.8764 16.4429C25.1536 16.4429 24.5564 15.8614 24.5564 15.1229C24.5564 14.3843 25.1379 13.8029 25.8764 13.8029C26.6149 13.8029 27.1963 14.3843 27.1963 15.1229C27.2003 15.295 27.1689 15.4661 27.104 15.6256C27.0391 15.7851 26.9422 15.9295 26.8192 16.05C26.6987 16.173 26.5543 16.2699 26.3948 16.3348C26.2353 16.3997 26.0642 16.4311 25.8921 16.4271L25.8764 16.4429Z" fill="white" />
 								</svg>
 								</Link>
 							</li>
 							<li className={styles.social}>
-								<Link href="">
+								<Link href="https://m.facebook.com/waterpro.ee/">
 									<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<rect width="41" height="41" rx="20.5" fill="#1978F6" />
 										<path d="M23 22.65H25.8571L27 18.25H23V16.05C23 14.917 23 13.85 25.2857 13.85H27V10.154C26.6274 10.1067 25.2206 10 23.7349 10C20.632 10 18.4286 11.8227 18.4286 15.17V18.25H15V22.65H18.4286V32H23V22.65Z" fill="white" />

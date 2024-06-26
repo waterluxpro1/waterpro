@@ -1,5 +1,6 @@
 import { ErrorModal } from '@/entities/ErrorModal/ErrorModal'
 import { ContactPopup } from '@/widgets/(popups)/ContactPopup/ContactPopup'
+import { GiftCardPopup } from '@/widgets/(popups)/GiftCardPopup/GiftCardPopup'
 import { Footer } from '@/widgets/Footer/Footer'
 import { Header } from '@/widgets/Header'
 import { cookies } from 'next/headers'
@@ -20,6 +21,7 @@ const Layout = ({ children, params }: { children: ReactNode, params: { locale: s
 			</main>
 			<Footer lang={params.locale} />
 			<ContactPopup />
+			<GiftCardPopup />
 			<ErrorModal />
 		</div>
 	)

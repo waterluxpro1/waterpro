@@ -1,13 +1,36 @@
 .image {
 	background-color: #fff;
-	height: 480px;
 
+	min-width: 300px;
+	border-radius: 8px;
+	overflow: hidden;
+	width: 100%;
 
 	img {
 		object-position: 50% 50%;
 		object-fit: cover;
 	}
 
+}
+
+.wrapper {
+	max-width: 380px;
+	width: 100%;
+}
+
+.thumb {
+	transition: opacity .3s;
+	opacity: 50%;
+	border-radius: 4px;
+	overflow: hidden;
+
+	&[class*=swiper-slide-thumb-active] {
+		opacity: 100%;
+	}
+}
+
+.thumbs {
+	margin-top: 16px;
 }
 
 .slideWrapper {
