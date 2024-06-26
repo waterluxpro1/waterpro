@@ -93,7 +93,7 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					}
 				</Tabs>
 				<Title4 className={styles.similar}>{translations.similar_goods}</Title4>
-				<GoodsSlider className={styles.relatedGoods} lang={params.locale} goods={relatedGoods} />
+				<GoodsSlider translations={{ details: translations.details }} className={styles.relatedGoods} lang={params.locale} goods={relatedGoods} />
 			</Container>
 		</div>
 	)
