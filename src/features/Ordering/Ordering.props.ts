@@ -1,4 +1,5 @@
 import type { IGood } from '@/shared/interfaces/models/Good.interface'
+import type { PromocodeModel } from '@/shared/interfaces/models/Promocode.model'
 import type { HTMLAttributes } from 'react'
 
 export interface OrderingProps extends HTMLAttributes<HTMLDivElement> {
@@ -11,6 +12,9 @@ export interface OrderingProps extends HTMLAttributes<HTMLDivElement> {
 		delivery: string
 		total: string
 		create_order: string
+		promocode_message: string
 	} | Record<string, string>
 	shippingMethods?: any[]
+	promocode?: PromocodeModel
+	isCheckoutPage?: boolean
 }

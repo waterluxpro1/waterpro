@@ -29,18 +29,15 @@
 	}
 }
 
-.cell {}
-
-.radios {
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-}
-
 .goodName {
 	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	width: auto;
+}
+
+.couponForm {
+	display: flex;
+	flex-direction: column;
 }

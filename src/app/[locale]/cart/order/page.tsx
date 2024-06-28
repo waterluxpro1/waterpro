@@ -28,6 +28,12 @@ const formDataToObject = (formData: FormData) => {
 const createOrder = async (formData: FormData) => {
 	'use server'
 
+	if (!formData.get('parcel-locker-name')) {
+		return
+	}
+
+	const address = (formData.get('parcel-locker-name') as string)?.split(';')
+
 	const response = await fetch('https://waterpro.ee/wp-json/wc/v3/orders', {
 		method: 'POST',
 		headers: {
@@ -36,7 +42,13 @@ const createOrder = async (formData: FormData) => {
 		},
 		body: JSON.stringify({
 			billing: formDataToObject(formData),
-			shipping: formDataToObject(formData),
+			shipping: {
+				...formDataToObject(formData),
+				country: address[0],
+				city: address[1],
+				address_1: address[2],
+				address_2: address[3]
+			},
 			line_items: JSON.parse(formData.get('cart')?.toString()!),
 
 			...formData.get('gift-code') && {
@@ -50,11 +62,7 @@ const createOrder = async (formData: FormData) => {
 
 	const json = await response.json()
 
-	if (response.ok) {
-
-		console.log(json)
-		redirect(json.payment_url)
-	}
+	if (response.ok) { redirect(json.payment_url) }
 	else {
 		if (json.code === 'woocommerce_rest_invalid_coupon') {
 			redirect(`?error&error_text=${encodeURI(`Подарочной карты ${formData.get('gift-code')} не существует или она уже была активирована`)}`)
@@ -65,17 +73,20 @@ const createOrder = async (formData: FormData) => {
 	}
 }
 
-const OrderPage = async ({ params }: { params: { locale: string } }) => {
+const OrderPage = async ({ params, searchParams }: { params: { locale: string }, searchParams?: { promocode?: string } }) => {
 	const cart: Array<{ product_id: number, quantity: number }> =
 		cookies().has('cart')
 			? JSON.parse(cookies().get('cart')?.value!)
 			: undefined
 	const goods = cart && await Promise.all(cart.map(async (item) => await woocomerence.getGoodById(item.product_id)))
 
-	const cartTranslation = await wordpress.getTranslations('cart', params.locale)
 	const translation = await wordpress.getTranslations('cart-order', params.locale)
 
 	const shippingMethods = await woocomerence.getShippingMethods()
+
+	const promocode = await woocomerence.getCouponByCode(searchParams?.promocode)
+
+	console.log('translation', translation)
 
 	return (
 		<Container>
@@ -88,25 +99,19 @@ const OrderPage = async ({ params }: { params: { locale: string } }) => {
 						<Input placeholder={translation.first_name} name="first_name" autoComplete="name" required />
 						<Input placeholder={translation.last_name} name="last_name" autoComplete="family-name" required />
 						<Input placeholder={translation.company} name="company" autoComplete="company" />
-						<Input placeholder={translation.country} name="country" autoComplete="country-name" required />
-						<Input placeholder={translation.address} name="address_1" autoComplete="country-name" required />
-						<Input placeholder={translation.state} name="state" autoComplete="state" required />
-						<Input placeholder={translation.city} name="city" autoComplete="city" required />
-						<Input placeholder={translation.postcode} name="postcode" autoComplete="postal-code" required />
 						<Input placeholder={translation.phone} name="phone" autoComplete="tel" required />
 						<Input type="email" placeholder="Email*" name="email" autoComplete="email" required />
-						<Input type="text" placeholder="Подарочная карта" name="gift-code" />
 						<Textarea placeholder={translation.message} name="message" autoComplete="off"></Textarea>
 					</div>
 				</div>
 				<div className={styles.column}>
 					<Title3 className={styles.title}>{translation.order}</Title3>
-					<Ordering shippingMethods={shippingMethods} showGoods translation={JSON.parse(JSON.stringify(cartTranslation))} cart={cart} goods={goods} />
+					<Ordering isCheckoutPage promocode={promocode?.[0]} {...{ translation, cart, goods, shippingMethods }} />
 					<Body2 className={styles.attention}>
-						{translation.data_proccessing.split('>')[0]} <Link className={styles.link} href={cartTranslation.policy_url}>{translation.data_proccessing.split('>')[1]}</Link>.
+						{translation.data_proccessing.split('>')[0]} <Link className={styles.link} href={translation.policy_url}>{translation.data_proccessing.split('>')[1]}</Link>.
 					</Body2>
 					<Checkbox required className={styles.attention} id="agree-rules"
-						label={<>{translation.site_rules.split('>')[0]} <Link className={styles.link} href={cartTranslation.site_rules_url}>{translation.site_rules.split('>')[1]}</Link></>} />
+						label={<>{translation.site_rules.split('>')[0]} <Link className={styles.link} href={translation.site_rules_url}>{translation.site_rules.split('>')[1]}</Link></>} />
 					<button className={styles.button} type="submit">
 						<Button>{translation.submit}</Button>
 					</button>

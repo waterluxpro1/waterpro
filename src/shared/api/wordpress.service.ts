@@ -3,6 +3,8 @@ import type { ICategory } from '../interfaces/models/Category.interface'
 import type { IGood } from '../interfaces/models/Good.interface'
 import type { PageModel } from '../interfaces/models/Page.model'
 import type { TranslationModel } from '../interfaces/models/Translation.model'
+import type { PromocodeModel } from '../interfaces/models/Promocode.model'
+import type { SmartpostModel } from '../interfaces/models/Smartpost.model'
 
 const request = async<T>(path: URL | string, init?: RequestInit | undefined): Promise<T> => {
 	const response = await fetch(path, init)
@@ -48,6 +50,7 @@ export const woocomerence = {
 	getGoodBySlug: async (slug: string) => wcRequest<IGood[]>(`products?slug=${slug}`),
 	getGoodById: async (id: number) => wcRequest<IGood>(`products/${id}`),
 	getShippingMethods: async () => wcRequest<any[]>('shipping/zones/2/methods'),
+	getCouponByCode: async (code?: string) => code ? wcRequest<PromocodeModel[]>(`coupons?code=${code}`) : undefined
 }
 
 export const wordpress = {
@@ -55,8 +58,6 @@ export const wordpress = {
 	getMediaById: async (id: number) => wpRequest<{ source_url: string }>(`media/${id}`),
 	getTranslations: async (slug: string, lang: string) => {
 		const [translation] = await wpRequest<TranslationModel[]>(`translations?slug=${slug}`)
-
-		console.log(translation.acf, lang)
 
 		if (translation) {
 			try {
@@ -71,4 +72,10 @@ export const wordpress = {
 			notFound()
 		}
 	}
+}
+
+export const deliveryApi = {
+	getSmartpostParcelMachines: async () => request<SmartpostModel>('https://gateway.posti.fi/smartpost/api/ext/v1/places?country=EE', {
+		headers: { 'Authorization': `${process.env.SMARTPOST_API_KEY}`, 'Content-Type': 'application/json' }
+	})
 }

@@ -14,7 +14,7 @@ const Layout = ({ children, params }: { children: ReactNode, params: { locale: s
 	)
 
 	return (
-		<div className="global-wrapper">
+		<div className="global-wrapper using-fb24m-functions">
 			<Header goods={cart.length} lang={params.locale} />
 			<main>
 				{children}

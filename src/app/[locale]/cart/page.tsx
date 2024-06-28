@@ -12,7 +12,6 @@ import type { Metadata } from 'next'
 
 export const generateMetadata = async ({ params }: { params: { locale: string } }): Promise<Metadata> => {
 	const translations = await wordpress.getTranslations('cart', params.locale)
-	console.log(translations)
 
 	return {
 		title: `${translations.h1} | Water PRO`,
@@ -70,7 +69,8 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 				</div>
 				: <Card>{translation.no_goods_message}</Card>}
 			{goods && goods.length > 0 &&
-				<Ordering shippingMethods={shippingMethods} showOrderButton translation={JSON.parse(JSON.stringify(translation))} cart={cart} goods={goods} />}
+				<Ordering shippingMethods={shippingMethods} showOrderButton translation={translation} cart={cart} goods={goods} />
+			}
 		</Container>
 	)
 }
