@@ -69,7 +69,7 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 				</div>
 				: <Card>{translation.no_goods_message}</Card>}
 			{goods && goods.length > 0 &&
-				<Ordering shippingMethods={shippingMethods} showOrderButton translation={translation} cart={cart} goods={goods} />
+				<Ordering locale={params.locale} shippingMethods={shippingMethods} showOrderButton translation={translation} cart={cart} goods={goods} />
 			}
 		</Container>
 	)

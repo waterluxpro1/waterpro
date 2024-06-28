@@ -5,13 +5,14 @@ import clsx from 'clsx'
 import { DeliveryOptions } from './DeliveryOptions/DeliveryOptions'
 import { PromocodeField } from './PromocodeField/PromocodeField'
 import Link from 'next/link'
-import { headers } from 'next/headers'
 import { deliveryApi } from '@/shared/api/wordpress.service'
 
-export const Ordering = async ({ className, goods, shippingMethods, cart, translation, promocode, isCheckoutPage, ...props }: OrderingProps) => {
+export const Ordering = async ({ className, locale, goods, shippingMethods, cart, translation, promocode, isCheckoutPage, ...props }: OrderingProps) => {
 	const subtotal = goods.length > 0 ? goods.map((item, index) => item.price * +cart[index].quantity).reduce((acc, number) => +acc + +number) : 0
 
 	const smartpostParcelMachines = await deliveryApi.getSmartpostParcelMachines()
+
+	console.log(promocode)
 
 	return (
 		<div className={clsx(className)} {...props}>
@@ -41,7 +42,7 @@ export const Ordering = async ({ className, goods, shippingMethods, cart, transl
 						}]} />
 				</>}
 				{!isCheckoutPage &&
-					<Link href={`/${headers().get('referer')?.split('/')[3]!}/cart/order`}>
+					<Link href={`/${locale}/cart/order`}>
 						<Button>{translation.create_order}</Button>
 					</Link>
 				}

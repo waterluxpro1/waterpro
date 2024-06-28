@@ -17,4 +17,5 @@ export interface OrderingProps extends HTMLAttributes<HTMLDivElement> {
 	shippingMethods?: any[]
 	promocode?: PromocodeModel
 	isCheckoutPage?: boolean
+	locale?: string
 }

@@ -28,7 +28,7 @@ const formDataToObject = (formData: FormData) => {
 const createOrder = async (formData: FormData) => {
 	'use server'
 
-	if (!formData.get('parcel-locker-name')) {
+	if (formData.get('parcel-locker-name') === 'initial') {
 		return
 	}
 
@@ -44,10 +44,12 @@ const createOrder = async (formData: FormData) => {
 			billing: formDataToObject(formData),
 			shipping: {
 				...formDataToObject(formData),
-				country: address[0],
-				city: address[1],
-				address_1: address[2],
-				address_2: address[3]
+				...formData.get('parcel-locker-name') && {
+					country: address[0],
+					city: address[1],
+					address_1: address[2],
+					address_2: address[3]
+				}
 			},
 			line_items: JSON.parse(formData.get('cart')?.toString()!),
 
@@ -86,7 +88,7 @@ const OrderPage = async ({ params, searchParams }: { params: { locale: string },
 
 	const promocode = await woocomerence.getCouponByCode(searchParams?.promocode)
 
-	console.log('translation', translation)
+	console.log('promocode', promocode)
 
 	return (
 		<Container>

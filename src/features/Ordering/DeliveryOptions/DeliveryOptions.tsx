@@ -65,7 +65,7 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 
 
 							{showList && <select name="parcel-locker-name" id="" className={styles.select}>
-								<option value="" disabled selected>{translation.choose_post_machine}</option>
+								<option value="initial" disabled selected>{translation.choose_post_machine}</option>
 								{thisList.list.map(item => {
 									if (!deliveryLists[thisList.methodContains]) {
 										deliveryLists[thisList.methodContains] = []
