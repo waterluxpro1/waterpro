@@ -13,7 +13,7 @@ import { AddToCartButton } from '@/features/goodCard/AddToCartButton/AddToCartBu
 import { Eval } from '@/shared/ui/Eval/Eval'
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import clsx from 'clsx'
 import { Title4 } from '@/shared/ui/Title4'
 import type { Metadata } from 'next'
@@ -35,13 +35,17 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 
 	if (!good) notFound()
 
-	const relatedGoods = await Promise.all(good.related_ids.map(async (id) => {
-		const good = await woocomerence.getGoodById(id)
-
-		return good
-	}))
-
 	console.log(good)
+
+	if (good.lang !== params.locale) {
+		const localedGood = await woocomerence.getCategoryById(good.translations[params.locale])
+
+		if (localedGood.id) {
+			redirect(`/${params.locale}/catalog/${localedGood.slug}`)
+		}
+	}
+
+	const relatedGoods = await Promise.all(good.related_ids.map(woocomerence.getGoodById))
 
 	const translations = await wordpress.getTranslations('good-card', params.locale)
 
@@ -63,7 +67,9 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					</div>
 					<div className={styles.info}>
 						<Title3 className={clsx(styles.title, styles.desktop)}>{good.name}</Title3>
+						{/* calculation of the discount in euros and percentages (if any) */}
 						<span className={styles.price}>€{good.price}{Math.floor(+good.price) === +good.price && '.00'} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
+
 						<AddToCartButton variations={good.variations} className={styles.addToCart} isInCart={isInCart} goodId={good.id} addToCartText={translations.add_to_cart} removeFromCartText={translations.remove_from_cart} />
 					</div>
 				</div>
@@ -75,20 +81,11 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 						}
 					</TabsList>
 					<TabPanel index={1}>
-						<Eval>
-							{/* {
-								good.meta_data.find(item => item.key === '_et_pb_old_content')?.value ? good.meta_data.find(item => item.key === '_et_pb_old_content')!.value! : ''
-							}
-							{'<br>'}
-							== ОПИСАНИЕ == */}
-							{good.description}
-						</Eval>
+						<Eval>{good.description}</Eval>
 					</TabPanel>
 					{good.acf.equipment &&
 						<TabPanel index={2}>
-							<Eval>
-								{good.acf.equipment}
-							</Eval>
+							<Eval>{good.acf.equipment}</Eval>
 						</TabPanel>
 					}
 				</Tabs>

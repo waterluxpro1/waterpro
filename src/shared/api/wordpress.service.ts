@@ -46,7 +46,8 @@ const wpRequest = async <T>(path: string): Promise<T> => {
 export const woocomerence = {
 	getPopularGoods: async (lang: string = 'ru') => wcRequest<IGood[]>(`products?orderby=popularity&per_page=5&lang=${lang}`),
 	getGoodsByCategoryId: async (categodyId: number) => wcRequest<IGood[]>(`products?category=${categodyId}&per_page=100`),
-	getCategoryBySlug: async (categorySlug: string) => wcRequest<ICategory[]>(`products/categories?slug=${categorySlug}`),
+	getCategoryBySlug: async (slug: string) => wcRequest<ICategory[]>(`products/categories?slug=${slug}`),
+	getCategoryById: async (id: number) => wcRequest<ICategory>(`products/categories/${id}`),
 	getGoodBySlug: async (slug: string) => wcRequest<IGood[]>(`products?slug=${slug}`),
 	getGoodById: async (id: number) => wcRequest<IGood>(`products/${id}`),
 	getShippingMethods: async () => wcRequest<any[]>('shipping/zones/2/methods'),

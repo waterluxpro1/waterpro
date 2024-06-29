@@ -9,6 +9,9 @@ export interface IGood {
 	regular_price: number
 	variations: number[]
 
+	lang: string
+	translations: Record<string, number>
+
 	acf: {
 		equipment: string
 	}

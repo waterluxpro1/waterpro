@@ -88,8 +88,6 @@ const OrderPage = async ({ params, searchParams }: { params: { locale: string },
 
 	const promocode = await woocomerence.getCouponByCode(searchParams?.promocode)
 
-	console.log('promocode', promocode)
-
 	return (
 		<Container>
 			<form className={styles.form} action={createOrder}>

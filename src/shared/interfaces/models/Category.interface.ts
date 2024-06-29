@@ -9,4 +9,6 @@ export interface ICategory {
 		alt: string
 		name: string
 	} | null
+	lang: string
+	translations: Record<string, number>
 }

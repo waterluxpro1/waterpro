@@ -8,6 +8,7 @@ import { BreadcrumbsItem } from '@/shared/ui/BreadcrumbsItem/BreadcrumbsItem'
 import { Title1 } from '@/shared/ui/Title1/Title1'
 import Image from 'next/image'
 import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
 	const [category] = await woocomerence.getCategoryBySlug(params.slug)
@@ -24,6 +25,14 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 	const [category] = await woocomerence.getCategoryBySlug(params.slug)
 	const goods = await woocomerence.getGoodsByCategoryId(category.id)
 	const translations = await wordpress.getTranslations('category', params.locale)
+
+	if (category.lang !== params.locale) {
+		const localedCategory = await woocomerence.getCategoryById(category.translations[params.locale])
+
+		if (localedCategory.id) {
+			redirect(`/${params.locale}/catalog/${localedCategory.slug}`)
+		}
+	}
 
 	return (
 		<>
