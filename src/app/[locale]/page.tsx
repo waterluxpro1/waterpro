@@ -28,6 +28,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
 
     return (
       <div className={styles.page}>
+        {process.env.SMARTPOST_API_KEY}
         <Welcome locale={translations.welcome} />
         <Categories {...translations.categories} />
         <Advantages locale={translations.advantages} />
