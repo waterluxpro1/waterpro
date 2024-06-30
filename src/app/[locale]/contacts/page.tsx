@@ -43,7 +43,7 @@ const Contacts = async ({ params }: { params: { locale: string } }) => {
 					</ul>
 					<Body1 className={styles.body}>{translations.addition}</Body1>
 				</div>
-				<div className={styles.map} style={{ position: 'relative', overflow: 'hidden' }}> <iframe src="https://yandex.ru/map-widget/v1/?ll=24.850270%2C59.436618&mode=whatshere&tab=inside&whatshere%5Bpoint%5D=24.849918%2C59.436509&whatshere%5Bzoom%5D=17&z=18&lang=en_US" width="100%" height="100%" style={{ position: 'relative' }}></iframe></div>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3411.9890384798!2d24.836751905845418!3d59.43672999490889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4692ec957dddc603%3A0xcdbde93648826582!2zUHVuYW5lIDY4LCAxMzYxOSBUYWxsaW5uLCDQrdGB0YLQvtC90LjRjw!5e0!3m2!1sru!2sru!4v1719762123214!5m2!1sru!2sru" width="100%" height="450" allowFullScreen style={{ border: '0' }} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 			</Container >
 		</>
 	)

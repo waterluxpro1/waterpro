@@ -2,6 +2,7 @@ export interface MenuProps {
 	isOpened: boolean
 	setIsOpened: (arg0: boolean) => void
 	translations: {
+		contact: string
 		menu: {
 			name: string
 			href?: string

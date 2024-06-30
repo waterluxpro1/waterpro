@@ -15,10 +15,11 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 export const HeaderWrapper = ({ lang, goods, translations, menuTranslatons }: {
-	lang: string,
-	goods: number,
+	lang: string
+	goods: number
 	translations: { contact_button: string },
 	menuTranslatons: {
+		contact: string
 		menu: {
 			name: string
 			href?: string

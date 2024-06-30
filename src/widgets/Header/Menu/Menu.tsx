@@ -42,7 +42,7 @@ export const Menu = ({ isOpened, translations, setIsOpened }: MenuProps) => {
 
 			<Contacts className={styles.contacts} />
 			<Link prefetch={false} href="?modal=contact">
-				<Button appearance="light" size="normal" className={styles.button}>Связаться</Button>
+				<Button appearance="light" size="normal" className={styles.button}>{translations.contact}</Button>
 			</Link>
 		</div >
 	)

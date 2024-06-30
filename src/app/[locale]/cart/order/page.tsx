@@ -17,22 +17,23 @@ export const metadata: Metadata = {
 	title: 'Оплата заказа - Water PRO'
 }
 
-const formDataToObject = (formData: FormData) => {
-	const object: Record<string, string> = {}
-
-	formData.forEach((value, key) => object[key] = value.toString())
-
-	return object
-}
 
 const createOrder = async (formData: FormData) => {
 	'use server'
 
-	if (formData.get('parcel-locker-name') === 'initial') {
-		return
-	}
+	if (formData.get('parcel-locker-name') === 'initial') return
 
 	const address = (formData.get('parcel-locker-name') as string)?.split(';')
+
+
+	const first_name = formData.get('first_name')
+	const last_name = formData.get('last_name')
+	const company = formData.get('company')
+	const country = formData.get('country')
+	const ordererAddress = formData.get('address')
+	const city = formData.get('city')
+	const email = formData.get('email')
+	// const message = formData.get('message')
 
 	const response = await fetch('https://waterpro.ee/wp-json/wc/v3/orders', {
 		method: 'POST',
@@ -41,14 +42,18 @@ const createOrder = async (formData: FormData) => {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			billing: formDataToObject(formData),
+			billing: {
+				first_name, last_name, company, country, address_1: ordererAddress, city, email
+			},
 			shipping: {
-				...formDataToObject(formData),
-				...formData.get('parcel-locker-name') && {
+				first_name, last_name, company, email,
+				...formData.get('parcel-locker-name') ? {
 					country: address[0],
 					city: address[1],
 					address_1: address[2],
 					address_2: address[3]
+				} : {
+					country, address_1: ordererAddress, city
 				}
 			},
 			line_items: JSON.parse(formData.get('cart')?.toString()!),
@@ -99,7 +104,9 @@ const OrderPage = async ({ params, searchParams }: { params: { locale: string },
 						<Input placeholder={translation.first_name} name="first_name" autoComplete="name" required />
 						<Input placeholder={translation.last_name} name="last_name" autoComplete="family-name" required />
 						<Input placeholder={translation.company} name="company" autoComplete="company" />
-						<Input placeholder={translation.phone} name="phone" autoComplete="tel" required />
+						<Input placeholder={translation.country} name="country" autoComplete="country" required />
+						<Input placeholder={translation.address} name="address" autoComplete="address-level1" required />
+						<Input placeholder={translation.city} name="city" autoComplete="company" required />
 						<Input type="email" placeholder="Email*" name="email" autoComplete="email" required />
 						<Textarea placeholder={translation.message} name="message" autoComplete="off"></Textarea>
 					</div>
