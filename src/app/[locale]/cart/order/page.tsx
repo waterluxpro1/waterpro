@@ -33,6 +33,8 @@ const createOrder = async (formData: FormData) => {
 	const ordererAddress = formData.get('address')
 	const city = formData.get('city')
 	const email = formData.get('email')
+
+	const [method_id, method_title, total] = (formData.get('delivery')! as string).split(';')
 	// const message = formData.get('message')
 
 	const response = await fetch('https://waterpro.ee/wp-json/wc/v3/orders', {
@@ -56,6 +58,8 @@ const createOrder = async (formData: FormData) => {
 					country, address_1: ordererAddress, city
 				}
 			},
+			shipping_lines: [{ method_id, method_title, total }],
+
 			line_items: JSON.parse(formData.get('cart')?.toString()!),
 
 			...formData.get('gift-code') && {

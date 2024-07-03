@@ -50,7 +50,7 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 				<div className={clsx(classes.cell, styles.radios)}>
 					{shippingMethods?.map((method) => {
 						const thisList = parcelLockers?.find((item) => method.title.toLowerCase().includes(item.methodContains))
-						const showList = selectedItem === `${method.title};${method.settings.cost.value}` && thisList
+						const showList = selectedItem === `${method.method_id};${method.title};${method.settings.cost.value}` && thisList
 
 						return <div key={method.id}>
 							<Radio
@@ -59,10 +59,9 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 								label={`${method.title.split(':')[1]?.split('/')[1]
 									? translation[method.title.split(':')[1].split('/')[1]]
 									: method.title} - ${method?.settings?.cost?.value || 0} €`}
-								value={`${method.title};${method.settings.cost.value}`}
+								value={`${method.method_id};${method.title};${method.settings.cost.value}`}
 								id={`${method.method_id}-${method.id}`} name="delivery"
 							/>
-
 
 							{showList && <select name="parcel-locker-name" id="" className={styles.select}>
 								<option value="initial" disabled selected>{translation.choose_post_machine}</option>
@@ -93,7 +92,7 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 			<div className={clsx(classes.row, styles.noBorderBottom)}>
 				<div className={classes.cell}>{translation.total}</div>
 				<div className={classes.cell}>
-					<strong>{getPriceWithPromocode(+subtotal + (+selectedItem.split(';')[1] || 0), promocode)} €
+					<strong>{getPriceWithPromocode(+subtotal + (+selectedItem.split(';')[2] || 0), promocode)} €
 						<span className={styles.discountInfo}>{getPromocodeDiscount(promocode)}</span>
 					</strong>
 				</div>

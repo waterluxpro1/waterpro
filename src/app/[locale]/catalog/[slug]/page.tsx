@@ -46,7 +46,7 @@ const CatalogPage = async ({ params }: { params: { slug: string, locale: string 
 				</div>}
 				image=
 				{category.image
-					? <Image className={styles.image} src={category.image.src} alt={category.image.alt} width={900} height={400} />
+					? <Image className={styles.image} src={category.image?.src} alt={category.image?.alt} width={900} height={400} />
 					: <Image className={styles.image} src="/img/modern-water-filtration-system.png" alt="Modern water filtration system" width={900} height={400} />
 				}
 			/>

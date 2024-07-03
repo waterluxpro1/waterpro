@@ -12,8 +12,6 @@ export const Ordering = async ({ className, locale, goods, shippingMethods, cart
 
 	const smartpostParcelMachines = await deliveryApi.getSmartpostParcelMachines()
 
-	console.log(promocode)
-
 	return (
 		<div className={clsx(className)} {...props}>
 			<div className={styles.summary}>

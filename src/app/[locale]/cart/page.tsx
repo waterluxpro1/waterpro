@@ -51,7 +51,7 @@ const Cart = async ({ params }: { params: { locale: string } }) => {
 							<div className={styles.goodPreview}>
 								<RemoveGoodButton index={index} />
 								<Link className={styles.image} href={`/${params.locale}/good/${good.slug}`}>
-									<Image src={good.images?.[0].src} alt={good.images?.[0].alt} width={160} height={160} />
+									<Image src={good.images?.[0]?.src} alt={good.images?.[0]?.alt} width={160} height={160} />
 								</Link>
 							</div>
 							<Link className={styles.titleLink} href={`/${params.locale}/good/${good.slug}`}>
