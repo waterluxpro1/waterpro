@@ -1,14 +1,31 @@
+'use client'
 
-import { wordpress } from '@/shared/api/wordpress.service'
-import { ReviewsSliderTemplate } from './ReviewsSliderTemplate'
-import { headers } from 'next/headers'
+import { SwiperSlide } from 'swiper/react'
+import { Review } from '@/entities/Review/Review'
+import { Slider } from '@/shared/ui/Slider/Slider'
+import { useParams } from 'next/navigation'
+import { useTranslations } from '@/shared/hooks/useTranslations.hook'
 
-export const ReviewsSlider = async ({ className }: { className?: string }) => {
-	const t = await wordpress.getTranslations('reviews-slider', headers().get('referer')?.split('/')[3]!)
+export const ReviewsSlider = ({ className }: { className?: string }) => {
+	const { locale } = useParams()
+	const translations = useTranslations('reviews-slider', locale.toString())
 
-	console.log(t)
-
-	return await wordpress.getTranslations('reviews-slider', headers().get('referer')?.split('/')[3]!).then((translations) =>
-		<ReviewsSliderTemplate className={className} translations={translations} />
+	return (
+		<Slider className={className} slidesPerView={1} spaceBetween={32} autoHeight
+			breakpoints={{
+				767: {
+					slidesPerView: 2
+				}
+			}}>
+			{translations?.reviews?.map?.((review: any) =>
+				<SwiperSlide key={JSON.stringify(review)}>
+					<Review
+						image={review.image}
+						username={review.name}
+						text={review.text}
+					/>
+				</SwiperSlide>
+			)}
+		</Slider>
 	)
 }
