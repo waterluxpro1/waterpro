@@ -14,6 +14,14 @@ const nextConfig = {
 				pathname: '/watertest/wp-content/**'
 			},
 		]
+	},
+	async rewrites() {
+		return [
+			{
+				source: '/api/:path*',
+				destination: 'https://waterpro.ee/wp-json/wp/v2/:path*'
+			}
+		]
 	}
 }
 

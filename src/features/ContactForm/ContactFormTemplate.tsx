@@ -10,11 +10,13 @@ import { Title2 } from '@/shared/ui/Title2'
 import { send } from './sendContactForm'
 import clsx from 'clsx'
 import { useFormState } from 'react-dom'
+import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 
 const getKeyIfItIsExists = (object: Record<string, unknown> | undefined, key: string): string =>
 	object && key in object && typeof object[key] === 'string' ? object[key] as string : ''
 
-export const ContactFormTemplate = ({ translations }: {
+export const ContactFormTemplate = ({ ...props }: {
 	translations: {
 		name: string
 		phone: string
@@ -25,6 +27,21 @@ export const ContactFormTemplate = ({ translations }: {
 	}
 }) => {
 	const [status, action] = useFormState<any, FormData>(send, { ok: undefined, message: undefined })
+	const { locale } = useParams()
+
+	const [translations, setTranslations] = useState<any>()
+
+	useEffect(() => {
+		(async () => {
+			const response = await fetch('/api/translations?slug=contact-form')
+			const json = await response.json()
+
+			setTranslations(JSON.parse(json[0].acf[locale as string]))
+		})()
+	}, [locale])
+
+	console.log(translations)
+
 	return (
 		<div>
 			<Title2 className={styles.title}>{getKeyIfItIsExists(translations, 'title')}</Title2>
@@ -41,7 +58,7 @@ export const ContactFormTemplate = ({ translations }: {
 						</div>
 				)}
 				<div className={styles.block}>
-					<Input name="name" autoComplete="name" placeholder={getKeyIfItIsExists(translations, 'name')} required />
+					<Input name="name" autoComplete="name" placeholder={translations?.name} required />
 					<Input name="email" type="email" autoComplete="email" placeholder="Email*" required />
 				</div>
 				<div className={styles.block}>

@@ -1,9 +1,11 @@
-import { wordpress } from '@/shared/api/wordpress.service'
-import { headers } from 'next/headers'
-import { ContactFormTemplate } from './ContactFormTemplate'
+'use client'
 
-export const ContactForm = async () => {
-	return wordpress.getTranslations('contact-form', headers().get('referer')?.split('/')[3]!).then((translations) =>
-		<ContactFormTemplate translations={translations} />
+import { ContactFormTemplate } from './ContactFormTemplate'
+import { useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
+export const ContactForm = () => {
+	return (
+		<ContactFormTemplate />
 	)
 }
