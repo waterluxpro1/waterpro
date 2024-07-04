@@ -16,16 +16,7 @@ import { useParams } from 'next/navigation'
 const getKeyIfItIsExists = (object: Record<string, unknown> | undefined, key: string): string =>
 	object && key in object && typeof object[key] === 'string' ? object[key] as string : ''
 
-export const ContactFormTemplate = ({ ...props }: {
-	translations: {
-		name: string
-		phone: string
-		address: string
-		question: string
-		agree_policy: string
-		send: string
-	}
-}) => {
+export const ContactFormTemplate = () => {
 	const [status, action] = useFormState<any, FormData>(send, { ok: undefined, message: undefined })
 	const { locale } = useParams()
 
