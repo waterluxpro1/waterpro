@@ -5,7 +5,7 @@ export const useQuery = <T>(input: string | URL): T | undefined => {
 
 	useEffect(() => {
 		(async () => {
-			const response = await fetch(input)
+			const response = await fetch(input, { cache: 'no-cache' })
 			const json = await response.json()
 
 			setData(json)

@@ -56,6 +56,7 @@ export const woocomerence = {
 
 export const wordpress = {
 	getPage: async (slug: string) => wpRequest<PageModel[]>(`pages?slug=${slug}&acf_format=standard`),
+	getPageById: async (id: number) => wpRequest<PageModel>(`pages/${id}?acf_format=standard`),
 	getMediaById: async (id: number) => wpRequest<{ source_url: string }>(`media/${id}`),
 	getTranslations: async (slug: string, lang: string) => {
 		const [translation] = await wpRequest<TranslationModel[]>(`translations?slug=${slug}`)

@@ -12,6 +12,10 @@
 
 	cursor: pointer;
 
+	span {
+		line-height: 150%;
+	}
+
 	@include mixins.adaptive-value('font-size', 16, 12);
 
 	&::before {

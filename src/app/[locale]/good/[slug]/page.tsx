@@ -35,13 +35,12 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 
 	if (!good) notFound()
 
-	console.log(good)
-
 	if (good.lang !== params.locale) {
-		const localedGood = await woocomerence.getCategoryById(good.translations[params.locale])
+		console.log('good.lang !== params.locale')
+		const localedGood = await woocomerence.getGoodById(good.translations[params.locale])
 
 		if (localedGood.id) {
-			redirect(`/${params.locale}/catalog/${localedGood.slug}`)
+			redirect(`/${params.locale}/good/${localedGood.slug}`)
 		}
 	}
 
@@ -68,7 +67,10 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 					<div className={styles.info}>
 						<Title3 className={clsx(styles.title, styles.desktop)}>{good.name}</Title3>
 						{/* calculation of the discount in euros and percentages (if any) */}
-						<span className={styles.price}>€{good.price}{Math.floor(+good.price) === +good.price && '.00'} {good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
+						{good.type === 'pw-gift-card'
+							? <span className={styles.price} dangerouslySetInnerHTML={{ __html: good.price_html }}></span>
+							: <span className={styles.price}>€{good.price}{Math.floor(+good.price) === +good.price && '.00'} {good.regular_price && good.price !== good.regular_price && <><del>€{good.regular_price}</del> <span className={styles.discount}>{Math.round(100 - good.regular_price / good.price * 100)}%</span></>}</span>
+						}
 
 						<AddToCartButton variations={good.variations} className={styles.addToCart} isInCart={isInCart} goodId={good.id} addToCartText={translations.add_to_cart} removeFromCartText={translations.remove_from_cart} />
 					</div>
@@ -89,8 +91,11 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 						</TabPanel>
 					}
 				</Tabs>
-				<Title4 className={styles.similar}>{translations.similar_goods}</Title4>
-				<GoodsSlider translations={{ details: translations.details }} className={styles.relatedGoods} lang={params.locale} goods={relatedGoods} />
+				{relatedGoods.length > 0 && <>
+					<Title4 className={styles.similar}>{translations.similar_goods}</Title4>
+
+					<GoodsSlider translations={{ details: translations.details }} className={styles.relatedGoods} lang={params.locale} goods={relatedGoods} />
+				</>}
 			</Container>
 		</div>
 	)

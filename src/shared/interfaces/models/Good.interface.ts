@@ -7,7 +7,9 @@ export interface IGood {
 	related_ids: number[]
 	price: number
 	regular_price: number
+	price_html: string
 	variations: number[]
+	type: string
 
 	lang: string
 	translations: Record<string, number>
