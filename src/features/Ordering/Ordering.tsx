@@ -11,6 +11,7 @@ export const Ordering = async ({ className, locale, goods, shippingMethods, cart
 	const subtotal = goods.length > 0 ? goods.map((item, index) => item.price * +cart[index].quantity).reduce((acc, number) => +acc + +number) : 0
 
 	const smartpostParcelMachines = await deliveryApi.getSmartpostParcelMachines()
+	const omnivaParcelMachines = await deliveryApi.getOmnivaParcelMachines()
 
 	return (
 		<div className={clsx(className)} {...props}>
@@ -34,10 +35,24 @@ export const Ordering = async ({ className, locale, goods, shippingMethods, cart
 						<PromocodeField translations={translation} promocode={promocode?.code} />
 					</div>
 					<DeliveryOptions classes={styles} {...{ translation, shippingMethods, subtotal, promocode }}
-						parcelLockers={[{
-							methodContains: 'smartpost',
-							list: smartpostParcelMachines.places.item
-						}]} />
+						parcelLockers={[
+							{
+								methodContains: 'smartpost',
+								list: smartpostParcelMachines.places.item
+							},
+							{
+								methodContains: 'omniva',
+								list: omnivaParcelMachines.map((item) => (
+									{
+										group_name: 'Omniva',
+										country: item.A0_NAME,
+										city: item.A3_NAME,
+										address: `${item.A2_NAME} ${item.A4_NAME} ${item.A5_NAME} ${item.A6_NAME} ${item.A7_NAME} ${item.A8_NAME}`,
+										name: `[${item.A0_NAME}] ${item.NAME}`
+									}
+								))
+							}
+						]} />
 				</>}
 				{!isCheckoutPage &&
 					<Link href={`/${locale}/cart/order`}>

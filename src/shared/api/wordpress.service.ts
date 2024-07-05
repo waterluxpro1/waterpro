@@ -5,6 +5,7 @@ import type { PageModel } from '../interfaces/models/Page.model'
 import type { TranslationModel } from '../interfaces/models/Translation.model'
 import type { PromocodeModel } from '../interfaces/models/Promocode.model'
 import type { SmartpostModel } from '../interfaces/models/Smartpost.model'
+import type { OmnivaModel } from '../interfaces/models/Omniva.model'
 
 const request = async<T>(path: URL | string, init?: RequestInit | undefined): Promise<T> => {
 	const response = await fetch(path, init)
@@ -79,5 +80,6 @@ export const wordpress = {
 export const deliveryApi = {
 	getSmartpostParcelMachines: async () => request<SmartpostModel>('https://gateway.posti.fi/smartpost/api/ext/v1/places?country=EE', {
 		headers: { 'Authorization': `${process.env.SMARTPOST_API_KEY}`, 'Content-Type': 'application/json' }
-	})
+	}),
+	getOmnivaParcelMachines: async () => request<OmnivaModel[]>('https://www.omniva.lv/locations.json')
 }

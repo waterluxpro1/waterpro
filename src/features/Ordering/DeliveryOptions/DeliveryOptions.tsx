@@ -80,7 +80,7 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 											{deliveryLists[thisList.methodContains].push(item.group_name)}
 										</>
 										}
-										<option value={`${item.country};${item.city};${item.address};${item.name} (Smart Post)`}>{item.name}</option>
+										<option value={`${item.country};${item.city};${item.address};${item.name} (${thisList.methodContains})`}>{item.name}</option>
 									</>
 								})}
 
