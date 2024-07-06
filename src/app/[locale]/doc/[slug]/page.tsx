@@ -9,13 +9,10 @@ import { redirect } from 'next/navigation'
 const DocumentPage = async ({ params }: { params: { slug: string, locale: string } }) => {
 	const [document] = await wordpress.getPage(params.slug)
 
-	console.log(document)
+	if (document?.lang && document?.lang !== params.locale) {
+		const localedDocument = await wordpress.getPageById(document?.translations[params.locale])
 
-	if (document.lang !== params.locale) {
-		console.log('lang !== locale')
-		const localedDocument = await wordpress.getPageById(document.translations[params.locale])
-
-		if (localedDocument) {
+		if (localedDocument.id) {
 			redirect(`/${params.locale}/doc/${localedDocument.slug}`)
 		}
 	}
