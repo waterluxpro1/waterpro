@@ -56,8 +56,8 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 							<Radio
 								required
 								setFunction={setSelectedItem}
-								label={`${method.title.split(':')[1]?.split('/')[1]
-									? translation[method.title.split(':')[1].split('/')[1]]
+								label={`${translation[method.title]
+									? translation[method.title]
 									: method.title} - ${method?.settings?.cost?.value || 0} €`}
 								value={`${method.method_id};${method.title};${method.settings.cost.value}`}
 								id={`${method.method_id}-${method.id}`} name="delivery"
