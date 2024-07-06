@@ -1,13 +1,9 @@
 import { Container } from '@/shared/ui/Container'
 import styles from './Categories.module.scss'
 import { Category } from '@/entities/Category'
+import type { CategoriesProps } from './Categories.props'
 
-export const Categories = ({ cards, more_button }: {
-	more_button: string
-	cards: {
-		title: string, href: string, image: string
-	}[]
-}) => {
+export const Categories = ({ cards, more_button }: CategoriesProps) => {
 	return (
 		<Container className={styles.container}>
 			{cards && cards?.map(category =>

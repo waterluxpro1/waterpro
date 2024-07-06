@@ -49,7 +49,7 @@ export const woocomerence = {
 	getGoodsByCategoryId: async (categodyId: number) => wcRequest<IGood[]>(`products?category=${categodyId}&per_page=100`),
 	getCategoryBySlug: async (slug: string) => wcRequest<ICategory[]>(`products/categories?slug=${slug}`),
 	getCategoryById: async (id: number) => wcRequest<ICategory>(`products/categories/${id}`),
-	getGoodBySlug: async (slug: string) => wcRequest<IGood[]>(`products?slug=${slug}`),
+	getGoodBySlug: async (slug: string, lang?: string) => wcRequest<IGood[]>(`products?slug=${slug}${lang ? `&lang=${lang}` : ''}`),
 	getGoodById: async (id: number) => wcRequest<IGood>(`products/${id}`),
 	getShippingMethods: async () => wcRequest<any[]>('shipping/zones/2/methods'),
 	getCouponByCode: async (code?: string) => code ? wcRequest<PromocodeModel[]>(`coupons?code=${code}`) : undefined

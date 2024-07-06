@@ -31,7 +31,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
 }
 
 const GoodPage = async ({ params }: { params: { slug: string, locale: string } }) => {
-	const [good] = await woocomerence.getGoodBySlug(params.slug)
+	const [good] = await woocomerence.getGoodBySlug(params.slug, params.locale)
 
 	if (!good) notFound()
 

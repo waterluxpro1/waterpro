@@ -13,9 +13,11 @@
 
 .imageWrapper {
 	aspect-ratio: 1/1;
-	height: 240px;
+
 	display: flex;
 	align-items: center;
+	max-width: 100%;
+	@include mixins.adaptive-value('height', 240, 100);
 
 	img {
 		text-align: center;
@@ -32,8 +34,8 @@
 	line-height: 115%;
 	margin-top: 32px;
 	font-weight: 500;
-	hyphens: auto;
 	max-width: 100%;
+	width: 100%;
 	flex-grow: 1;
 	vertical-align: bottom;
 
