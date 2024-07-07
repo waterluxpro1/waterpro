@@ -45,7 +45,7 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 
 	return (
 		<>
-			<div className={classes.row}>
+			<div className={clsx(classes.row, styles.delivery)}>
 				<div className={classes.cell}>{translation.delivery}</div>
 				<div className={clsx(classes.cell, styles.radios)}>
 					{shippingMethods?.map((method) => {
@@ -70,15 +70,17 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 										deliveryLists[thisList.methodContains] = []
 									}
 
-									if (selectedItem.toLowerCase().includes('литва') &&
+									console.log(selectedItem)
+
+									if (selectedItem.toLowerCase().includes('omniva_lt') &&
 										item.country !== 'LT') {
 										return
 									}
-									if (selectedItem.toLowerCase().includes('латвия') &&
+									if (selectedItem.toLowerCase().includes('omniva_lv') &&
 										item.country !== 'LV') {
 										return
 									}
-									if (selectedItem.toLowerCase().includes('эстония') &&
+									if (selectedItem.toLowerCase().includes('omniva_ee') &&
 										item.country !== 'EE') {
 										return
 									}
