@@ -36,7 +36,6 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 	if (!good) notFound()
 
 	if (good.lang !== params.locale) {
-		console.log('good.lang !== params.locale')
 		const localedGood = await woocomerence.getGoodById(good.translations[params.locale])
 
 		if (localedGood.id) {

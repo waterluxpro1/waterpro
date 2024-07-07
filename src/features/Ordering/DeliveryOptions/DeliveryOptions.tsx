@@ -70,17 +70,18 @@ export const DeliveryOptions = ({ classes, shippingMethods, translation, subtota
 										deliveryLists[thisList.methodContains] = []
 									}
 
-									if (selectedItem.toLowerCase().includes('lietuva') &&
+									if (selectedItem.toLowerCase().includes('литва') &&
 										item.country !== 'LT') {
 										return
 									}
-									if (selectedItem.toLowerCase().includes('latvija') &&
+									if (selectedItem.toLowerCase().includes('латвия') &&
 										item.country !== 'LV') {
 										return
 									}
-									// else if (item.country !== 'EE') {
-									// 	return
-									// }
+									if (selectedItem.toLowerCase().includes('эстония') &&
+										item.country !== 'EE') {
+										return
+									}
 
 									return <>
 										{!deliveryLists[thisList.methodContains].includes(item.group_name) && <>
