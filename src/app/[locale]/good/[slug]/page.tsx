@@ -77,16 +77,16 @@ const GoodPage = async ({ params }: { params: { slug: string, locale: string } }
 				<Tabs defaultActive={1}>
 					<TabsList>
 						<Tab index={1}>{translations.description}</Tab>
-						{good.acf.equipment &&
+						{typeof good.acf?.equipment !== 'undefined' &&
 							<Tab index={2}>{translations.included}</Tab>
 						}
 					</TabsList>
 					<TabPanel index={1}>
 						<Eval>{good.description}</Eval>
 					</TabPanel>
-					{good.acf.equipment &&
+					{typeof good.acf?.equipment !== 'undefined' &&
 						<TabPanel index={2}>
-							<Eval>{good.acf.equipment}</Eval>
+							<Eval>{good.acf?.equipment}</Eval>
 						</TabPanel>
 					}
 				</Tabs>
